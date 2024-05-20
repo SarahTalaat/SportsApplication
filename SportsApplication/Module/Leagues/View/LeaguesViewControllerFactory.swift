@@ -20,7 +20,7 @@ class LeaguesViewControllerFactory {
     
     
     static func create(with viewModel: LeaguesViewModelProtocol) -> LeagueViewController {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: "SecondStoryboard", bundle: nil)
         guard let leaguesViewController = storyboard.instantiateViewController(withIdentifier: "LeagueViewController") as? LeagueViewController else{
             fatalError("Unable to instantiate LeaguesViewController from storyboard")
         }
