@@ -13,6 +13,8 @@
 		8B062B262BFB6747005762B0 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B062B252BFB6747005762B0 /* Network.swift */; };
 		8B062B282BFB675D005762B0 /* NetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B062B272BFB675D005762B0 /* NetworkProtocol.swift */; };
 		8B062B2A2BFB679A005762B0 /* DBManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B062B292BFB679A005762B0 /* DBManger.swift */; };
+		8BEA6A022BFBF70B0028BB33 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA6A012BFBF70B0028BB33 /* HomeViewController.swift */; };
+		8BEA6A042BFBF9CB0028BB33 /* Sport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA6A032BFBF9CB0028BB33 /* Sport.swift */; };
 		B6DBD8FE2BE05732007116CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DBD8FD2BE05732007116CC /* AppDelegate.swift */; };
 		B6DBD9002BE05732007116CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DBD8FF2BE05732007116CC /* SceneDelegate.swift */; };
 		B6DBD9022BE05732007116CC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DBD9012BE05732007116CC /* ViewController.swift */; };
@@ -51,6 +53,8 @@
 		8B062B252BFB6747005762B0 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		8B062B272BFB675D005762B0 /* NetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocol.swift; sourceTree = "<group>"; };
 		8B062B292BFB679A005762B0 /* DBManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManger.swift; sourceTree = "<group>"; };
+		8BEA6A012BFBF70B0028BB33 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = SportsApplication/Module/HomeViewController.swift; sourceTree = SOURCE_ROOT; };
+		8BEA6A032BFBF9CB0028BB33 /* Sport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Sport.swift; path = SportsApplication/Module/Sport.swift; sourceTree = SOURCE_ROOT; };
 		A450125F74FD7990185ABBA6 /* Pods-SportsApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportsApplication.debug.xcconfig"; path = "Target Support Files/Pods-SportsApplication/Pods-SportsApplication.debug.xcconfig"; sourceTree = "<group>"; };
 		B6DBD8FA2BE05732007116CC /* SportsApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportsApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6DBD8FD2BE05732007116CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +149,7 @@
 		8B062B2D2BFB67D8005762B0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8BEA6A032BFBF9CB0028BB33 /* Sport.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -185,6 +190,7 @@
 		8B062B322BFB68A5005762B0 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				8BEA6A012BFBF70B0028BB33 /* HomeViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -480,8 +486,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B062B262BFB6747005762B0 /* Network.swift in Sources */,
+				8BEA6A042BFBF9CB0028BB33 /* Sport.swift in Sources */,
 				B6DBD9022BE05732007116CC /* ViewController.swift in Sources */,
 				8B062B282BFB675D005762B0 /* NetworkProtocol.swift in Sources */,
+				8BEA6A022BFBF70B0028BB33 /* HomeViewController.swift in Sources */,
 				B6DBD8FE2BE05732007116CC /* AppDelegate.swift in Sources */,
 				8B062B2A2BFB679A005762B0 /* DBManger.swift in Sources */,
 				8B062B1F2BFB65A1005762B0 /* LeagueCell.swift in Sources */,
