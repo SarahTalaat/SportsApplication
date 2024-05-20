@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		3EAAE80E3335DBA59222BD13 /* Pods_SportsApplication_SportsApplicationUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C22F05AD49AEED395B81A01 /* Pods_SportsApplication_SportsApplicationUITests.framework */; };
+		8B062B1F2BFB65A1005762B0 /* LeagueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B062B1D2BFB65A1005762B0 /* LeagueCell.swift */; };
+		8B062B202BFB65A1005762B0 /* LeagueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B062B1E2BFB65A1005762B0 /* LeagueCell.xib */; };
+		8B062B262BFB6747005762B0 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B062B252BFB6747005762B0 /* Network.swift */; };
+		8B062B282BFB675D005762B0 /* NetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B062B272BFB675D005762B0 /* NetworkProtocol.swift */; };
+		8B062B2A2BFB679A005762B0 /* DBManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B062B292BFB679A005762B0 /* DBManger.swift */; };
 		B6DBD8FE2BE05732007116CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DBD8FD2BE05732007116CC /* AppDelegate.swift */; };
 		B6DBD9002BE05732007116CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DBD8FF2BE05732007116CC /* SceneDelegate.swift */; };
 		B6DBD9022BE05732007116CC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DBD9012BE05732007116CC /* ViewController.swift */; };
@@ -41,6 +46,11 @@
 		29B317AA78FD1A93E6A82493 /* Pods_SportsApplication.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SportsApplication.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C22F05AD49AEED395B81A01 /* Pods_SportsApplication_SportsApplicationUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SportsApplication_SportsApplicationUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A71322B0C7E459B2FBF0D5E /* Pods-SportsApplication-SportsApplicationUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportsApplication-SportsApplicationUITests.release.xcconfig"; path = "Target Support Files/Pods-SportsApplication-SportsApplicationUITests/Pods-SportsApplication-SportsApplicationUITests.release.xcconfig"; sourceTree = "<group>"; };
+		8B062B1D2BFB65A1005762B0 /* LeagueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueCell.swift; sourceTree = "<group>"; };
+		8B062B1E2BFB65A1005762B0 /* LeagueCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeagueCell.xib; sourceTree = "<group>"; };
+		8B062B252BFB6747005762B0 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		8B062B272BFB675D005762B0 /* NetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocol.swift; sourceTree = "<group>"; };
+		8B062B292BFB679A005762B0 /* DBManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManger.swift; sourceTree = "<group>"; };
 		A450125F74FD7990185ABBA6 /* Pods-SportsApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportsApplication.debug.xcconfig"; path = "Target Support Files/Pods-SportsApplication/Pods-SportsApplication.debug.xcconfig"; sourceTree = "<group>"; };
 		B6DBD8FA2BE05732007116CC /* SportsApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportsApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6DBD8FD2BE05732007116CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +105,97 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8B062B1C2BFB64EF005762B0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B6DBD9082BE05734007116CC /* LaunchScreen.storyboard */,
+				B6DBD9032BE05732007116CC /* Main.storyboard */,
+				8B062B1D2BFB65A1005762B0 /* LeagueCell.swift */,
+				8B062B1E2BFB65A1005762B0 /* LeagueCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8B062B212BFB65AE005762B0 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				8B062B242BFB670D005762B0 /* CoreDataServices */,
+				8B062B232BFB66CB005762B0 /* NetworkServices */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		8B062B232BFB66CB005762B0 /* NetworkServices */ = {
+			isa = PBXGroup;
+			children = (
+				8B062B252BFB6747005762B0 /* Network.swift */,
+				8B062B272BFB675D005762B0 /* NetworkProtocol.swift */,
+			);
+			path = NetworkServices;
+			sourceTree = "<group>";
+		};
+		8B062B242BFB670D005762B0 /* CoreDataServices */ = {
+			isa = PBXGroup;
+			children = (
+				8B062B292BFB679A005762B0 /* DBManger.swift */,
+			);
+			path = CoreDataServices;
+			sourceTree = "<group>";
+		};
+		8B062B2D2BFB67D8005762B0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8B062B2E2BFB67E8005762B0 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				8B062B332BFB68BC005762B0 /* TeamDetails */,
+				8B062B322BFB68A5005762B0 /* Home */,
+				8B062B312BFB6892005762B0 /* Favourites */,
+				8B062B302BFB687F005762B0 /* Leagues */,
+				8B062B2F2BFB6820005762B0 /* LeagueDetails */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		8B062B2F2BFB6820005762B0 /* LeagueDetails */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LeagueDetails;
+			sourceTree = "<group>";
+		};
+		8B062B302BFB687F005762B0 /* Leagues */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Leagues;
+			sourceTree = "<group>";
+		};
+		8B062B312BFB6892005762B0 /* Favourites */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Favourites;
+			sourceTree = "<group>";
+		};
+		8B062B322BFB68A5005762B0 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		8B062B332BFB68BC005762B0 /* TeamDetails */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TeamDetails;
+			sourceTree = "<group>";
+		};
 		A551CFB9CE9B2426C6060E91 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -103,7 +204,6 @@
 				D985F15AA547832E6A1E9570 /* Pods-SportsApplication-SportsApplicationUITests.debug.xcconfig */,
 				3A71322B0C7E459B2FBF0D5E /* Pods-SportsApplication-SportsApplicationUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -132,12 +232,14 @@
 		B6DBD8FC2BE05732007116CC /* SportsApplication */ = {
 			isa = PBXGroup;
 			children = (
+				8B062B2E2BFB67E8005762B0 /* Module */,
+				8B062B2D2BFB67D8005762B0 /* Model */,
+				8B062B212BFB65AE005762B0 /* Service */,
+				8B062B1C2BFB64EF005762B0 /* View */,
 				B6DBD8FD2BE05732007116CC /* AppDelegate.swift */,
 				B6DBD8FF2BE05732007116CC /* SceneDelegate.swift */,
 				B6DBD9012BE05732007116CC /* ViewController.swift */,
-				B6DBD9032BE05732007116CC /* Main.storyboard */,
 				B6DBD9062BE05734007116CC /* Assets.xcassets */,
-				B6DBD9082BE05734007116CC /* LaunchScreen.storyboard */,
 				B6DBD90B2BE05734007116CC /* Info.plist */,
 			);
 			path = SportsApplication;
@@ -270,6 +372,7 @@
 			files = (
 				B6DBD90A2BE05734007116CC /* LaunchScreen.storyboard in Resources */,
 				B6DBD9072BE05734007116CC /* Assets.xcassets in Resources */,
+				8B062B202BFB65A1005762B0 /* LeagueCell.xib in Resources */,
 				B6DBD9052BE05732007116CC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -376,8 +479,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B062B262BFB6747005762B0 /* Network.swift in Sources */,
 				B6DBD9022BE05732007116CC /* ViewController.swift in Sources */,
+				8B062B282BFB675D005762B0 /* NetworkProtocol.swift in Sources */,
 				B6DBD8FE2BE05732007116CC /* AppDelegate.swift in Sources */,
+				8B062B2A2BFB679A005762B0 /* DBManger.swift in Sources */,
+				8B062B1F2BFB65A1005762B0 /* LeagueCell.swift in Sources */,
 				B6DBD9002BE05732007116CC /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
