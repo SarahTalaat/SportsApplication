@@ -11,7 +11,7 @@
         <!--Leagues-->
         <scene sceneID="pFY-pc-Klb">
             <objects>
-                <viewController storyboardIdentifier="LeagueViewController" title="Leagues" id="YWE-kf-aTS" customClass="LeagueViewController" customModule="SportsTrial" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LeagueViewController" title="Leagues" id="YWE-kf-aTS" customClass="LeagueViewController" customModule="SportsApplication" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="t21-TK-WQa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
