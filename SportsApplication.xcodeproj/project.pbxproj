@@ -13,11 +13,16 @@
 		8B062B262BFB6747005762B0 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B062B252BFB6747005762B0 /* Network.swift */; };
 		8B062B282BFB675D005762B0 /* NetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B062B272BFB675D005762B0 /* NetworkProtocol.swift */; };
 		8B062B2A2BFB679A005762B0 /* DBManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B062B292BFB679A005762B0 /* DBManger.swift */; };
+
 		8BEA69F82BFBDCAA0028BB33 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA69F72BFBDCAA0028BB33 /* test.swift */; };
 		8BEA69FA2BFBDCC30028BB33 /* test1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA69F92BFBDCC30028BB33 /* test1.swift */; };
 		8BEA69FC2BFBDCD90028BB33 /* test3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA69FB2BFBDCD90028BB33 /* test3.swift */; };
 		8BEA69FE2BFBDCEE0028BB33 /* test4.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA69FD2BFBDCEE0028BB33 /* test4.swift */; };
 		8BEA6A002BFBDD180028BB33 /* test5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA69FF2BFBDD180028BB33 /* test5.swift */; };
+
+		8BEA6A022BFBF70B0028BB33 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA6A012BFBF70B0028BB33 /* HomeViewController.swift */; };
+		8BEA6A042BFBF9CB0028BB33 /* Sport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA6A032BFBF9CB0028BB33 /* Sport.swift */; };
+		8BEA6A082BFBFFDE0028BB33 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA6A072BFBFFDE0028BB33 /* HomeCollectionViewCell.swift */; };
 		B6DBD8FE2BE05732007116CC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DBD8FD2BE05732007116CC /* AppDelegate.swift */; };
 		B6DBD9002BE05732007116CC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DBD8FF2BE05732007116CC /* SceneDelegate.swift */; };
 		B6DBD9022BE05732007116CC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6DBD9012BE05732007116CC /* ViewController.swift */; };
@@ -56,11 +61,17 @@
 		8B062B252BFB6747005762B0 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		8B062B272BFB675D005762B0 /* NetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocol.swift; sourceTree = "<group>"; };
 		8B062B292BFB679A005762B0 /* DBManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManger.swift; sourceTree = "<group>"; };
+
 		8BEA69F72BFBDCAA0028BB33 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = test.swift; path = SportsApplication/Module/test.swift; sourceTree = SOURCE_ROOT; };
 		8BEA69F92BFBDCC30028BB33 /* test1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test1.swift; sourceTree = "<group>"; };
 		8BEA69FB2BFBDCD90028BB33 /* test3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test3.swift; sourceTree = "<group>"; };
 		8BEA69FD2BFBDCEE0028BB33 /* test4.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test4.swift; sourceTree = "<group>"; };
 		8BEA69FF2BFBDD180028BB33 /* test5.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = test5.swift; path = SportsApplication/Module/TeamDetails/test5.swift; sourceTree = SOURCE_ROOT; };
+
+		8BEA6A012BFBF70B0028BB33 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = SportsApplication/Module/HomeViewController.swift; sourceTree = SOURCE_ROOT; };
+		8BEA6A032BFBF9CB0028BB33 /* Sport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Sport.swift; path = SportsApplication/Module/Sport.swift; sourceTree = SOURCE_ROOT; };
+		8BEA6A072BFBFFDE0028BB33 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeCollectionViewCell.swift; path = SportsApplication/Module/HomeCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
+
 		A450125F74FD7990185ABBA6 /* Pods-SportsApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportsApplication.debug.xcconfig"; path = "Target Support Files/Pods-SportsApplication/Pods-SportsApplication.debug.xcconfig"; sourceTree = "<group>"; };
 		B6DBD8FA2BE05732007116CC /* SportsApplication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportsApplication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B6DBD8FD2BE05732007116CC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -155,7 +166,11 @@
 		8B062B2D2BFB67D8005762B0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+
 				8BEA69F72BFBDCAA0028BB33 /* test.swift */,
+
+				8BEA6A032BFBF9CB0028BB33 /* Sport.swift */,
+
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -198,7 +213,12 @@
 		8B062B322BFB68A5005762B0 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+
 				8BEA69FF2BFBDD180028BB33 /* test5.swift */,
+
+				8BEA6A012BFBF70B0028BB33 /* HomeViewController.swift */,
+				8BEA6A072BFBFFDE0028BB33 /* HomeCollectionViewCell.swift */,
+
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -496,8 +516,11 @@
 			files = (
 				8BEA69FE2BFBDCEE0028BB33 /* test4.swift in Sources */,
 				8B062B262BFB6747005762B0 /* Network.swift in Sources */,
+				8BEA6A042BFBF9CB0028BB33 /* Sport.swift in Sources */,
 				B6DBD9022BE05732007116CC /* ViewController.swift in Sources */,
 				8B062B282BFB675D005762B0 /* NetworkProtocol.swift in Sources */,
+				8BEA6A022BFBF70B0028BB33 /* HomeViewController.swift in Sources */,
+				8BEA6A082BFBFFDE0028BB33 /* HomeCollectionViewCell.swift in Sources */,
 				B6DBD8FE2BE05732007116CC /* AppDelegate.swift in Sources */,
 				8BEA69FA2BFBDCC30028BB33 /* test1.swift in Sources */,
 				8B062B2A2BFB679A005762B0 /* DBManger.swift in Sources */,
