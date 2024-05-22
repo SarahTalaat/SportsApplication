@@ -11,7 +11,9 @@ class LeagueDetailsController: UIViewController {
     
     var sportName:String = "football"
     var leagueId:Int = 3
+    var dataCounter = 0
     var viewModel: LeagueDetailsViewModel!
+    var indicator: UIActivityIndicatorView!
 
     @IBOutlet weak var detailsCollectionView: UICollectionView!
     
@@ -29,8 +31,15 @@ class LeagueDetailsController: UIViewController {
         
         viewModel = LeagueDetailsViewModel()
         fetchLeagueData()
-
-        
+        setupLeagueData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+      super.viewWillAppear(animated)
+      indicator = UIActivityIndicatorView(style: .large)
+      indicator.center = self.view.center
+      self.view.addSubview(indicator)
+      indicator.startAnimating()
     }
     
     func drawUpComingEventSection() -> NSCollectionLayoutSection{
@@ -79,6 +88,41 @@ class LeagueDetailsController: UIViewController {
       viewModel.getLatestEvent(sportName: sportName, leagueId: "\(leagueId)", startDate: Constants.previousYear, endDate: Constants.currentDate)
 
       viewModel.getTeams(sportName: sportName, leagueId: "\(leagueId)")
+    }
+    
+    func setupLeagueData(){
+      viewModel.resultToViewController = { [weak self] in
+        self?.dataCounter += 1
+
+        DispatchQueue.main.async {
+
+          if(self!.dataCounter % 3 == 0){
+            self?.indicator.stopAnimating()
+            self?.detailsCollectionView.reloadData()
+            let layout = UICollectionViewCompositionalLayout{
+              index, environment in
+              if self?.viewModel.upcomingEvent?.count ?? 0 == 0{
+                switch index{
+                case 0:
+                  return self?.drawLatestEventSection()
+                default:
+                  return self?.drawTheBottomHorizontalSection()
+                }
+              }else{
+                switch index{
+                case 0:
+                  return self?.drawUpComingEventSection()
+                case 1:
+                  return self?.drawLatestEventSection()
+                default:
+                  return self?.drawTheBottomHorizontalSection()
+                }
+              }
+            }
+            self?.detailsCollectionView.setCollectionViewLayout(layout, animated: true)
+          }
+        }
+      }
     }
 
     
