@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LeagueDetailsController: UIViewController , UICollectionViewDataSource , UICollectionViewDelegate {
+class LeagueDetailsController: UIViewController , UICollectionViewDataSource , UICollectionViewDelegate  {
     
     var sportName:String = "football"
     var leagueId:Int = 3
@@ -200,6 +200,32 @@ class LeagueDetailsController: UIViewController , UICollectionViewDataSource , U
     
     
 
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+
+      if let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "leagueDetailsHeader", for: indexPath) as? HeaderReusableView{
+        if self.viewModel.upcomingEvent?.count ?? 0 == 0{
+          switch indexPath.section {
+          case 0:
+            sectionHeader.sectionLabel.text = "Latest Events:"
+          default:
+            sectionHeader.sectionLabel.text = "Teams:"
+          }
+        } else {
+          switch indexPath.section {
+          case 0:
+            sectionHeader.sectionLabel.text = "Upcoming Events:"
+          case 1:
+            sectionHeader.sectionLabel.text = "Latest Events:"
+          default:
+            sectionHeader.sectionLabel.text = "Teams:"
+          }
+        }
+          return sectionHeader
+        }
+        return UICollectionReusableView()
+
+    }
     
 }
 

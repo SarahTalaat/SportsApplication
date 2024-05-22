@@ -241,7 +241,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells/>
-                                <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeaderReusableView" id="rcj-47-49m">
+                                <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="leagueDetailsHeader" reuseIdentifier="leagueDetailsHeader" id="rcj-47-49m" customClass="HeaderReusableView" customModule="SportsApplication" customModuleProvider="target" colorLabel="IBBuiltInLabel-Gray">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
@@ -260,6 +260,9 @@
                                         <constraint firstItem="A5q-kf-LGD" firstAttribute="leading" secondItem="rcj-47-49m" secondAttribute="leadingMargin" constant="8" id="E1Q-6W-Pgb"/>
                                         <constraint firstItem="A5q-kf-LGD" firstAttribute="top" secondItem="rcj-47-49m" secondAttribute="topMargin" constant="4" id="w9Q-3k-ELa"/>
                                     </constraints>
+                                    <connections>
+                                        <outlet property="sectionLabel" destination="A5q-kf-LGD" id="5ZZ-Jy-H0N"/>
+                                    </connections>
                                 </collectionReusableView>
                                 <connections>
                                     <outlet property="dataSource" destination="l5H-yC-i5q" id="Dil-Ah-cfT"/>
