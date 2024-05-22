@@ -10,12 +10,12 @@ import UIKit
 
 class LeaguesViewControllerFactory {
     
-    static var apiService: APIServiceProtocol {
-        return APIService()
+    static var network: NetworkProtocol {
+        return Network()
     }
     
     static var viewModel: LeaguesViewModel {
-        return LeaguesViewModel(apiService: self.apiService)
+        return LeaguesViewModel(networkService: self.network)
     }
     
     

@@ -6,8 +6,7 @@
 //
 
 import Foundation
-
-
+import Alamofire
 
 class Network: NetworkProtocol {
     var mainUrl:String = "https://apiv2.allsportsapi.com/"
