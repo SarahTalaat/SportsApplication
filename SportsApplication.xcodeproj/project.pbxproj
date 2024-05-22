@@ -138,11 +138,11 @@
 		8B062B1C2BFB64EF005762B0 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				B6DBD9082BE05734007116CC /* LaunchScreen.storyboard */,
-				B6DBD9032BE05732007116CC /* Main.storyboard */,
+				B69BAB3A2BFCCAC5005E3BEC /* SecondStoryboard.storyboard */,
 				8B062B1D2BFB65A1005762B0 /* LeagueCell.swift */,
 				8B062B1E2BFB65A1005762B0 /* LeagueCell.xib */,
-				B69BAB3A2BFCCAC5005E3BEC /* SecondStoryboard.storyboard */,
+				B6DBD9082BE05734007116CC /* LaunchScreen.storyboard */,
+				B6DBD9032BE05732007116CC /* Main.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";

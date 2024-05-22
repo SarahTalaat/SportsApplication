@@ -9,7 +9,8 @@ import Foundation
 
 import UIKit
 import Kingfisher
-import Accelerate
+//import Accelerate
+
 
 class LeagueViewController: UIViewController , UITableViewDataSource , UITableViewDelegate {
 
@@ -25,7 +26,7 @@ class LeagueViewController: UIViewController , UITableViewDataSource , UITableVi
         
         // Do any additional setup after loading the view.
         
-        let cell = UINib(nibName: "LeagueTableViewCell", bundle: nil)
+        let cell = UINib(nibName: "LeagueCell", bundle: nil)
         self.leagueTableView.register(cell , forCellReuseIdentifier: "cell")
         
         fetchData()
@@ -60,13 +61,13 @@ class LeagueViewController: UIViewController , UITableViewDataSource , UITableVi
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! LeagueCell
+        let cell = leagueTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! LeagueCell
         cell.myLabel.text = viewModel.leaguesArray[indexPath.row].league_name
         let strImage: String = viewModel.leaguesArray[indexPath.row].country_logo ?? "No image"
         print(strImage)
-        
+
         if let imageUrl = URL(string: strImage) {
-              
+
             cell.myImage?.kf.setImage(with: imageUrl, placeholder: UIImage(named: "loading.png") , completionHandler: {
                 (image, error, cacheType, url) in
                     if let image = image {
@@ -81,10 +82,15 @@ class LeagueViewController: UIViewController , UITableViewDataSource , UITableVi
         } else {
             print("Can't load image from the internet")
         }
-    
+
         return cell
-       
+
     }
+
+    
+    
+       
+    
     
 
 }
