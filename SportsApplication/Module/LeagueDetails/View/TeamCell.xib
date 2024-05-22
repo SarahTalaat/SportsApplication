@@ -17,13 +17,14 @@
                 <rect key="frame" x="0.0" y="0.0" width="128" height="142"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hMO-Jq-Nu8">
-                        <rect key="frame" x="16" y="9" width="97" height="76"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hMO-Jq-Nu8">
+                        <rect key="frame" x="8" y="8" width="112" height="100"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="100" id="Z8Q-xd-0W7"/>
+                        </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vnW-Rt-crP">
-                        <rect key="frame" x="43" y="101" width="42" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vnW-Rt-crP">
+                        <rect key="frame" x="8" y="116" width="112" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -31,6 +32,16 @@
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="vnW-Rt-crP" firstAttribute="top" secondItem="hMO-Jq-Nu8" secondAttribute="bottom" constant="8" id="Ace-hX-Zyq"/>
+                <constraint firstAttribute="bottom" secondItem="vnW-Rt-crP" secondAttribute="bottom" constant="8" id="Fiu-oi-bfV"/>
+                <constraint firstItem="hMO-Jq-Nu8" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="G9Y-3I-7wY"/>
+                <constraint firstItem="vnW-Rt-crP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="gQz-m2-GrQ"/>
+                <constraint firstItem="hMO-Jq-Nu8" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="r8R-Qg-WIy"/>
+                <constraint firstItem="vnW-Rt-crP" firstAttribute="top" secondItem="hMO-Jq-Nu8" secondAttribute="bottom" constant="8" id="urt-9l-jM5"/>
+                <constraint firstAttribute="trailing" secondItem="hMO-Jq-Nu8" secondAttribute="trailing" constant="8" id="vUH-vt-bJp"/>
+                <constraint firstAttribute="trailing" secondItem="vnW-Rt-crP" secondAttribute="trailing" constant="8" id="wSS-ZX-Src"/>
+            </constraints>
             <size key="customSize" width="128" height="142"/>
             <connections>
                 <outlet property="teamImage" destination="hMO-Jq-Nu8" id="g5O-gR-Mig"/>

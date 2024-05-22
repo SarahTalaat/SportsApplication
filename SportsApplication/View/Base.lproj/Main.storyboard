@@ -237,35 +237,30 @@
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wLQ-Y7-NL5">
                                     <size key="itemSize" width="414" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="50" height="70"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="LVc-fd-cp7">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="IlR-23-sFa">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5q-kf-LGD">
-                                                    <rect key="frame" x="24" y="8" width="100" height="34"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="100" id="ob1-Sb-TZX"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
-                                                    <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
+                                <cells/>
+                                <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HeaderReusableView" id="rcj-47-49m">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5q-kf-LGD">
+                                            <rect key="frame" x="16" y="12" width="382" height="34"/>
                                             <constraints>
-                                                <constraint firstItem="A5q-kf-LGD" firstAttribute="top" secondItem="IlR-23-sFa" secondAttribute="topMargin" id="E4k-aY-lLT"/>
-                                                <constraint firstItem="A5q-kf-LGD" firstAttribute="leading" secondItem="IlR-23-sFa" secondAttribute="leading" constant="24" id="LJg-C8-GX9"/>
+                                                <constraint firstAttribute="height" constant="34" id="Onb-ci-YgJ"/>
                                             </constraints>
-                                        </collectionViewCellContentView>
-                                        <size key="customSize" width="414" height="50"/>
-                                    </collectionViewCell>
-                                </cells>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="A5q-kf-LGD" secondAttribute="trailing" constant="8" id="3kG-yK-dKD"/>
+                                        <constraint firstItem="A5q-kf-LGD" firstAttribute="leading" secondItem="rcj-47-49m" secondAttribute="leadingMargin" constant="8" id="E1Q-6W-Pgb"/>
+                                        <constraint firstItem="A5q-kf-LGD" firstAttribute="top" secondItem="rcj-47-49m" secondAttribute="topMargin" constant="4" id="w9Q-3k-ELa"/>
+                                    </constraints>
+                                </collectionReusableView>
                                 <connections>
                                     <outlet property="dataSource" destination="l5H-yC-i5q" id="Dil-Ah-cfT"/>
                                     <outlet property="delegate" destination="l5H-yC-i5q" id="CuH-hA-YPo"/>
