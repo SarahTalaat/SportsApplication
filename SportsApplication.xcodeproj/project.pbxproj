@@ -17,6 +17,8 @@
 		8BBCEDF92BFDB34600164E8B /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBCEDF82BFDB34600164E8B /* Event.swift */; };
 		8BBCEE012BFDB48F00164E8B /* UpComingEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BBCEE002BFDB48F00164E8B /* UpComingEventCell.xib */; };
 		8BBCEE022BFDB48F00164E8B /* UpComingEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBCEDFF2BFDB48F00164E8B /* UpComingEventCell.swift */; };
+		8BBCEE052BFDD6E000164E8B /* LatestEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BBCEE042BFDD6E000164E8B /* LatestEventCell.xib */; };
+		8BBCEE062BFDD6E000164E8B /* LatestEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBCEE032BFDD6E000164E8B /* LatestEventCell.swift */; };
 		8BEA69F82BFBDCAA0028BB33 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA69F72BFBDCAA0028BB33 /* test.swift */; };
 		8BEA69FA2BFBDCC30028BB33 /* test1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA69F92BFBDCC30028BB33 /* test1.swift */; };
 		8BEA69FC2BFBDCD90028BB33 /* test3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA69FB2BFBDCD90028BB33 /* test3.swift */; };
@@ -67,6 +69,8 @@
 		8BBCEDF82BFDB34600164E8B /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		8BBCEDFF2BFDB48F00164E8B /* UpComingEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpComingEventCell.swift; sourceTree = "<group>"; };
 		8BBCEE002BFDB48F00164E8B /* UpComingEventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpComingEventCell.xib; sourceTree = "<group>"; };
+		8BBCEE032BFDD6E000164E8B /* LatestEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestEventCell.swift; sourceTree = "<group>"; };
+		8BBCEE042BFDD6E000164E8B /* LatestEventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LatestEventCell.xib; sourceTree = "<group>"; };
 		8BEA69F72BFBDCAA0028BB33 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = test.swift; path = SportsApplication/Module/test.swift; sourceTree = SOURCE_ROOT; };
 		8BEA69F92BFBDCC30028BB33 /* test1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test1.swift; sourceTree = "<group>"; };
 		8BEA69FB2BFBDCD90028BB33 /* test3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test3.swift; sourceTree = "<group>"; };
@@ -235,6 +239,8 @@
 			children = (
 				8BBCEDFF2BFDB48F00164E8B /* UpComingEventCell.swift */,
 				8BBCEE002BFDB48F00164E8B /* UpComingEventCell.xib */,
+				8BBCEE032BFDD6E000164E8B /* LatestEventCell.swift */,
+				8BBCEE042BFDD6E000164E8B /* LatestEventCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -415,6 +421,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6DBD90A2BE05734007116CC /* LaunchScreen.storyboard in Resources */,
+				8BBCEE052BFDD6E000164E8B /* LatestEventCell.xib in Resources */,
 				B6DBD9072BE05734007116CC /* Assets.xcassets in Resources */,
 				8B062B202BFB65A1005762B0 /* LeagueCell.xib in Resources */,
 				B6DBD9052BE05732007116CC /* Main.storyboard in Resources */,
@@ -526,6 +533,7 @@
 			files = (
 				8BEA69FE2BFBDCEE0028BB33 /* test4.swift in Sources */,
 				8B062B262BFB6747005762B0 /* Network.swift in Sources */,
+				8BBCEE062BFDD6E000164E8B /* LatestEventCell.swift in Sources */,
 				8BEA6A042BFBF9CB0028BB33 /* Sport.swift in Sources */,
 				B6DBD9022BE05732007116CC /* ViewController.swift in Sources */,
 				8B062B282BFB675D005762B0 /* NetworkProtocol.swift in Sources */,
