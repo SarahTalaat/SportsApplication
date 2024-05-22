@@ -204,6 +204,7 @@
 		8B062B2F2BFB6820005762B0 /* LeagueDetails */ = {
 			isa = PBXGroup;
 			children = (
+				8B829C642BFE21460094BAB1 /* ViewModel */,
 				8BBCEDFA2BFDB41600164E8B /* View */,
 			);
 			path = LeagueDetails;
@@ -241,6 +242,13 @@
 				8BEA69FD2BFBDCEE0028BB33 /* test4.swift */,
 			);
 			path = TeamDetails;
+			sourceTree = "<group>";
+		};
+		8B829C642BFE21460094BAB1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		8BBCEDFA2BFDB41600164E8B /* View */ = {
