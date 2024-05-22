@@ -20,8 +20,8 @@ class TeamCell: UICollectionViewCell {
     
     
     func loadTeamData(team: Team){
-      teamName.text = team.teamName
-      teamImage.kf.setImage(with: URL(string: team.teamLogo ?? teamImagePlaceholder))
+      teamName.text = team.team_name
+      teamImage.kf.setImage(with: URL(string: team.team_logo ?? teamImagePlaceholder))
     }
 
 }

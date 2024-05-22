@@ -125,6 +125,14 @@ class LeagueDetailsController: UIViewController , UICollectionViewDataSource , U
       }
     }
     
+    func configureCellAppearance(_ cell: UICollectionViewCell) {
+        //cell.contentView.backgroundColor = .white
+        cell.contentView.layer.borderWidth = 0.5
+        cell.contentView.layer.borderColor = UIColor.systemGray2.cgColor
+        cell.contentView.layer.cornerRadius = 16
+    }
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if viewModel.upcomingEvent?.count ?? 0 == 0{
           switch section{
@@ -149,6 +157,11 @@ class LeagueDetailsController: UIViewController , UICollectionViewDataSource , U
         let latestEventCell = collectionView.dequeueReusableCell(withReuseIdentifier: "LatestEventCell", for: indexPath) as! LatestEventCell
         let teamCell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeamCell", for: indexPath) as! TeamCell
         let upComingEventCell = collectionView.dequeueReusableCell(withReuseIdentifier: "UpComingEventCell", for: indexPath) as! UpComingEventCell
+        
+        
+        configureCellAppearance(latestEventCell)
+        configureCellAppearance(upComingEventCell)
+        configureCellAppearance(teamCell)
 
         if viewModel.upcomingEvent?.count ?? 0 == 0{
           switch indexPath.section {
@@ -172,6 +185,8 @@ class LeagueDetailsController: UIViewController , UICollectionViewDataSource , U
             return teamCell
           }
         }
+        
+        
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -182,6 +197,8 @@ class LeagueDetailsController: UIViewController , UICollectionViewDataSource , U
       }
       return numberOfSections
     }
+    
+    
 
     
 }
