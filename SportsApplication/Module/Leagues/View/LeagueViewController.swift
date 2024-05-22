@@ -60,7 +60,7 @@ class LeagueViewController: UIViewController , UITableViewDataSource , UITableVi
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! LeaguesTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! League
         cell.myLabel.text = viewModel.leaguesArray[indexPath.row].league_name
         let strImage: String = viewModel.leaguesArray[indexPath.row].country_logo ?? "No image"
         print(strImage)
