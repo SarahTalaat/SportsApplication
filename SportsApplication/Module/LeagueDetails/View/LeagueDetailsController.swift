@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LeagueDetailsController: UIViewController {
+class LeagueDetailsController: UIViewController , UICollectionViewDataSource , UICollectionViewDelegate {
     
     var sportName:String = "football"
     var leagueId:Int = 3
@@ -68,7 +68,7 @@ class LeagueDetailsController: UIViewController {
       return section
     }
     
-    func drawTheBottomHorizontalSection() -> NSCollectionLayoutSection{
+    func drawTeamSection() -> NSCollectionLayoutSection{
       let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
       let item = NSCollectionLayoutItem(layoutSize: itemSize)
       let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(132), heightDimension: .absolute(158))
@@ -106,7 +106,7 @@ class LeagueDetailsController: UIViewController {
                 case 0:
                   return self?.drawLatestEventSection()
                 default:
-                  return self?.drawTheBottomHorizontalSection()
+                  return self?.drawTeamSection()
                 }
               }else{
                 switch index{
@@ -115,7 +115,7 @@ class LeagueDetailsController: UIViewController {
                 case 1:
                   return self?.drawLatestEventSection()
                 default:
-                  return self?.drawTheBottomHorizontalSection()
+                  return self?.drawTeamSection()
                 }
               }
             }
@@ -123,6 +123,64 @@ class LeagueDetailsController: UIViewController {
           }
         }
       }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if viewModel.upcomingEvent?.count ?? 0 == 0{
+          switch section{
+          case 0:
+            return viewModel.latestEvent?.count ?? 0
+          default:
+            return viewModel.teams?.count ?? 0
+          }
+        } else {
+          switch section{
+          case 0:
+            return viewModel.upcomingEvent?.count ?? 0
+          case 1:
+            return viewModel.latestEvent?.count ?? 0
+          default:
+            return viewModel.teams?.count ?? 0
+          }
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let latestEventCell = collectionView.dequeueReusableCell(withReuseIdentifier: "LatestEventCell", for: indexPath) as! LatestEventCell
+        let teamCell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeamCell", for: indexPath) as! TeamCell
+        let upComingEventCell = collectionView.dequeueReusableCell(withReuseIdentifier: "UpComingEventCell", for: indexPath) as! UpComingEventCell
+
+        if viewModel.upcomingEvent?.count ?? 0 == 0{
+          switch indexPath.section {
+          case 0:
+            latestEventCell.loadEventData(event: (viewModel.latestEvent?[indexPath.row])!)
+            return latestEventCell
+          default:
+            teamCell.loadTeamData(team: (viewModel.teams?[indexPath.row])!)
+            return teamCell
+          }
+        } else {
+          switch indexPath.section {
+          case 0:
+            upComingEventCell.loadEventData(event: (viewModel.upcomingEvent?[indexPath.row])!)
+            return upComingEventCell
+          case 1:
+            latestEventCell.loadEventData(event: (viewModel.latestEvent?[indexPath.row])!)
+            return latestEventCell
+          default:
+            teamCell.loadTeamData(team: (viewModel.teams?[indexPath.row])!)
+            return teamCell
+          }
+        }
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+      var numberOfSections = 3
+
+      if viewModel.upcomingEvent?.count ?? 0 == 0{
+        numberOfSections = 2
+      }
+      return numberOfSections
     }
 
     
