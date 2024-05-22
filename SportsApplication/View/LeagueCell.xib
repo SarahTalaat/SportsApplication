@@ -38,6 +38,11 @@
                 </subviews>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="myButton" destination="7UM-qf-Jl2" id="bCK-VT-Sjz"/>
+                <outlet property="myImage" destination="yPg-7i-Pkd" id="cA1-td-Pel"/>
+                <outlet property="myLabel" destination="VL1-hw-Ezp" id="qj3-QX-owC"/>
+            </connections>
             <point key="canvasLocation" x="124.6376811594203" y="84.375"/>
         </tableViewCell>
     </objects>
