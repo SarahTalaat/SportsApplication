@@ -6,3 +6,8 @@
 //
 
 import Foundation
+import Alamofire
+
+protocol NetworkProtocol {
+    func fetchDataFromAPI<T: Decodable>(url: String, param: Parameters, completionHandler: @escaping (MyResponse<T>?) -> Void)
+}

@@ -14,6 +14,9 @@
 		8B062B282BFB675D005762B0 /* NetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B062B272BFB675D005762B0 /* NetworkProtocol.swift */; };
 		8B062B2A2BFB679A005762B0 /* DBManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B062B292BFB679A005762B0 /* DBManger.swift */; };
 		8B4B80072BFCDC19002F0142 /* SportsApplication.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8B4B80052BFCDC19002F0142 /* SportsApplication.xcdatamodeld */; };
+		8B829C662BFE2B280094BAB1 /* MyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B829C652BFE2B280094BAB1 /* MyResponse.swift */; };
+		8B829C6A2BFE4C880094BAB1 /* LeagueDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B829C692BFE4C880094BAB1 /* LeagueDetailsViewModel.swift */; };
+		8B829C6D2BFE4DA40094BAB1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B829C6C2BFE4DA40094BAB1 /* Constants.swift */; };
 		8BBCEDF92BFDB34600164E8B /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBCEDF82BFDB34600164E8B /* Event.swift */; };
 		8BBCEE012BFDB48F00164E8B /* UpComingEventCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8BBCEE002BFDB48F00164E8B /* UpComingEventCell.xib */; };
 		8BBCEE022BFDB48F00164E8B /* UpComingEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBCEDFF2BFDB48F00164E8B /* UpComingEventCell.swift */; };
@@ -70,6 +73,9 @@
 		8B062B272BFB675D005762B0 /* NetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocol.swift; sourceTree = "<group>"; };
 		8B062B292BFB679A005762B0 /* DBManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManger.swift; sourceTree = "<group>"; };
 		8B4B80062BFCDC19002F0142 /* SportsApplication.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SportsApplication.xcdatamodel; sourceTree = "<group>"; };
+		8B829C652BFE2B280094BAB1 /* MyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyResponse.swift; sourceTree = "<group>"; };
+		8B829C692BFE4C880094BAB1 /* LeagueDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueDetailsViewModel.swift; sourceTree = "<group>"; };
+		8B829C6C2BFE4DA40094BAB1 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8BBCEDF82BFDB34600164E8B /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		8BBCEDFF2BFDB48F00164E8B /* UpComingEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpComingEventCell.swift; sourceTree = "<group>"; };
 		8BBCEE002BFDB48F00164E8B /* UpComingEventCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpComingEventCell.xib; sourceTree = "<group>"; };
@@ -185,6 +191,7 @@
 				8BEA6A032BFBF9CB0028BB33 /* Sport.swift */,
 				8BBCEDF82BFDB34600164E8B /* Event.swift */,
 				8BBCEE0B2BFE17D400164E8B /* Team.swift */,
+				8B829C652BFE2B280094BAB1 /* MyResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -247,8 +254,17 @@
 		8B829C642BFE21460094BAB1 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				8B829C692BFE4C880094BAB1 /* LeagueDetailsViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8B829C6B2BFE4D890094BAB1 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				8B829C6C2BFE4DA40094BAB1 /* Constants.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		8BBCEDFA2BFDB41600164E8B /* View */ = {
@@ -301,6 +317,7 @@
 		B6DBD8FC2BE05732007116CC /* SportsApplication */ = {
 			isa = PBXGroup;
 			children = (
+				8B829C6B2BFE4D890094BAB1 /* Utilities */,
 				8B062B2E2BFB67E8005762B0 /* Module */,
 				8B062B2D2BFB67D8005762B0 /* Model */,
 				8B062B212BFB65AE005762B0 /* Service */,
@@ -552,6 +569,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B829C6D2BFE4DA40094BAB1 /* Constants.swift in Sources */,
 				8BEA69FE2BFBDCEE0028BB33 /* test4.swift in Sources */,
 				8B062B262BFB6747005762B0 /* Network.swift in Sources */,
 				8BBCEE062BFDD6E000164E8B /* LatestEventCell.swift in Sources */,
@@ -570,7 +588,9 @@
 				8BBCEE0E2BFE1DB300164E8B /* LeagueDetailsController.swift in Sources */,
 				8B062B2A2BFB679A005762B0 /* DBManger.swift in Sources */,
 				8BEA6A002BFBDD180028BB33 /* test5.swift in Sources */,
+				8B829C662BFE2B280094BAB1 /* MyResponse.swift in Sources */,
 				8BEA69F82BFBDCAA0028BB33 /* test.swift in Sources */,
+				8B829C6A2BFE4C880094BAB1 /* LeagueDetailsViewModel.swift in Sources */,
 				8B062B1F2BFB65A1005762B0 /* LeagueCell.swift in Sources */,
 				B6DBD9002BE05732007116CC /* SceneDelegate.swift in Sources */,
 				8BEA69FC2BFBDCD90028BB33 /* test3.swift in Sources */,
