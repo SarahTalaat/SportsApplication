@@ -8,24 +8,30 @@
 import UIKit
 
 class LeagueDetailsController: UIViewController {
+    
+    var sportName:String = "football"
+    var leagueId:Int = 3
+    var viewModel: LeagueDetailsViewModel!
 
     @IBOutlet weak var detailsCollectionView: UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let upcomingEventCell = UINib(nibName: "UpComingEventCell", bundle: nil)
         detailsCollectionView.register(upcomingEventCell, forCellWithReuseIdentifier: "UpComingEventCell")
           
-          let latestEventCell = UINib(nibName: "LatestEventCell", bundle: nil)
+        let latestEventCell = UINib(nibName: "LatestEventCell", bundle: nil)
         detailsCollectionView.register(latestEventCell, forCellWithReuseIdentifier: "LatestEventCell")
 
         let teamCell = UINib(nibName: "TeamCell", bundle: nil)
         detailsCollectionView.register(teamCell, forCellWithReuseIdentifier: "TeamCell")
-    }
-    
+        
+        viewModel = LeagueDetailsViewModel()
+        fetchLeagueData()
 
-   
-    
+        
+    }
     
     func drawUpComingEventSection() -> NSCollectionLayoutSection{
       let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1))
@@ -66,5 +72,15 @@ class LeagueDetailsController: UIViewController {
       return section
     }
 
+    
+    func fetchLeagueData(){
+      viewModel.getUpcomingEvent(sportName: sportName, leagueId: "\(leagueId)", startDate: Constants.currentDate, endDate: Constants.nextYear)
 
+      viewModel.getLatestEvent(sportName: sportName, leagueId: "\(leagueId)", startDate: Constants.previousYear, endDate: Constants.currentDate)
+
+      viewModel.getTeams(sportName: sportName, leagueId: "\(leagueId)")
+    }
+
+    
 }
+
