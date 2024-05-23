@@ -113,6 +113,10 @@ class LeagueViewController: UIViewController , UITableViewDataSource , UITableVi
         } else {
             print("Can't load image from the internet")
             cell.myImage.image = UIImage(named: "cup.jpg")
+            cell.myImage?.contentMode = .scaleAspectFill
+            cell.myImage.frame = CGRect(x: cell.myImage.frame.origin.x, y: cell.myImage.frame.origin.y, width: 80, height: 80)
+            cell.myImage?.layer.cornerRadius = cell.myImage!.frame.height / 2
+            cell.myImage?.clipsToBounds = true
         }
 
 
