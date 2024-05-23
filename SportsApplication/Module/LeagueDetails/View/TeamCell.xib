@@ -23,7 +23,7 @@
                             <constraint firstAttribute="height" constant="100" id="Z8Q-xd-0W7"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vnW-Rt-crP">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vnW-Rt-crP">
                         <rect key="frame" x="8" y="116" width="112" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
@@ -33,7 +33,6 @@
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="vnW-Rt-crP" firstAttribute="top" secondItem="hMO-Jq-Nu8" secondAttribute="bottom" constant="8" id="Ace-hX-Zyq"/>
                 <constraint firstAttribute="bottom" secondItem="vnW-Rt-crP" secondAttribute="bottom" constant="8" id="Fiu-oi-bfV"/>
                 <constraint firstItem="hMO-Jq-Nu8" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="G9Y-3I-7wY"/>
                 <constraint firstItem="vnW-Rt-crP" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="gQz-m2-GrQ"/>
