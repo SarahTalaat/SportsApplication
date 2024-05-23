@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="l5H-yC-i5q">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OqB-kL-2G7">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -112,7 +112,7 @@
                             <constraint firstItem="DaN-uS-Agf" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="b5x-CB-iIu"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Sports" selectedImage="soccerball" catalog="system" id="Q66-KM-Xnl"/>
+                    <tabBarItem key="tabBarItem" title="Sports" image="soccerball" catalog="system" id="Q66-KM-Xnl"/>
                     <connections>
                         <outlet property="HomeCollectionView" destination="MWV-7s-UIe" id="xYv-eo-hK7"/>
                         <outlet property="collectionViewStyleIcon" destination="bDg-B3-gsT" id="WDM-rK-TJo"/>
@@ -120,7 +120,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1811.594202898551" y="-502.23214285714283"/>
+            <point key="canvasLocation" x="1836" y="-475"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="pW1-Ug-XLo">
@@ -146,7 +146,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Lr-FU-E8e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2722" y="-502"/>
+            <point key="canvasLocation" x="4542.0289855072469" y="-502.23214285714283"/>
         </scene>
         <!--SecondStoryboard-->
         <scene sceneID="hYY-D2-gda">
@@ -156,12 +156,12 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gti-P0-zJt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3459" y="-509"/>
+            <point key="canvasLocation" x="5278.2608695652179" y="-509.59821428571428"/>
         </scene>
         <!--Favourite-->
         <scene sceneID="ZHO-bW-BtM">
             <objects>
-                <viewController id="an7-I8-nTz" sceneMemberID="viewController">
+                <viewController id="an7-I8-nTz" customClass="FavouriteViewController" customModule="SportsApplication" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kia-QV-TSv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -180,11 +180,14 @@
                             <constraint firstItem="PBu-Tv-Qm2" firstAttribute="trailing" secondItem="lZ7-WN-wQC" secondAttribute="trailing" id="rNj-O4-UwT"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Favourite" selectedImage="heart" catalog="system" id="t14-VM-G9I"/>
+                    <tabBarItem key="tabBarItem" title="Favourite" image="star" catalog="system" id="t14-VM-G9I"/>
+                    <connections>
+                        <outlet property="favouriteTableView" destination="lZ7-WN-wQC" id="tgk-ug-ik0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2AA-ah-HPg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1838" y="352"/>
+            <point key="canvasLocation" x="1803" y="273"/>
         </scene>
         <!--League Details Controller-->
         <scene sceneID="tQo-b8-9MM">
@@ -288,7 +291,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qhM-X7-ZPO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2684.057971014493" y="372.32142857142856"/>
+            <point key="canvasLocation" x="2613" y="273"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="l57-mx-0bX">
@@ -320,8 +323,8 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="Nnd-Yu-Ikh"/>
-                        <segue destination="an7-I8-nTz" kind="relationship" relationship="viewControllers" id="BMH-6k-c2b"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="wcc-wR-ra1"/>
+                        <segue destination="an7-I8-nTz" kind="relationship" relationship="viewControllers" id="ldw-0F-bT7"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nvr-Bg-ExL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -331,7 +334,6 @@
     </scenes>
     <resources>
         <image name="arrowshape.turn.up.left.2" catalog="system" width="128" height="86"/>
-        <image name="heart" catalog="system" width="128" height="107"/>
         <image name="soccerball" catalog="system" width="128" height="123"/>
         <image name="square.grid.2x2" catalog="system" width="128" height="114"/>
         <image name="star" catalog="system" width="128" height="116"/>

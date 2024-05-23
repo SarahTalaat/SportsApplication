@@ -19,7 +19,7 @@ class LeaguesViewModel: LeaguesViewModelProtocol {
     }
     
     func fetchLeagues(completionHandler: @escaping () -> Void) {
-        networkService.fetchLeagues { [weak self] (data) in
+        Network().fetchLeagues { [weak self] (data) in
             
             guard let data = data else {
                 completionHandler()
@@ -31,6 +31,7 @@ class LeaguesViewModel: LeaguesViewModelProtocol {
             completionHandler()
         }
     }
+    
     
     
     

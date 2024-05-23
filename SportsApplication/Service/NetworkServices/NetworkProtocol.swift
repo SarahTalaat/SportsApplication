@@ -6,13 +6,6 @@
 //
 
 import Foundation
-
-
-protocol NetworkProtocol {
-    
-    func fetchLeagues(completionHandler: @escaping  (LeagueResult?) -> Void)
-    
-
 import Alamofire
 
 protocol NetworkProtocol {
