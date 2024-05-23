@@ -73,7 +73,7 @@ class LeagueViewController: UIViewController , UITableViewDataSource , UITableVi
                     if let image = image {
                         cell.myImage?.contentMode = .scaleAspectFill
                         cell.myImage?.image = image
-                        cell.myImage?.layer.cornerRadius = cell.myImage!.frame.width / 2
+                        cell.myImage?.layer.cornerRadius = cell.myImage!.frame.height / 2
                         cell.myImage?.clipsToBounds = true
                     } else {
                         print("Can't make the image circular")

@@ -27,6 +27,7 @@ class LeaguesViewModel: LeaguesViewModelProtocol {
             }
             
             self?.leaguesArray = data.result ?? []
+            print("My array count is : \(self?.leaguesArray.count)")
             completionHandler()
         }
     }
