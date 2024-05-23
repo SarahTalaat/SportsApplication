@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="D0p-Uy-1IV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="l5H-yC-i5q">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -186,6 +186,110 @@
             </objects>
             <point key="canvasLocation" x="1838" y="352"/>
         </scene>
+        <!--League Details Controller-->
+        <scene sceneID="tQo-b8-9MM">
+            <objects>
+                <viewController storyboardIdentifier="LeagueDetailsController" id="l5H-yC-i5q" customClass="LeagueDetailsController" customModule="SportsApplication" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JoE-cP-Wwe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eFy-9u-EEm">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="League Details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6T3-l8-dfg">
+                                        <rect key="frame" x="123.5" y="60" width="167.5" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DRW-IL-QDm">
+                                        <rect key="frame" x="20" y="57.5" width="35" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="T8n-Q8-2uI"/>
+                                            <constraint firstAttribute="width" constant="35" id="qD1-J9-3gY"/>
+                                        </constraints>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="arrowshape.turn.up.left.2" catalog="system"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hna-HS-fgE">
+                                        <rect key="frame" x="342" y="58" width="52" height="34"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="6T3-l8-dfg" firstAttribute="centerX" secondItem="eFy-9u-EEm" secondAttribute="centerX" id="LoJ-yp-BVb"/>
+                                    <constraint firstAttribute="bottom" secondItem="6T3-l8-dfg" secondAttribute="bottom" constant="20" id="OzV-NE-dCP"/>
+                                    <constraint firstItem="DRW-IL-QDm" firstAttribute="leading" secondItem="eFy-9u-EEm" secondAttribute="leading" constant="20" id="QZh-PO-dvI"/>
+                                    <constraint firstAttribute="trailing" secondItem="Hna-HS-fgE" secondAttribute="trailing" constant="20" id="QfO-WD-kae"/>
+                                    <constraint firstItem="Hna-HS-fgE" firstAttribute="centerY" secondItem="6T3-l8-dfg" secondAttribute="centerY" id="cBj-m0-gIV"/>
+                                    <constraint firstAttribute="height" constant="110" id="mfs-3j-bys"/>
+                                    <constraint firstItem="DRW-IL-QDm" firstAttribute="centerY" secondItem="6T3-l8-dfg" secondAttribute="centerY" id="w0c-HM-hxm"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bhZ-AQ-iDN">
+                                <rect key="frame" x="0.0" y="110" width="414" height="752"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wLQ-Y7-NL5">
+                                    <size key="itemSize" width="414" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="50" height="70"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                                <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="leagueDetailsHeader" reuseIdentifier="HeaderReusableView" id="rcj-47-49m" customClass="HeaderReusableView" customModule="SportsApplication" customModuleProvider="target" colorLabel="IBBuiltInLabel-Gray">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A5q-kf-LGD">
+                                            <rect key="frame" x="16" y="12" width="382" height="34"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="34" id="Onb-ci-YgJ"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="A5q-kf-LGD" secondAttribute="trailing" constant="8" id="3kG-yK-dKD"/>
+                                        <constraint firstItem="A5q-kf-LGD" firstAttribute="leading" secondItem="rcj-47-49m" secondAttribute="leadingMargin" constant="8" id="E1Q-6W-Pgb"/>
+                                        <constraint firstItem="A5q-kf-LGD" firstAttribute="top" secondItem="rcj-47-49m" secondAttribute="topMargin" constant="4" id="w9Q-3k-ELa"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="sectionLabel" destination="A5q-kf-LGD" id="5ZZ-Jy-H0N"/>
+                                    </connections>
+                                </collectionReusableView>
+                                <connections>
+                                    <outlet property="dataSource" destination="l5H-yC-i5q" id="Dil-Ah-cfT"/>
+                                    <outlet property="delegate" destination="l5H-yC-i5q" id="CuH-hA-YPo"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="HbF-Uy-1HH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="HbF-Uy-1HH" firstAttribute="bottom" secondItem="bhZ-AQ-iDN" secondAttribute="bottom" id="DZC-YM-DgC"/>
+                            <constraint firstItem="eFy-9u-EEm" firstAttribute="top" secondItem="JoE-cP-Wwe" secondAttribute="top" id="Dqi-nR-4Eb"/>
+                            <constraint firstItem="bhZ-AQ-iDN" firstAttribute="leading" secondItem="HbF-Uy-1HH" secondAttribute="leading" id="F15-41-t3x"/>
+                            <constraint firstItem="eFy-9u-EEm" firstAttribute="leading" secondItem="HbF-Uy-1HH" secondAttribute="leading" id="bju-eh-OaP"/>
+                            <constraint firstItem="bhZ-AQ-iDN" firstAttribute="top" secondItem="eFy-9u-EEm" secondAttribute="bottom" id="qSF-s8-gh3"/>
+                            <constraint firstItem="HbF-Uy-1HH" firstAttribute="trailing" secondItem="eFy-9u-EEm" secondAttribute="trailing" id="r9S-pL-kcy"/>
+                            <constraint firstItem="HbF-Uy-1HH" firstAttribute="trailing" secondItem="bhZ-AQ-iDN" secondAttribute="trailing" id="sLc-R5-APr"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="detailsCollectionView" destination="bhZ-AQ-iDN" id="Wm6-4h-6Tx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qhM-X7-ZPO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2684.057971014493" y="372.32142857142856"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="l57-mx-0bX">
             <objects>
@@ -226,9 +330,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrowshape.turn.up.left.2" catalog="system" width="128" height="86"/>
         <image name="heart" catalog="system" width="128" height="107"/>
         <image name="soccerball" catalog="system" width="128" height="123"/>
         <image name="square.grid.2x2" catalog="system" width="128" height="114"/>
+        <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
