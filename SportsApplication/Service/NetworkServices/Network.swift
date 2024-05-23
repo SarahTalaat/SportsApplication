@@ -20,7 +20,7 @@ class Network: NetworkProtocol {
             return mainUrl + sport + restOfUrl
         } else {
             print("2")
-            return mainUrl + "football" + restOfUrl
+            return mainUrl + "basketball" + restOfUrl
         }
     }
     

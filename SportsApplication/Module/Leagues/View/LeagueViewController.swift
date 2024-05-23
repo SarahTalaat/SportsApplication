@@ -93,12 +93,12 @@ class LeagueViewController: UIViewController , UITableViewDataSource , UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = leagueTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! LeagueCell
         cell.myLabel.text = viewModel.leaguesArray[indexPath.row].league_name
-        let strImage: String = viewModel.leaguesArray[indexPath.row].country_logo ?? "No image"
+        let strImage: String = viewModel.leaguesArray[indexPath.row].league_logo ?? "No image"
         print(strImage)
 
         if let imageUrl = URL(string: strImage) {
 
-            cell.myImage?.kf.setImage(with: imageUrl, placeholder: UIImage(named: "loading.png") , completionHandler: {
+            cell.myImage?.kf.setImage(with: imageUrl, placeholder: UIImage(named: "cup.jpg") , completionHandler: {
                 (image, error, cacheType, url) in
                     if let image = image {
                         cell.myImage?.contentMode = .scaleAspectFill
@@ -112,6 +112,7 @@ class LeagueViewController: UIViewController , UITableViewDataSource , UITableVi
             })
         } else {
             print("Can't load image from the internet")
+            cell.myImage.image = UIImage(named: "cup.jpg")
         }
 
 
