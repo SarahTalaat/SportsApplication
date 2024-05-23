@@ -59,7 +59,37 @@ class LeagueViewController: UIViewController , UITableViewDataSource , UITableVi
         return viewModel.leaguesArray.count
     }
 
-    
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = leagueTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! LeagueCell
+//        cell.myLabel.text = viewModel.leaguesArray[indexPath.row].league_name
+//        let strImage: String = viewModel.leaguesArray[indexPath.row].country_logo ?? "No image"
+//        print(strImage)
+//
+//        if let imageUrl = URL(string: strImage) {
+//
+//            cell.myImage?.kf.setImage(with: imageUrl, placeholder: UIImage(named: "loading.png") , completionHandler: {
+//                (image, error, cacheType, url) in
+//                    if let image = image {
+//                        cell.myImage?.contentMode = .scaleAspectFill
+//                        cell.myImage?.image = image
+//                        cell.myImage?.layer.cornerRadius = cell.myImage!.frame.width / 2
+//                        cell.myImage?.clipsToBounds = true
+//                    } else {
+//                        print("Can't make the image circular")
+//                    }
+//            })
+//        } else {
+//            print("Can't load image from the internet")
+//        }
+//
+//        cell.myImage?.layer.cornerRadius = cell.myImage!.frame.width / 2
+//        cell.myImage?.clipsToBounds = true
+//
+//        return cell
+//
+//    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = leagueTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! LeagueCell
         cell.myLabel.text = viewModel.leaguesArray[indexPath.row].league_name
@@ -73,6 +103,7 @@ class LeagueViewController: UIViewController , UITableViewDataSource , UITableVi
                     if let image = image {
                         cell.myImage?.contentMode = .scaleAspectFill
                         cell.myImage?.image = image
+                        cell.myImage.frame = CGRect(x: cell.myImage.frame.origin.x, y: cell.myImage.frame.origin.y, width: 80, height: 80)
                         cell.myImage?.layer.cornerRadius = cell.myImage!.frame.height / 2
                         cell.myImage?.clipsToBounds = true
                     } else {
@@ -83,8 +114,9 @@ class LeagueViewController: UIViewController , UITableViewDataSource , UITableVi
             print("Can't load image from the internet")
         }
 
-        return cell
 
+
+        return cell
     }
 
     
