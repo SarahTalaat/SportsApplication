@@ -35,6 +35,7 @@
 		8BEA6A042BFBF9CB0028BB33 /* Sport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA6A032BFBF9CB0028BB33 /* Sport.swift */; };
 		8BEA6A082BFBFFDE0028BB33 /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA6A072BFBFFDE0028BB33 /* HomeCollectionViewCell.swift */; };
 		B69BAB3B2BFCCAC5005E3BEC /* SecondStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B69BAB3A2BFCCAC5005E3BEC /* SecondStoryboard.storyboard */; };
+		B6AF94C32BFF970D00E18AAF /* SportsApplication.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B6AF94C12BFF970D00E18AAF /* SportsApplication.xcdatamodeld */; };
 		B6D1DCF02BFEA89A00AFFA2F /* League.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D1DCEF2BFEA89A00AFFA2F /* League.swift */; };
 		B6D1DCF22BFEA8C000AFFA2F /* LeagueResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D1DCF12BFEA8C000AFFA2F /* LeagueResult.swift */; };
 		B6D1DCF62BFEA94000AFFA2F /* LeagueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6D1DCF52BFEA94000AFFA2F /* LeagueViewController.swift */; };
@@ -106,6 +107,7 @@
 		8BEA6A072BFBFFDE0028BB33 /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = HomeCollectionViewCell.swift; path = SportsApplication/Module/HomeCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
 		A450125F74FD7990185ABBA6 /* Pods-SportsApplication.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SportsApplication.debug.xcconfig"; path = "Target Support Files/Pods-SportsApplication/Pods-SportsApplication.debug.xcconfig"; sourceTree = "<group>"; };
 		B69BAB3A2BFCCAC5005E3BEC /* SecondStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SecondStoryboard.storyboard; sourceTree = "<group>"; };
+		B6AF94C22BFF970D00E18AAF /* SportsApplication.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SportsApplication.xcdatamodel; sourceTree = "<group>"; };
 		B6D1DCEF2BFEA89A00AFFA2F /* League.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = League.swift; path = SportsApplication/View/League.swift; sourceTree = SOURCE_ROOT; };
 		B6D1DCF12BFEA8C000AFFA2F /* LeagueResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LeagueResult.swift; path = SportsApplication/View/LeagueResult.swift; sourceTree = SOURCE_ROOT; };
 		B6D1DCF52BFEA94000AFFA2F /* LeagueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueViewController.swift; sourceTree = "<group>"; };
@@ -393,6 +395,7 @@
 				B6DBD9012BE05732007116CC /* ViewController.swift */,
 				B6DBD9062BE05734007116CC /* Assets.xcassets */,
 				B6DBD90B2BE05734007116CC /* Info.plist */,
+				B6AF94C12BFF970D00E18AAF /* SportsApplication.xcdatamodeld */,
 			);
 			path = SportsApplication;
 			sourceTree = "<group>";
@@ -672,6 +675,7 @@
 				8B829C662BFE2B280094BAB1 /* MyResponse.swift in Sources */,
 				8BEA69F82BFBDCAA0028BB33 /* test.swift in Sources */,
 				8B829C6A2BFE4C880094BAB1 /* LeagueDetailsViewModel.swift in Sources */,
+				B6AF94C32BFF970D00E18AAF /* SportsApplication.xcdatamodeld in Sources */,
 				8B062B1F2BFB65A1005762B0 /* LeagueCell.swift in Sources */,
 				B6DBD9002BE05732007116CC /* SceneDelegate.swift in Sources */,
 				B6D1DD142BFEDBA700AFFA2F /* TeamsDetailsViewController.swift in Sources */,
@@ -1015,6 +1019,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B6AF94C12BFF970D00E18AAF /* SportsApplication.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B6AF94C22BFF970D00E18AAF /* SportsApplication.xcdatamodel */,
+			);
+			currentVersion = B6AF94C22BFF970D00E18AAF /* SportsApplication.xcdatamodel */;
+			path = SportsApplication.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B6DBD8F22BE05732007116CC /* Project object */;
 }
