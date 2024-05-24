@@ -12,15 +12,15 @@ class FavouritesViewModel: FavouritesViewModelProtocol{
 
     var favouriteLeaguesArray: [LeagueLocal] = []
     var favouriteLeagueNSManagedObjectArray: [NSManagedObject] = []
-    var dbManager: DBManagerProtocol
-    
-    init(dbManager: DBManagerProtocol){
-        self.dbManager = dbManager
-    }
-    
+//    var dbManager: DBManagerProtocol
+//
+//    init(dbManager: DBManagerProtocol){
+//        self.dbManager = dbManager
+//    }
+//
     func retriveLeaguesFromCoreData() -> [LeagueLocal] {
         
-        favouriteLeagueNSManagedObjectArray = dbManager.retriveLeaguesFromCoreData()
+        favouriteLeagueNSManagedObjectArray = DBManager.favouriteLeagueDB.retriveLeaguesFromCoreData()
         
         favouriteLeaguesArray.removeAll()
         
@@ -31,7 +31,7 @@ class FavouritesViewModel: FavouritesViewModelProtocol{
     
     func deleteLeagueFromCoreData(favLeague: LeagueLocal) -> [LeagueLocal] {
         
-        favouriteLeagueNSManagedObjectArray = dbManager.deleteLeagueFromCoreData(favLeague: favLeague)
+        favouriteLeagueNSManagedObjectArray = DBManager.favouriteLeagueDB.deleteLeagueFromCoreData(favLeague: favLeague)
         
         favouriteLeaguesArray.removeAll()
         

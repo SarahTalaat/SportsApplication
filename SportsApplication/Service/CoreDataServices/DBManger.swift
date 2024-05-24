@@ -10,6 +10,7 @@ import CoreData
 import UIKit
 
 class DBManager: DBManagerProtocol{
+    
     static let favouriteLeagueDB = DBManager()
     
     var leagues: Array<LeagueLocal>? = []
@@ -80,7 +81,7 @@ class DBManager: DBManagerProtocol{
     func deleteLeagueFromCoreData(favLeague: LeagueLocal) -> [NSManagedObject] {
 
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FavouriteEntity")
-        let predicate = NSPredicate(format: "key == %@", favLeague.key)
+        let predicate = NSPredicate(format: "key == %d", favLeague.key)
         fetchRequest.predicate = predicate
         
         do {
