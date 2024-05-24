@@ -8,15 +8,22 @@
 import UIKit
 import CoreData
 import Kingfisher
+import Reachability
 
 class FavouriteViewController: UIViewController , UITableViewDelegate , UITableViewDataSource{
 
 
     @IBOutlet weak var favouriteTableView: UITableView!
     
-    var viewModel: FavouritesViewModelProtocol!
-
+    var viewModel: FavouritesViewModel!
+    var leagueDetailsArray: [LeagueLocal]?
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        favouriteTableView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +34,10 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
         let cell = UINib(nibName: "LeagueCell", bundle: nil)
         self.favouriteTableView.register(cell , forCellReuseIdentifier: "cell")
         
+        viewModel = FavouritesViewModel()
+        createButton()
+        
+        leagueDetailsArray = viewModel.retriveLeaguesFromCoreData()
         
         favouriteTableView.reloadData()
         
@@ -38,14 +49,14 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.favouriteLeaguesArray.count
+        return leagueDetailsArray?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = favouriteTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! LeagueCell
-        cell.myLabel.text = viewModel.favouriteLeaguesArray[indexPath.row].name
-        let strImage: String = viewModel.favouriteLeaguesArray[indexPath.row].logo
+        cell.myLabel.text = leagueDetailsArray?[indexPath.row].name
+        let strImage: String = leagueDetailsArray?[indexPath.row].logo ?? "No logo"
         print(strImage)
 
         if let imageUrl = URL(string: strImage) {
@@ -78,9 +89,10 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
            
-            let leagueArray = viewModel.favouriteLeaguesArray
-            let league = leagueArray[indexPath.row]
-            _ = viewModel.deleteLeagueFromCoreData(favLeague: league)
+            let leagueArray = leagueDetailsArray
+            let league = leagueArray?[indexPath.row]
+            leagueDetailsArray?.removeAll()
+            leagueDetailsArray = viewModel.deleteLeagueFromCoreData(favLeague: league ?? LeagueLocal(sport: "FootballNil", name: "NameNil", logo: "LogoNil", key: 00000))
             favouriteTableView.reloadData()
             
 
@@ -97,5 +109,30 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func createButton(){
+        // Create a UIButton
+        let button = UIButton(type: .system)
+        
+        // Set the button title and style
+        button.setTitle("Tap Me!", for: .normal)
+        
+        // Set the frame (position and size) of the button
+        button.frame = CGRect(x: 100, y: 100, width: 200, height: 50)
+        
+        // Add action for button tap
+        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        
+        // Add the button to the view
+        view.addSubview(button)
+    }
+    
+    // Action method for button tap
+    @objc func buttonTapped() {
+        var leagueLocal1 = LeagueLocal(sport: "football", name: "UEFA Europa League", logo: "ss" , key: 4)
+        DBManager.favouriteLeagueDB.insert(favleague: leagueLocal1)
+        
+    }
+    
 
 }
