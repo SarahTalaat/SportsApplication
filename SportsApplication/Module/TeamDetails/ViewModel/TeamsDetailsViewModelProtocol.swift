@@ -9,7 +9,8 @@ import Foundation
 
 protocol TeamsDetailsViewModelProtocol {
 
-    var teamDetailsArray: [League] {get}
-  
+    var teamDetailsArray: [TeamDetails]? {get}
+    func getTeamDetails(sport: String, teamId: Int)
+    var resultToViewController: (() -> Void) { get set }
     
 }
