@@ -58,7 +58,6 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let reachability = try! Reachability()
         if reachability.connection != .unavailable {
             if  let leagues = storyboard.instantiateViewController(withIdentifier:  "LeagueViewController") as? LeagueViewController{
-                //Network().sport = sports[indexPath.row].name.lowercased()
                 leagues.sportName = sports[indexPath.row].name.lowercased()
                 print(sports[indexPath.row].name.lowercased())
                 navigationController?.pushViewController(leagues, animated: true)
