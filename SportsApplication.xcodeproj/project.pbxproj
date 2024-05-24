@@ -226,10 +226,10 @@
 				8BEA69F72BFBDCAA0028BB33 /* test.swift */,
 				8BEA6A032BFBF9CB0028BB33 /* Sport.swift */,
 				B6D1DCEF2BFEA89A00AFFA2F /* League.swift */,
+				8B829C652BFE2B280094BAB1 /* MyResponse.swift */,
 				B6D1DCF12BFEA8C000AFFA2F /* LeagueResult.swift */,
 				8BBCEDF82BFDB34600164E8B /* Event.swift */,
 				8BBCEE0B2BFE17D400164E8B /* Team.swift */,
-				8B829C652BFE2B280094BAB1 /* MyResponse.swift */,
 				8B7F99A62BFFAF5D00B264FE /* LeagueLocal.swift */,
 			);
 			path = Model;
@@ -272,7 +272,6 @@
 				B6AF94C72C000B5900E18AAF /* ViewModel */,
 				B6AF94C62C000B5200E18AAF /* View */,
 				8BEA69FB2BFBDCD90028BB33 /* test3.swift */,
-				8B7F99A82BFFBA7F00B264FE /* FavouriteViewController.swift */,
 			);
 			path = Favourites;
 			sourceTree = "<group>";
@@ -342,6 +341,7 @@
 		B6AF94C62C000B5200E18AAF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8B7F99A82BFFBA7F00B264FE /* FavouriteViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";

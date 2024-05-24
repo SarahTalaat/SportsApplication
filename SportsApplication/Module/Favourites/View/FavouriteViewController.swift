@@ -29,6 +29,7 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
         
         
         favouriteTableView.reloadData()
+        
         // Do any additional setup after loading the view.
     }
     
