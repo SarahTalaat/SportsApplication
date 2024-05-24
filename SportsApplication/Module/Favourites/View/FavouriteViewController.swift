@@ -16,12 +16,17 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
     @IBOutlet weak var favouriteTableView: UITableView!
     
     var viewModel: FavouritesViewModel!
-    var leagueDetailsArray: [LeagueLocal]?
+    var leagueDetailsArray: [LeagueLocal]? {
+        didSet {
+            favouriteTableView.reloadData()
+        }
+    }
     
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        leagueDetailsArray = viewModel.retriveLeaguesFromCoreData()
         favouriteTableView.reloadData()
     }
     
@@ -37,7 +42,7 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
         viewModel = FavouritesViewModel()
         createButton()
         
-        leagueDetailsArray = viewModel.retriveLeaguesFromCoreData()
+
         
         favouriteTableView.reloadData()
         
@@ -64,26 +69,32 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
             cell.myImage?.kf.setImage(with: imageUrl, placeholder: UIImage(named: "cup.jpg") , completionHandler: {
                 (image, error, cacheType, url) in
                     if let image = image {
-                        cell.myImage?.contentMode = .scaleAspectFill
                         cell.myImage?.image = image
-                        cell.myImage.frame = CGRect(x: cell.myImage.frame.origin.x, y: cell.myImage.frame.origin.y, width: 80, height: 80)
-                        cell.myImage?.layer.cornerRadius = cell.myImage!.frame.height / 2
-                        cell.myImage?.clipsToBounds = true
+                        self.circularImage(cell: cell)
                     } else {
-                        print("Can't make the image circular")
+                        self.circularImage(cell: cell)
+                        print("Can't get the image from the url")
+                   
                     }
             })
         } else {
             print("Can't load image from the internet")
             cell.myImage.image = UIImage(named: "cup.jpg")
-            cell.myImage?.contentMode = .scaleAspectFill
-            cell.myImage.frame = CGRect(x: cell.myImage.frame.origin.x, y: cell.myImage.frame.origin.y, width: 80, height: 80)
-            cell.myImage?.layer.cornerRadius = cell.myImage!.frame.height / 2
-            cell.myImage?.clipsToBounds = true
+            self.circularImage(cell: cell)
+            
+
         }
 
+        
         return cell
 
+    }
+    
+    func circularImage(cell: LeagueCell){
+        cell.myImage?.contentMode = .scaleAspectFill
+        cell.myImage.frame = CGRect(x: cell.myImage.frame.origin.x, y: cell.myImage.frame.origin.y, width: 80, height: 80)
+        cell.myImage?.layer.cornerRadius = cell.myImage!.frame.height / 2
+        cell.myImage?.clipsToBounds = true
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -131,6 +142,9 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
     @objc func buttonTapped() {
         var leagueLocal1 = LeagueLocal(sport: "football", name: "UEFA Europa League", logo: "ss" , key: 4)
         DBManager.favouriteLeagueDB.insert(favleague: leagueLocal1)
+        leagueDetailsArray?.removeAll()
+        leagueDetailsArray = viewModel.retriveLeaguesFromCoreData()
+        favouriteTableView.reloadData()
         
     }
     
