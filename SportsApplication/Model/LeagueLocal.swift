@@ -9,8 +9,8 @@ import Foundation
 
 
 struct LeagueLocal{
-    let sport: String
-    let name: String
-    let logo: String
-    let key: Int
+    var sport: String
+    var name: String
+    var logo: String
+    var key: Int
 }

@@ -6,16 +6,20 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 class LeagueDetailsController: UIViewController , UICollectionViewDataSource , UICollectionViewDelegate  {
     
     var sportName:String = " "
-    var leagueId:Int = 3
+    var leagueId:Int = 0
+    var leagueName:String = ""
+    var leagueLogo:String = ""
     var dataCounter = 0
     var viewModel: LeagueDetailsViewModel!
     var indicator: UIActivityIndicatorView!
 
     @IBOutlet weak var detailsCollectionView: UICollectionView!
+    @IBOutlet weak var favBtnApperance: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +36,8 @@ class LeagueDetailsController: UIViewController , UICollectionViewDataSource , U
         viewModel = LeagueDetailsViewModel()
         fetchLeagueData()
         setupLeagueData()
+        checkFav()
+        bindDataBase()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -199,7 +205,67 @@ class LeagueDetailsController: UIViewController , UICollectionViewDataSource , U
     }
     
     
+    
+    func checkFav(){
+      viewModel.isFavourite(leagueId: leagueId)
+      changeFavouriteIcon()
+    }
+    
+    func bindDataBase(){
+      viewModel.resultDBToViewController = { [weak self] in
+          self?.changeFavouriteIcon()
+      }
+    }
+    
+    func changeFavouriteIcon(){
+        if (self.viewModel.isFavourite) {
+            favBtnApperance.isSelected = true
+            favBtnApperance.setImage(UIImage(systemName: "star.fill"), for: .selected)
 
+        }else if (self.viewModel.isFavourite == false){
+            favBtnApperance.isSelected = false
+            favBtnApperance.setImage(UIImage(systemName: "star"), for: .normal)
+        }
+    }
+    @IBAction func favouriteBtn(_ sender: UIButton) {
+        let favLeague = LeagueLocal(sport: self.sportName, name: leagueName, logo: leagueLogo, key: leagueId)
+        viewModel.isFavourite(leagueId: leagueId)
+
+        if self.viewModel.isFavourite{
+            deleteFav()
+          
+        } else {
+            viewModel.insertFavouriteLeague(league: favLeague)
+            showProgress(message: "Added To Favourite")
+        }
+    }
+    
+    func deleteFav(){
+        let alert : UIAlertController = UIAlertController(title: "Confirm to delete", message: "Are you sure you want to delete this movie?", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { action in
+            self.viewModel.isFavourite = false
+            self.showProgress(message: "Deleted")
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel , handler: { action in
+            self.viewModel.isFavourite = true
+        }))
+        self.present(alert, animated: true)
+        
+    }
+    
+    func showProgress(message : String){
+        let hud = JGProgressHUD()
+        hud.indicatorView = JGProgressHUDSuccessIndicatorView()
+        hud.textLabel.text = message
+        hud.square = true
+        hud.style = .dark
+        hud.show(in: view)
+        hud.dismiss(afterDelay: 1, animated: true){
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
     
 //    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
 //

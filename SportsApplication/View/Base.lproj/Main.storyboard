@@ -11,7 +11,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Nunito-VariableFont_wght.ttf">
+        <array key="Nunito-SemiBold.ttf">
             <string>Nunito-SemiBold</string>
         </array>
     </customFonts>
@@ -225,6 +225,9 @@
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" image="star" catalog="system"/>
+                                        <connections>
+                                            <action selector="favouriteBtn:" destination="l5H-yC-i5q" eventType="touchUpInside" id="5Rc-0C-Hns"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -291,6 +294,7 @@
                     </view>
                     <connections>
                         <outlet property="detailsCollectionView" destination="bhZ-AQ-iDN" id="Wm6-4h-6Tx"/>
+                        <outlet property="favBtnApperance" destination="Hna-HS-fgE" id="vFg-yy-wTZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qhM-X7-ZPO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
