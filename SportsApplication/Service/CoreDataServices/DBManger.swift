@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 import UIKit
 
-class DBManager{
+class DBManager: DBManagerProtocol{
     static let favouriteLeagueDB = DBManager()
     
     var arrayOfLeagues: Array<LeagueLocal>? = []
