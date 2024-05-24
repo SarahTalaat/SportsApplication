@@ -50,7 +50,7 @@ class DBManager: DBManagerProtocol{
         }
     }
     
-    func deleteFromCoreData(favLeague: LeagueLocal) -> [NSManagedObject] {
+    func deleteLeagueFromCoreData(favLeague: LeagueLocal) -> [NSManagedObject] {
 
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FavouriteEntity")
         let predicate = NSPredicate(format: "key == %@", favLeague.key)

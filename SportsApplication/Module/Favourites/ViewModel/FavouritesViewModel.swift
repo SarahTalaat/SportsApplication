@@ -29,9 +29,9 @@ class FavouritesViewModel: FavouritesViewModelProtocol{
         return favouriteLeaguesArray
     }
     
-    func deleteFromCoreData(favLeague: LeagueLocal) -> [LeagueLocal] {
+    func deleteLeagueFromCoreData(favLeague: LeagueLocal) -> [LeagueLocal] {
         
-        favouriteLeagueNSManagedObjectArray = dbManager.deleteFromCoreData(favLeague: favLeague)
+        favouriteLeagueNSManagedObjectArray = dbManager.deleteLeagueFromCoreData(favLeague: favLeague)
         
         favouriteLeaguesArray.removeAll()
         

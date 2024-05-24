@@ -11,5 +11,5 @@ import CoreData
 protocol DBManagerProtocol{
     func insert(favleague: LeagueLocal)
     func retriveLeaguesFromCoreData() -> [NSManagedObject]
-    func deleteFromCoreData(favLeague: LeagueLocal) -> [NSManagedObject]
+    func deleteLeagueFromCoreData(favLeague: LeagueLocal) -> [NSManagedObject]
 }

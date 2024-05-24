@@ -11,6 +11,6 @@ import CoreData
 protocol FavouritesViewModelProtocol{
     var favouriteLeaguesArray: [LeagueLocal] {get}
     func retriveLeaguesFromCoreData() -> [LeagueLocal]
-    func deleteFromCoreData(favLeague: LeagueLocal) -> [LeagueLocal]
+    func deleteLeagueFromCoreData(favLeague: LeagueLocal) -> [LeagueLocal]
     func convertManagedObjectsToLeagueLocals(nsManagedObjectArray: [NSManagedObject]) -> [LeagueLocal] 
 }

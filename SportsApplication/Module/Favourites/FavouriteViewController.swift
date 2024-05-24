@@ -79,7 +79,7 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
            
             let leagueArray = viewModel.favouriteLeaguesArray
             let league = leagueArray[indexPath.row]
-            _ = viewModel.deleteFromCoreData(favLeague: league)
+            _ = viewModel.deleteLeagueFromCoreData(favLeague: league)
             favouriteTableView.reloadData()
             
 
