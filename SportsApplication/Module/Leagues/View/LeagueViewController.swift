@@ -14,9 +14,9 @@ import Kingfisher
 
 class LeagueViewController: UIViewController , UITableViewDataSource , UITableViewDelegate {
 
-
     @IBOutlet var leagueTableView: UITableView!
     var viewModel: LeaguesViewModelProtocol!
+    var sportName: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,14 +30,24 @@ class LeagueViewController: UIViewController , UITableViewDataSource , UITableVi
         self.leagueTableView.register(cell , forCellReuseIdentifier: "cell")
         
         fetchData()
+   
     }
     
     private func fetchData(){
-        viewModel.fetchLeagues { [weak self] in
+        viewModel.getLeagues(sport: sportName ?? "football")
+        viewModel.resultToViewController = {  [weak self] in
             DispatchQueue.main.async {
                 self?.leagueTableView.reloadData()
             }
         }
+
+        
+
+//        viewModel.fetchLeagues { [weak self] in
+//            DispatchQueue.main.async {
+//                self?.leagueTableView.reloadData()
+//            }
+//        }
     }
 
     /*
@@ -56,7 +66,7 @@ class LeagueViewController: UIViewController , UITableViewDataSource , UITableVi
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return viewModel.leaguesArray.count
+        return viewModel.leaguesArray?.count ?? 0
     }
 
 //
@@ -92,8 +102,8 @@ class LeagueViewController: UIViewController , UITableViewDataSource , UITableVi
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = leagueTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! LeagueCell
-        cell.myLabel.text = viewModel.leaguesArray[indexPath.row].league_name
-        let strImage: String = viewModel.leaguesArray[indexPath.row].league_logo ?? "No image"
+        cell.myLabel.text = viewModel.leaguesArray?[indexPath.row].league_name
+        let strImage: String = viewModel.leaguesArray?[indexPath.row].league_logo ?? "No image"
         print(strImage)
 
         if let imageUrl = URL(string: strImage) {

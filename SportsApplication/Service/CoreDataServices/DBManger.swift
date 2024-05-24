@@ -9,7 +9,7 @@ import Foundation
 import CoreData
 import UIKit
 
-class DBManager{
+class DBManager: DBManagerProtocol{
     static let favouriteLeagueDB = DBManager()
     
     var arrayOfLeagues: Array<LeagueLocal>? = []
@@ -37,6 +37,39 @@ class DBManager{
         }
     }
     
+    func retriveLeaguesFromCoreData() -> [NSManagedObject] {
+
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "FavouriteEntity")
+        
+        do {
+            let leagues = try manager.fetch(fetchRequest)
+            return leagues
+        } catch let error as NSError {
+            print("Error retrieving data: \(error.localizedDescription)")
+            return []
+        }
+    }
+    
+    func deleteLeagueFromCoreData(favLeague: LeagueLocal) -> [NSManagedObject] {
+
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FavouriteEntity")
+        let predicate = NSPredicate(format: "key == %@", favLeague.key)
+        fetchRequest.predicate = predicate
+        
+        do {
+            if let result = try manager.fetch(fetchRequest).first as? NSManagedObject {
+                manager.delete(result)
+                try manager.save()
+                return retriveLeaguesFromCoreData()
+            } else {
+                print("Leagues with key \(favLeague.key) not found")
+                return []
+            }
+        } catch let error as NSError {
+            print("Error deleting from Core Data: \(error.localizedDescription)")
+            return []
+        }
+    }
     
     
 }

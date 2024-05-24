@@ -9,7 +9,9 @@ import Foundation
 
 
 protocol LeaguesViewModelProtocol {
-    var leaguesArray: [League] {get}
-    func fetchLeagues(completionHandler: @escaping () -> Void)
+    var leaguesArray: [League]? {get}
+  //  func fetchLeagues(completionHandler: @escaping () -> Void)
+    func getLeagues(sport: String)
+    var resultToViewController: (() -> Void) { get set }
     
 }
