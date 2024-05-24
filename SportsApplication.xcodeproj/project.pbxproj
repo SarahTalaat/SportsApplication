@@ -101,6 +101,26 @@
 		8BBCEE082BFDE59E00164E8B /* TeamCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TeamCell.xib; sourceTree = "<group>"; };
 		8BBCEE0B2BFE17D400164E8B /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		8BBCEE0D2BFE1DB300164E8B /* LeagueDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueDetailsController.swift; sourceTree = "<group>"; };
+		8BDF8CB62C00846500D15C48 /* Nunito-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		8BDF8CB72C00846500D15C48 /* Nunito-Italic-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Italic-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		8BDF8CB82C00846500D15C48 /* OFL.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
+		8BDF8CB92C00846600D15C48 /* README.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		8BDF8CBB2C00846600D15C48 /* Nunito-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Black.ttf"; sourceTree = "<group>"; };
+		8BDF8CBC2C00846600D15C48 /* Nunito-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Italic.ttf"; sourceTree = "<group>"; };
+		8BDF8CBD2C00846600D15C48 /* Nunito-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		8BDF8CBE2C00846600D15C48 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
+		8BDF8CBF2C00846600D15C48 /* Nunito-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Medium.ttf"; sourceTree = "<group>"; };
+		8BDF8CC02C00846600D15C48 /* Nunito-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-BlackItalic.ttf"; sourceTree = "<group>"; };
+		8BDF8CC12C00846600D15C48 /* Nunito-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-BoldItalic.ttf"; sourceTree = "<group>"; };
+		8BDF8CC22C00846700D15C48 /* Nunito-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraLight.ttf"; sourceTree = "<group>"; };
+		8BDF8CC32C00846700D15C48 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
+		8BDF8CC42C00846700D15C48 /* Nunito-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBold.ttf"; sourceTree = "<group>"; };
+		8BDF8CC52C00846700D15C48 /* Nunito-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-LightItalic.ttf"; sourceTree = "<group>"; };
+		8BDF8CC62C00846700D15C48 /* Nunito-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		8BDF8CC72C00846700D15C48 /* Nunito-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-MediumItalic.ttf"; sourceTree = "<group>"; };
+		8BDF8CC82C00846700D15C48 /* Nunito-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		8BDF8CC92C00846700D15C48 /* Nunito-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-ExtraBold.ttf"; sourceTree = "<group>"; };
+		8BDF8CCA2C00846700D15C48 /* Nunito-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Light.ttf"; sourceTree = "<group>"; };
 		8BEA69F72BFBDCAA0028BB33 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = test.swift; path = SportsApplication/Module/test.swift; sourceTree = SOURCE_ROOT; };
 		8BEA69F92BFBDCC30028BB33 /* test1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test1.swift; sourceTree = "<group>"; };
 		8BEA69FB2BFBDCD90028BB33 /* test3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test3.swift; sourceTree = "<group>"; };
@@ -319,6 +339,57 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		8BDF8CB52C00846500D15C48 /* Nunito */ = {
+			isa = PBXGroup;
+			children = (
+				8BDF8CBA2C00846600D15C48 /* static */,
+				8BDF8CB72C00846500D15C48 /* Nunito-Italic-VariableFont_wght.ttf */,
+				8BDF8CB62C00846500D15C48 /* Nunito-VariableFont_wght.ttf */,
+				8BDF8CB82C00846500D15C48 /* OFL.txt */,
+				8BDF8CB92C00846600D15C48 /* README.txt */,
+			);
+			path = Nunito;
+			sourceTree = "<group>";
+		};
+		8BDF8CBA2C00846600D15C48 /* static */ = {
+			isa = PBXGroup;
+			children = (
+				8BDF8CBB2C00846600D15C48 /* Nunito-Black.ttf */,
+				8BDF8CC02C00846600D15C48 /* Nunito-BlackItalic.ttf */,
+				8BDF8CC32C00846700D15C48 /* Nunito-Bold.ttf */,
+				8BDF8CC12C00846600D15C48 /* Nunito-BoldItalic.ttf */,
+				8BDF8CC92C00846700D15C48 /* Nunito-ExtraBold.ttf */,
+				8BDF8CBD2C00846600D15C48 /* Nunito-ExtraBoldItalic.ttf */,
+				8BDF8CC22C00846700D15C48 /* Nunito-ExtraLight.ttf */,
+				8BDF8CC62C00846700D15C48 /* Nunito-ExtraLightItalic.ttf */,
+				8BDF8CBC2C00846600D15C48 /* Nunito-Italic.ttf */,
+				8BDF8CCA2C00846700D15C48 /* Nunito-Light.ttf */,
+				8BDF8CC52C00846700D15C48 /* Nunito-LightItalic.ttf */,
+				8BDF8CBF2C00846600D15C48 /* Nunito-Medium.ttf */,
+				8BDF8CC72C00846700D15C48 /* Nunito-MediumItalic.ttf */,
+				8BDF8CBE2C00846600D15C48 /* Nunito-Regular.ttf */,
+				8BDF8CC42C00846700D15C48 /* Nunito-SemiBold.ttf */,
+				8BDF8CC82C00846700D15C48 /* Nunito-SemiBoldItalic.ttf */,
+			);
+			path = static;
+			sourceTree = "<group>";
+		};
+		8BDF8D082C00877B00D15C48 /* static */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = static;
+			sourceTree = "<group>";
+		};
+		8BDF8D092C00877B00D15C48 /* Nunito */ = {
+			isa = PBXGroup;
+			children = (
+				8BDF8D082C00877B00D15C48 /* static */,
+			);
+			name = Nunito;
+			path = "../../../Documents/GitHub/ChatGPT App/ChatGPT App/Nunito";
+			sourceTree = "<group>";
+		};
 		A551CFB9CE9B2426C6060E91 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -399,7 +470,9 @@
 				B6DBD8FD2BE05732007116CC /* AppDelegate.swift */,
 				B6DBD8FF2BE05732007116CC /* SceneDelegate.swift */,
 				B6DBD9012BE05732007116CC /* ViewController.swift */,
+				8BDF8D092C00877B00D15C48 /* Nunito */,
 				B6DBD9062BE05734007116CC /* Assets.xcassets */,
+				8BDF8CB52C00846500D15C48 /* Nunito */,
 				B6DBD90B2BE05734007116CC /* Info.plist */,
 				B6AF94C12BFF970D00E18AAF /* SportsApplication.xcdatamodeld */,
 			);
