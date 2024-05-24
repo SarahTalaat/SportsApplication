@@ -110,19 +110,19 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
         }
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        <#code#>
-//    }
-    
-    /*
-    // MARK: - Navigation
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let reachability = try! Reachability()
+        if(reachability.connection == .unavailable){
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+            print("No internet connection")
+            showAlert(withTitle: "There is no internet connection")
+            
+        }else{
+            print("There is internet connection")
+            
+        }
     }
-    */
+
     
     func createButton(){
 
@@ -142,5 +142,16 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
         
     }
     
+    func showAlert(withTitle title: String) {
+        let alertController = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+
+    
 
 }
+

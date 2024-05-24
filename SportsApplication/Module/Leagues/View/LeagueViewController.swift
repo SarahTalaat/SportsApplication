@@ -42,25 +42,9 @@ class LeagueViewController: UIViewController , UITableViewDataSource , UITableVi
             }
         }
 
-        
-
-//        viewModel.fetchLeagues { [weak self] in
-//            DispatchQueue.main.async {
-//                self?.leagueTableView.reloadData()
-//            }
-//        }
     }
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -69,37 +53,6 @@ class LeagueViewController: UIViewController , UITableViewDataSource , UITableVi
         // #warning Incomplete implementation, return the number of rows
         return viewModel.leaguesArray?.count ?? 0
     }
-
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = leagueTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! LeagueCell
-//        cell.myLabel.text = viewModel.leaguesArray[indexPath.row].league_name
-//        let strImage: String = viewModel.leaguesArray[indexPath.row].country_logo ?? "No image"
-//        print(strImage)
-//
-//        if let imageUrl = URL(string: strImage) {
-//
-//            cell.myImage?.kf.setImage(with: imageUrl, placeholder: UIImage(named: "loading.png") , completionHandler: {
-//                (image, error, cacheType, url) in
-//                    if let image = image {
-//                        cell.myImage?.contentMode = .scaleAspectFill
-//                        cell.myImage?.image = image
-//                        cell.myImage?.layer.cornerRadius = cell.myImage!.frame.width / 2
-//                        cell.myImage?.clipsToBounds = true
-//                    } else {
-//                        print("Can't make the image circular")
-//                    }
-//            })
-//        } else {
-//            print("Can't load image from the internet")
-//        }
-//
-//        cell.myImage?.layer.cornerRadius = cell.myImage!.frame.width / 2
-//        cell.myImage?.clipsToBounds = true
-//
-//        return cell
-//
-//    }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = leagueTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! LeagueCell
