@@ -9,14 +9,14 @@ import Foundation
 
 import UIKit
 import Kingfisher
-//import Accelerate
+
 
 
 class LeagueViewController: UIViewController , UITableViewDataSource , UITableViewDelegate {
 
-
     @IBOutlet var leagueTableView: UITableView!
-    var viewModel: LeaguesViewModelProtocol!
+    var viewModel: LeaguesViewModel!
+    var sportName: String = " "
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,16 +28,27 @@ class LeagueViewController: UIViewController , UITableViewDataSource , UITableVi
         
         let cell = UINib(nibName: "LeagueCell", bundle: nil)
         self.leagueTableView.register(cell , forCellReuseIdentifier: "cell")
+        viewModel = LeaguesViewModel()
         
         fetchData()
+   
     }
     
     private func fetchData(){
-        viewModel.fetchLeagues { [weak self] in
+        viewModel.getLeagues(sport: sportName)
+        viewModel.resultToViewController = {  [weak self] in
             DispatchQueue.main.async {
                 self?.leagueTableView.reloadData()
             }
         }
+
+        
+
+//        viewModel.fetchLeagues { [weak self] in
+//            DispatchQueue.main.async {
+//                self?.leagueTableView.reloadData()
+//            }
+//        }
     }
 
     /*
@@ -56,7 +67,7 @@ class LeagueViewController: UIViewController , UITableViewDataSource , UITableVi
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return viewModel.leaguesArray.count
+        return viewModel.leaguesArray?.count ?? 0
     }
 
 //
@@ -92,8 +103,8 @@ class LeagueViewController: UIViewController , UITableViewDataSource , UITableVi
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = leagueTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! LeagueCell
-        cell.myLabel.text = viewModel.leaguesArray[indexPath.row].league_name
-        let strImage: String = viewModel.leaguesArray[indexPath.row].league_logo ?? "No image"
+        cell.myLabel.text = viewModel.leaguesArray?[indexPath.row].league_name
+        let strImage: String = viewModel.leaguesArray?[indexPath.row].league_logo ?? "No image"
         print(strImage)
 
         if let imageUrl = URL(string: strImage) {
@@ -125,6 +136,16 @@ class LeagueViewController: UIViewController , UITableViewDataSource , UITableVi
     }
 
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+      tableView.deselectRow(at: indexPath, animated: true)
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+      let leagueDetails = storyboard.instantiateViewController(identifier: "LeagueDetailsController") as! LeagueDetailsController
+      leagueDetails.sportName = self.sportName
+      leagueDetails.leagueId = (viewModel.leaguesArray?[indexPath.row].league_key)!
+    
+      self.present(leagueDetails, animated: true)
+
+    }
     
        
     

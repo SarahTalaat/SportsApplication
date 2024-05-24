@@ -9,6 +9,7 @@ target 'SportsApplication' do
     pod 'Alamofire'
     pod 'ReachabilitySwift'
     pod 'Kingfisher'
+    pod 'JGProgressHUD'
 
 
   target 'SportsApplicationUITests' do

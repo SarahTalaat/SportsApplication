@@ -9,29 +9,57 @@ import Foundation
 
 class LeagueDetailsViewModel{
 
-  var resultToViewController: (()->()) = {}
+      var resultToViewController: (()->()) = {}
+    var resultDBToViewController: (()->()) = {}
+      let database = DBManager.favouriteLeagueDB
+      var leagues: [LeagueLocal] = []
 
 
-  var upcomingEvent: [Event]? = []
-  {
-    didSet{
-      resultToViewController()
+      var upcomingEvent: [Event]? = []
+      {
+        didSet{
+          resultToViewController()
+        }
+      }
+
+      var latestEvent: [Event]? = []
+      {
+        didSet{
+          resultToViewController()
+        }
+      }
+
+        var teams: [Team]? = []
+      {
+        didSet{
+          resultToViewController()
+        }
+      }
+    
+    var isFavourite: Bool = false {
+      didSet{
+          resultDBToViewController()
+      }
     }
-  }
-
-  var latestEvent: [Event]? = []
-  {
-    didSet{
-      resultToViewController()
+    
+    
+    func insertFavouriteLeague(league: LeagueLocal){
+      database.insert(favleague: league)
+      isFavourite = true
     }
-  }
-
-  var teams: [Team]? = []
-  {
-    didSet{
-      resultToViewController()
+    
+    func isFavourite(leagueId: Int){
+      leagues =  database.getAllLeaguesQuery() ?? []
+      var isExist = false
+      for item in leagues{
+          if item.key == leagueId{
+          isExist = true
+          break
+        }
+      }
+        isFavourite = isExist
     }
-  }
+
 
    func getUpcomingEvent(sportName: String, leagueId: String, startDate: String, endDate: String){
        
