@@ -246,6 +246,7 @@ class LeagueDetailsController: UIViewController , UICollectionViewDataSource , U
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { action in
             self.viewModel.isFavourite = false
             self.showProgress(message: "Deleted")
+            self.viewModel.deleteFavLeague(key: self.leagueId)
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel , handler: { action in
             self.viewModel.isFavourite = true

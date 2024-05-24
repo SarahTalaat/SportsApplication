@@ -33,6 +33,7 @@ class DBManager: DBManagerProtocol{
         
         do {
             try manager.save()
+            print("inserted")
         } catch let error as NSError{
             print(error.localizedDescription)
         }
@@ -96,6 +97,16 @@ class DBManager: DBManagerProtocol{
         } catch let error as NSError {
             print("Error deleting from Core Data: \(error.localizedDescription)")
             return []
+        }
+    }
+    
+    func deleteFavouriteLegue(key: Int) {
+
+        manager.delete(nsManagedLeagues[key])
+        do{
+            try manager.save()
+        }catch let error{
+            print(error.localizedDescription)
         }
     }
     
