@@ -10,6 +10,6 @@ import Foundation
 protocol TeamsDetailsViewModelProtocol {
 
     var teamDetailsArray: [League] {get}
-    func fetchTeamDetails(completionHandler: @escaping () -> Void)
+  
     
 }
