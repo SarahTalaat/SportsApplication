@@ -110,6 +110,9 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
         }
     }
     
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        <#code#>
+//    }
     
     /*
     // MARK: - Navigation
@@ -122,25 +125,16 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
     */
     
     func createButton(){
-        // Create a UIButton
+
         let button = UIButton(type: .system)
-        
-        // Set the button title and style
         button.setTitle("Tap Me!", for: .normal)
-        
-        // Set the frame (position and size) of the button
         button.frame = CGRect(x: 100, y: 100, width: 200, height: 50)
-        
-        // Add action for button tap
         button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        
-        // Add the button to the view
         view.addSubview(button)
     }
     
-    // Action method for button tap
     @objc func buttonTapped() {
-        var leagueLocal1 = LeagueLocal(sport: "football", name: "UEFA Europa League", logo: "ss" , key: 4)
+        let leagueLocal1 = LeagueLocal(sport: "football", name: "UEFA Europa League", logo: "ss" , key: 4)
         DBManager.favouriteLeagueDB.insert(favleague: leagueLocal1)
         leagueDetailsArray?.removeAll()
         leagueDetailsArray = viewModel.retriveLeaguesFromCoreData()

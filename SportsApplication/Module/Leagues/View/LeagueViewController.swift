@@ -112,29 +112,30 @@ class LeagueViewController: UIViewController , UITableViewDataSource , UITableVi
             cell.myImage?.kf.setImage(with: imageUrl, placeholder: UIImage(named: "cup.jpg") , completionHandler: {
                 (image, error, cacheType, url) in
                     if let image = image {
-                        cell.myImage?.contentMode = .scaleAspectFill
                         cell.myImage?.image = image
-                        cell.myImage.frame = CGRect(x: cell.myImage.frame.origin.x, y: cell.myImage.frame.origin.y, width: 80, height: 80)
-                        cell.myImage?.layer.cornerRadius = cell.myImage!.frame.height / 2
-                        cell.myImage?.clipsToBounds = true
+                        self.circularImage(cell: cell)
                     } else {
-                        print("Can't make the image circular")
+                        self.circularImage(cell: cell)
+                        print("Can't get image")
                     }
             })
         } else {
             print("Can't load image from the internet")
             cell.myImage.image = UIImage(named: "cup.jpg")
-            cell.myImage?.contentMode = .scaleAspectFill
-            cell.myImage.frame = CGRect(x: cell.myImage.frame.origin.x, y: cell.myImage.frame.origin.y, width: 80, height: 80)
-            cell.myImage?.layer.cornerRadius = cell.myImage!.frame.height / 2
-            cell.myImage?.clipsToBounds = true
+            self.circularImage(cell: cell)
         }
 
 
 
         return cell
     }
-
+    
+    func circularImage(cell: LeagueCell){
+        cell.myImage?.contentMode = .scaleAspectFill
+        cell.myImage.frame = CGRect(x: cell.myImage.frame.origin.x, y: cell.myImage.frame.origin.y, width: 80, height: 80)
+        cell.myImage?.layer.cornerRadius = cell.myImage!.frame.height / 2
+        cell.myImage?.clipsToBounds = true
+    }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
       tableView.deselectRow(at: indexPath, animated: true)
