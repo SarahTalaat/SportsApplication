@@ -57,9 +57,10 @@ class HomeViewController: UIViewController, UICollectionViewDelegate, UICollecti
         let storyboard = UIStoryboard(name: "SecondStoryboard", bundle: nil)
         let reachability = try! Reachability()
         if reachability.connection != .unavailable {
-            if  let leagues = self.storyboard?.instantiateViewController(withIdentifier:  "LeagueDetailsController") as? LeagueDetailsController{
+            if  let leagues = storyboard.instantiateViewController(withIdentifier:  "LeagueViewController") as? LeagueViewController{
                 //Network().sport = sports[indexPath.row].name.lowercased()
-                //leagues.sport = sports[indexPath.row].name.lowercased()
+                leagues.sportName = sports[indexPath.row].name.lowercased()
+                print(sports[indexPath.row].name.lowercased())
                 navigationController?.pushViewController(leagues, animated: true)
             }
             

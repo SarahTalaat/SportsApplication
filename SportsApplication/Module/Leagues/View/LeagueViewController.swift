@@ -9,14 +9,14 @@ import Foundation
 
 import UIKit
 import Kingfisher
-//import Accelerate
+
 
 
 class LeagueViewController: UIViewController , UITableViewDataSource , UITableViewDelegate {
 
     @IBOutlet var leagueTableView: UITableView!
-    var viewModel: LeaguesViewModelProtocol!
-    var sportName: String?
+    var viewModel: LeaguesViewModel!
+    var sportName: String = " "
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,13 +28,14 @@ class LeagueViewController: UIViewController , UITableViewDataSource , UITableVi
         
         let cell = UINib(nibName: "LeagueCell", bundle: nil)
         self.leagueTableView.register(cell , forCellReuseIdentifier: "cell")
+        viewModel = LeaguesViewModel()
         
         fetchData()
    
     }
     
     private func fetchData(){
-        viewModel.getLeagues(sport: sportName ?? "football")
+        viewModel.getLeagues(sport: sportName)
         viewModel.resultToViewController = {  [weak self] in
             DispatchQueue.main.async {
                 self?.leagueTableView.reloadData()

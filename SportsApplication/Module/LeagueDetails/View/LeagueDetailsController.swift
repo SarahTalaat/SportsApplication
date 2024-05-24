@@ -9,7 +9,7 @@ import UIKit
 
 class LeagueDetailsController: UIViewController , UICollectionViewDataSource , UICollectionViewDelegate  {
     
-    var sportName:String = "football"
+    var sportName:String = " "
     var leagueId:Int = 3
     var dataCounter = 0
     var viewModel: LeagueDetailsViewModel!
