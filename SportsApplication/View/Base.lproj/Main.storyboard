@@ -4,11 +4,17 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Nunito-VariableFont_wght.ttf">
+            <string>Nunito-SemiBold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Sports-->
         <scene sceneID="tne-QT-ifu">
@@ -21,76 +27,72 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DaN-uS-Agf">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sports" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yCx-7v-fx4">
-                                        <rect key="frame" x="158.5" y="51.5" width="97" height="38.5"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="32"/>
-                                        <nil key="textColor"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sports" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yCx-7v-fx4">
+                                        <rect key="frame" x="158.5" y="46" width="97" height="44"/>
+                                        <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="32"/>
+                                        <color key="textColor" name="BackgroundColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bDg-B3-gsT">
-                                        <rect key="frame" x="344" y="46" width="50" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="dyt-J2-tVw"/>
-                                            <constraint firstAttribute="width" constant="50" id="iBv-Mf-xN6"/>
-                                        </constraints>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="square.grid.2x2" catalog="system"/>
-                                        <connections>
-                                            <action selector="ChangeStyleBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zab-rA-pXa"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="bDg-B3-gsT" secondAttribute="trailing" constant="20" id="RX9-bH-ABM"/>
-                                    <constraint firstItem="bDg-B3-gsT" firstAttribute="centerY" secondItem="yCx-7v-fx4" secondAttribute="centerY" id="UmT-D8-3ms"/>
                                     <constraint firstItem="yCx-7v-fx4" firstAttribute="centerX" secondItem="DaN-uS-Agf" secondAttribute="centerX" id="hON-v1-jKb"/>
                                     <constraint firstAttribute="height" constant="110" id="hrU-yY-9gG"/>
                                     <constraint firstAttribute="bottom" secondItem="yCx-7v-fx4" secondAttribute="bottom" constant="20" id="wHH-xL-YIf"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eUK-WG-GWa">
+                                <rect key="frame" x="0.0" y="110" width="414" height="1"/>
+                                <color key="backgroundColor" name="BackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="OmZ-o5-fQH"/>
+                                </constraints>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MWV-7s-UIe">
-                                <rect key="frame" x="4" y="110" width="406" height="703"/>
+                                <rect key="frame" x="0.0" y="115" width="414" height="781"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Cf7-4R-afx">
-                                    <size key="itemSize" width="231" height="164"/>
+                                    <size key="itemSize" width="268" height="306"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HomeCell" id="uME-Pb-Klv" customClass="HomeCollectionViewCell" customModule="SportsApplication" customModuleProvider="target">
-                                        <rect key="frame" x="87.5" y="0.0" width="231" height="164"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="197" height="197"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="QH7-Sw-CTw">
-                                            <rect key="frame" x="0.0" y="0.0" width="231" height="164"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="197" height="197"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Wog-ug-9NM">
-                                                    <rect key="frame" x="0.0" y="0.0" width="231" height="164"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cup" translatesAutoresizingMaskIntoConstraints="NO" id="5bx-gD-jaV">
+                                                    <rect key="frame" x="0.0" y="0.0" width="197" height="168"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJn-Vc-zdf">
-                                                    <rect key="frame" x="8" y="64.5" width="215" height="35"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="29"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sqi-G0-rDM">
+                                                    <rect key="frame" x="0.0" y="168" width="197" height="29"/>
+                                                    <fontDescription key="fontDescription" name="Nunito-SemiBold" family="Nunito" pointSize="24"/>
+                                                    <color key="textColor" name="BackgroundColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="tintColor" name="BackgroundColor"/>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="Wog-ug-9NM" secondAttribute="trailing" id="GHZ-HD-TJf"/>
-                                                <constraint firstItem="rJn-Vc-zdf" firstAttribute="centerY" secondItem="QH7-Sw-CTw" secondAttribute="centerY" id="IgL-N4-K09"/>
-                                                <constraint firstItem="rJn-Vc-zdf" firstAttribute="centerX" secondItem="QH7-Sw-CTw" secondAttribute="centerX" id="Jep-ZE-Ww8"/>
-                                                <constraint firstItem="Wog-ug-9NM" firstAttribute="top" secondItem="QH7-Sw-CTw" secondAttribute="top" id="MzK-4q-GCC"/>
-                                                <constraint firstAttribute="trailing" secondItem="rJn-Vc-zdf" secondAttribute="trailing" constant="8" id="RwJ-UU-oLk"/>
-                                                <constraint firstAttribute="bottom" secondItem="Wog-ug-9NM" secondAttribute="bottom" id="SYM-C0-mN1"/>
-                                                <constraint firstItem="Wog-ug-9NM" firstAttribute="leading" secondItem="QH7-Sw-CTw" secondAttribute="leading" id="USa-O6-luh"/>
-                                                <constraint firstItem="rJn-Vc-zdf" firstAttribute="leading" secondItem="QH7-Sw-CTw" secondAttribute="leading" constant="8" id="jGc-nF-VfQ"/>
+                                                <constraint firstItem="5bx-gD-jaV" firstAttribute="top" secondItem="QH7-Sw-CTw" secondAttribute="top" id="0jm-Yx-QHU"/>
+                                                <constraint firstItem="5bx-gD-jaV" firstAttribute="centerX" secondItem="QH7-Sw-CTw" secondAttribute="centerX" id="54Y-Db-0Mf"/>
+                                                <constraint firstItem="5bx-gD-jaV" firstAttribute="leading" secondItem="QH7-Sw-CTw" secondAttribute="leading" id="DU0-Xa-UYF"/>
+                                                <constraint firstItem="5bx-gD-jaV" firstAttribute="height" secondItem="QH7-Sw-CTw" secondAttribute="height" multiplier="0.852792" id="Owc-3G-Pt2"/>
+                                                <constraint firstItem="Sqi-G0-rDM" firstAttribute="leading" secondItem="QH7-Sw-CTw" secondAttribute="leading" id="Qat-l7-UE7"/>
+                                                <constraint firstAttribute="bottom" secondItem="Sqi-G0-rDM" secondAttribute="bottom" id="SHb-49-rS7"/>
+                                                <constraint firstItem="5bx-gD-jaV" firstAttribute="width" secondItem="QH7-Sw-CTw" secondAttribute="width" id="Yyk-99-ux9"/>
+                                                <constraint firstItem="Sqi-G0-rDM" firstAttribute="top" secondItem="5bx-gD-jaV" secondAttribute="bottom" id="lGS-3R-KeR"/>
+                                                <constraint firstAttribute="trailing" secondItem="5bx-gD-jaV" secondAttribute="trailing" id="qDn-EZ-REc"/>
+                                                <constraint firstAttribute="trailing" secondItem="Sqi-G0-rDM" secondAttribute="trailing" id="rea-ng-z5N"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <size key="customSize" width="231" height="164"/>
+                                        <size key="customSize" width="197" height="197"/>
                                         <connections>
-                                            <outlet property="sportsImage" destination="Wog-ug-9NM" id="a1g-QH-751"/>
-                                            <outlet property="sportsName" destination="rJn-Vc-zdf" id="ynl-JI-v60"/>
+                                            <outlet property="sportsImage" destination="5bx-gD-jaV" id="nYF-4b-fcq"/>
+                                            <outlet property="sportsName" destination="Sqi-G0-rDM" id="w7O-YA-vDo"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -103,24 +105,26 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="MWV-7s-UIe" firstAttribute="top" secondItem="DaN-uS-Agf" secondAttribute="bottom" id="2cY-iw-KUE"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MWV-7s-UIe" secondAttribute="trailing" constant="4" id="6Di-Rb-20K"/>
                             <constraint firstItem="DaN-uS-Agf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="84I-2t-Cu7"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DaN-uS-Agf" secondAttribute="trailing" id="FHe-V9-SgA"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="MWV-7s-UIe" secondAttribute="bottom" id="Nd8-Rz-XQR"/>
-                            <constraint firstItem="MWV-7s-UIe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="4" id="Rkj-Zv-QhD"/>
+                            <constraint firstAttribute="trailing" secondItem="eUK-WG-GWa" secondAttribute="trailing" id="S5i-sh-7t9"/>
                             <constraint firstItem="DaN-uS-Agf" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="b5x-CB-iIu"/>
+                            <constraint firstItem="eUK-WG-GWa" firstAttribute="top" secondItem="DaN-uS-Agf" secondAttribute="bottom" id="cql-MC-qUO"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="MWV-7s-UIe" secondAttribute="bottom" constant="-83" id="h8r-gB-uyj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MWV-7s-UIe" secondAttribute="trailing" id="mnK-v3-q3Z"/>
+                            <constraint firstItem="eUK-WG-GWa" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="oGX-we-Dx9"/>
+                            <constraint firstItem="MWV-7s-UIe" firstAttribute="top" secondItem="eUK-WG-GWa" secondAttribute="bottom" constant="4" id="qWI-M7-xNm"/>
+                            <constraint firstItem="MWV-7s-UIe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="uqa-9y-Xxv"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Sports" image="soccerball" catalog="system" id="Q66-KM-Xnl"/>
                     <connections>
                         <outlet property="HomeCollectionView" destination="MWV-7s-UIe" id="xYv-eo-hK7"/>
-                        <outlet property="collectionViewStyleIcon" destination="bDg-B3-gsT" id="WDM-rK-TJo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1836" y="-475"/>
+            <point key="canvasLocation" x="1834.7826086956522" y="-475.44642857142856"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="pW1-Ug-XLo">
@@ -320,7 +324,8 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ega-w4-fyx">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" name="BackgroundColor"/>
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="wcc-wR-ra1"/>
@@ -334,9 +339,12 @@
     </scenes>
     <resources>
         <image name="arrowshape.turn.up.left.2" catalog="system" width="128" height="86"/>
+        <image name="cup" width="263" height="192"/>
         <image name="soccerball" catalog="system" width="128" height="123"/>
-        <image name="square.grid.2x2" catalog="system" width="128" height="114"/>
         <image name="star" catalog="system" width="128" height="116"/>
+        <namedColor name="BackgroundColor">
+            <color red="0.14117647058823529" green="0.41960784313725491" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
