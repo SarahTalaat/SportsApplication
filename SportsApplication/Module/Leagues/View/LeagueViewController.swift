@@ -138,7 +138,8 @@ class LeagueViewController: UIViewController , UITableViewDataSource , UITableVi
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
       tableView.deselectRow(at: indexPath, animated: true)
-      let leagueDetails = self.storyboard?.instantiateViewController(identifier: "LeagueDetailsController") as! LeagueDetailsController
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+      let leagueDetails = storyboard.instantiateViewController(identifier: "LeagueDetailsController") as! LeagueDetailsController
       leagueDetails.sportName = self.sportName
       leagueDetails.leagueId = (viewModel.leaguesArray?[indexPath.row].league_key)!
     
