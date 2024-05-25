@@ -34,12 +34,12 @@ class TeamsDetailsViewModel: TeamsDetailsViewModelProtocol{
         networkProtocol.fetchDataFromAPI(url: url, param: urlParameters) { [weak self] (response : MyResponse<Result>?) in
 
             self?.teamDetailsArray = response?.result ?? []
-            print("XXX response success: \(response?.success ?? 66666 )")
-
-            print("XXX ViewModel TeamArrayCount: \(self?.teamDetailsArray?.count ?? 55555)")
-            print("XXX Players count: \(self?.teamDetailsArray?[0].players?.count ?? 4444444 )")
-            print("XXX ViewModel teamName: \(self?.teamDetailsArray?[0].team_name ?? "NO TEAM NAME!!!!" )")
-            print("XXX ViewModel teamKey: \(self?.teamDetailsArray?[0].team_key ?? 777777 )")
+//            print("XXX response success: \(response?.success ?? 66666 )")
+//
+//            print("XXX ViewModel TeamArrayCount: \(self?.teamDetailsArray?.count ?? 55555)")
+//            print("XXX Players count: \(self?.teamDetailsArray?[0].players?.count ?? 4444444 )")
+//            print("XXX ViewModel teamName: \(self?.teamDetailsArray?[0].team_name ?? "NO TEAM NAME!!!!" )")
+//            print("XXX ViewModel teamKey: \(self?.teamDetailsArray?[0].team_key ?? 777777 )")
         }
         
 //        Network().fetchDataFromAPI(url: url, param: urlParameters) { [weak self] (response: MyResponse<TeamDetails>?) in
