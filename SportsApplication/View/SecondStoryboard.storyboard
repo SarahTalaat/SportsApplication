@@ -73,7 +73,7 @@
                                 <rect key="frame" x="0.0" y="391" width="414" height="471"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CVf-Qh-wcc">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cup" translatesAutoresizingMaskIntoConstraints="NO" id="CVf-Qh-wcc">
                                 <rect key="frame" x="127" y="75" width="160" height="160"/>
                             </imageView>
                         </subviews>
@@ -124,6 +124,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="cup" width="263" height="192"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
