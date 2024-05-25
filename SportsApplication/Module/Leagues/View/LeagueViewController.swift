@@ -15,7 +15,7 @@ import Kingfisher
 class LeagueViewController: UIViewController , UITableViewDataSource , UITableViewDelegate {
 
     @IBOutlet var leagueTableView: UITableView!
-    var viewModel: LeaguesViewModel!
+    var viewModel: LeaguesViewModelProtocol!
     var sportName: String = " "
     
     override func viewDidLoad() {
@@ -28,7 +28,8 @@ class LeagueViewController: UIViewController , UITableViewDataSource , UITableVi
         
         let cell = UINib(nibName: "LeagueCell", bundle: nil)
         self.leagueTableView.register(cell , forCellReuseIdentifier: "cell")
-        viewModel = LeaguesViewModel()
+        
+        viewModel = DependencyProvider.leaguesViewModel
         
         fetchData()
    
@@ -97,7 +98,7 @@ class LeagueViewController: UIViewController , UITableViewDataSource , UITableVi
         leagueDetails.sportName = self.sportName
         leagueDetails.leagueId = (viewModel.leaguesArray?[indexPath.row].league_key)!
         leagueDetails.leagueName = (viewModel.leaguesArray?[indexPath.row].league_name)!
-        leagueDetails.leagueLogo = (viewModel.leaguesArray?[indexPath.row].league_logo)!
+        leagueDetails.leagueLogo = (viewModel.leaguesArray?[indexPath.row].league_logo) ?? ""
       self.present(leagueDetails, animated: true)
 
     }
