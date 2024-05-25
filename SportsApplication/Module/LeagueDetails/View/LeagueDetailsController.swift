@@ -267,6 +267,14 @@ class LeagueDetailsController: UIViewController , UICollectionViewDataSource , U
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if (viewModel.upcomingEvent?.count ?? 0 == 0 && indexPath.section == 1) || (viewModel.upcomingEvent?.count ?? 0 != 0 && indexPath.section == 2){
+        
+        let teamDetailsVC = self.storyboard?.instantiateViewController(identifier: "TeamDetailsController") as! TeamDetailsController
+        self.present(teamDetailsVC, animated: true)
+      }
+    }
+    
     
 //    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
 //
