@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Alamofire
 
 
 class TeamsDetailsViewModel: TeamsDetailsViewModelProtocol{
@@ -19,10 +20,10 @@ class TeamsDetailsViewModel: TeamsDetailsViewModelProtocol{
     }
 
     func getTeamDetails(sport: String, teamId: String) {
-        let url = "https://apiv2.allsportsapi.com/\(sport)/?"
-        let parameters: [String:Any] = ["met" : "Teams", "teamId" : teamId, "APIkey": Constants.API_KEY]
+        let url = "https://apiv2.allsportsapi.com/\(sport)/"
+        let urlParameters: Parameters = ["met" : "Teams", "teamId" : teamId, "APIkey": Constants.API_KEY]
 
-        Network().fetchDataFromAPI(url: url, param: parameters){ [weak self] (response : MyResponse<TeamDetails>?) in
+        Network().fetchDataFromAPI(url: url, param: urlParameters){ [weak self] (response : MyResponse<TeamDetails>?) in
 
             self?.teamDetailsArray = response?.result ?? []
             print("ViewModel TeamArrayCount: \(self?.teamDetailsArray?.count ?? 55555)")
