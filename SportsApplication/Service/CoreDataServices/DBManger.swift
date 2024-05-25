@@ -101,10 +101,35 @@ class DBManager: DBManagerProtocol{
     }
     
     func deleteFavouriteLegue(key: Int) {
-
-        manager.delete(nsManagedLeagues[key])
+        if key < nsManagedLeagues.count {
+            manager.delete(nsManagedLeagues[key])
+            nsManagedLeagues.remove(at: key)
+            do {
+                try manager.save()
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func deleteAll() {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "FavouriteEntity")
+        
         do{
+            nsManagedLeagues = try manager.fetch(fetchRequest)
+        }
+        catch let error as NSError{
+            print(error)
+        }
+        
+        for element in nsManagedLeagues{
+            manager.delete(element)
+        }
+        
+        do{
+            
             try manager.save()
+            print("Deleted!")
         }catch let error{
             print(error.localizedDescription)
         }
