@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OqB-kL-2G7">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9dL-dM-INa">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -125,6 +125,40 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1834.7826086956522" y="-475.44642857142856"/>
+        </scene>
+        <!--Team Details Controller-->
+        <scene sceneID="EbL-4Z-x3h">
+            <objects>
+                <viewController storyboardIdentifier="TeamDetailsController" id="9dL-dM-INa" customClass="TeamDetailsController" customModule="SportsApplication" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kHl-IG-BVg">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="sVO-my-Zxq">
+                                <rect key="frame" x="0.0" y="48" width="414" height="814"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="9dL-dM-INa" id="tOB-rU-qk9"/>
+                                    <outlet property="delegate" destination="9dL-dM-INa" id="mYn-c3-cb8"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="azY-8G-rGF"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="azY-8G-rGF" firstAttribute="bottom" secondItem="sVO-my-Zxq" secondAttribute="bottom" id="0sz-cR-hNb"/>
+                            <constraint firstItem="azY-8G-rGF" firstAttribute="trailing" secondItem="sVO-my-Zxq" secondAttribute="trailing" id="ANj-Vg-k3j"/>
+                            <constraint firstItem="sVO-my-Zxq" firstAttribute="top" secondItem="azY-8G-rGF" secondAttribute="top" id="V2S-Qj-RBd"/>
+                            <constraint firstItem="sVO-my-Zxq" firstAttribute="leading" secondItem="azY-8G-rGF" secondAttribute="leading" id="Zri-N0-qkJ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="playerTableView" destination="sVO-my-Zxq" id="y4c-Zh-ssT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Oc7-X6-rFP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2616" y="-453"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="pW1-Ug-XLo">
