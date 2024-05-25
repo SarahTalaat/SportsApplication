@@ -26,10 +26,16 @@ class TeamsDetailsViewModel: TeamsDetailsViewModelProtocol{
         Network().fetchDataFromAPI(url: url, param: urlParameters){ [weak self] (response : MyResponse<TeamDetails>?) in
 
             self?.teamDetailsArray = response?.result ?? []
-            print("ViewModel TeamArrayCount: \(self?.teamDetailsArray?.count ?? 55555)")
-            print("ViewModel Data: \(self?.teamDetailsArray?[0].result?[0].team_name ?? "NO TEAM NAME!!!!" )")
+            print("XXX ViewModel TeamArrayCount: \(self?.teamDetailsArray?.count ?? 55555)")
+            print("XXX Players count: \(self?.teamDetailsArray?[0].result?[0].players?.count ?? 4444444 )")
+            print("XXX ViewModel Data: \(self?.teamDetailsArray?[0].result?[0].team_name ?? "NO TEAM NAME!!!!" )")
       }
     }
+    
+
+
+
+
 }
 
 

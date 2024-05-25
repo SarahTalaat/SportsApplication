@@ -255,10 +255,10 @@
 		8B062B2D2BFB67D8005762B0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B6AF94CE2C0108E500E18AAF /* Coaches.swift */,
 				B6AF94D02C0108E500E18AAF /* TeamDetails.swift */,
-				B6AF94D12C0108E600E18AAF /* Players.swift */,
 				B6AF94CF2C0108E500E18AAF /* Result.swift */,
+				B6AF94D12C0108E600E18AAF /* Players.swift */,
+				B6AF94CE2C0108E500E18AAF /* Coaches.swift */,
 				8BEA69F72BFBDCAA0028BB33 /* test.swift */,
 				8BEA6A032BFBF9CB0028BB33 /* Sport.swift */,
 				B6D1DCEF2BFEA89A00AFFA2F /* League.swift */,
