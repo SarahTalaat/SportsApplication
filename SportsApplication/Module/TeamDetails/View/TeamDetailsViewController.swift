@@ -53,11 +53,12 @@ class TeamDetailsViewController: UIViewController , UITableViewDataSource , UITa
     
     
     private func fetchData(){
+        print("XXX VC SportName: \(sportName ?? "") , teamID: \(teamId ?? 0)")
         viewModel.getTeamDetails(sport: sportName ?? "", teamId: "\(teamId ?? 0)")
         viewModel.resultToViewController = {  [weak self] in
             DispatchQueue.main.async { [weak self] in
-                self?.teamNameLabel.text = self?.viewModel.teamDetailsArray?[0].result?[0].team_name
-                self?.teamCoachLabel.text = self?.viewModel.teamDetailsArray?[0].result?[0].coaches?[0].coach_name
+                self?.teamNameLabel.text = self?.viewModel.teamDetailsArray?[0].team_name
+                self?.teamCoachLabel.text = self?.viewModel.teamDetailsArray?[0].coaches?[0].coach_name
                 self?.teamTableView.reloadData()
             }
         }
@@ -77,8 +78,8 @@ class TeamDetailsViewController: UIViewController , UITableViewDataSource , UITa
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = teamTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TeamDetailsCell
-        cell.teamDetailsPlayerNameLabel.text = viewModel.teamDetailsArray?[indexPath.row].result?[indexPath.row].players?[indexPath.row].player_name
-        let strImage: String = viewModel.teamDetailsArray?[indexPath.row].result?[indexPath.row].team_logo ?? "No image"
+        cell.teamDetailsPlayerNameLabel.text = viewModel.teamDetailsArray?[indexPath.row].players?[indexPath.row].player_name
+        let strImage: String = viewModel.teamDetailsArray?[indexPath.row].team_logo ?? "No image"
         print(strImage)
 
         if let imageUrl = URL(string: strImage) {

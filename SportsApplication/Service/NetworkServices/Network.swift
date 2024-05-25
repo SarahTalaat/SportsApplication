@@ -9,8 +9,6 @@
 import Foundation
 import Alamofire
 
-
-
 class Network: NetworkProtocol {
     func fetchDataFromAPI<T>(url: String, param: Parameters, completionHandler: @escaping (MyResponse<T>?) -> Void) where T: Decodable {
         
