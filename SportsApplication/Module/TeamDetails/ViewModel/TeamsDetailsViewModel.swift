@@ -18,6 +18,12 @@ class TeamsDetailsViewModel: TeamsDetailsViewModelProtocol{
           resultToViewController()
         }
     }
+    
+    var networkProtocol: NetworkProtocol
+    
+    init(networkProtocol: NetworkProtocol){
+        self.networkProtocol = networkProtocol
+    }
 
     func getTeamDetails(sport: String, teamId: String) {
         
@@ -25,7 +31,7 @@ class TeamsDetailsViewModel: TeamsDetailsViewModelProtocol{
         let url = "https://apiv2.allsportsapi.com/\(sport)/"
         let urlParameters: Parameters = ["met" : "Teams", "leagueId" : teamId, "APIkey": Constants.API_KEY]
         
-        Network().fetchDataFromAPI(url: url, param: urlParameters) { [weak self] (response : MyResponse<Result>?) in
+        networkProtocol.fetchDataFromAPI(url: url, param: urlParameters) { [weak self] (response : MyResponse<Result>?) in
 
             self?.teamDetailsArray = response?.result ?? []
             print("XXX response success: \(response?.success ?? 66666 )")

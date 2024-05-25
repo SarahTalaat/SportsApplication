@@ -17,7 +17,7 @@ class TeamDetailsViewController: UIViewController , UITableViewDataSource , UITa
     
     var sportName: String?
     var teamId: Int?
-    var viewModel: TeamsDetailsViewModel!
+    var viewModel: TeamsDetailsViewModelProtocol!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -30,7 +30,7 @@ class TeamDetailsViewController: UIViewController , UITableViewDataSource , UITa
         
         let cell = UINib(nibName: "TeamDetailsCell", bundle: nil)
         self.teamTableView.register(cell , forCellReuseIdentifier: "cell")
-        viewModel = TeamsDetailsViewModel()
+        viewModel = DependencyProvider.teamDetailsViewModel
         
         var arrCount = viewModel.teamDetailsArray?.count
         print("TeamArrayCount: \(arrCount ?? 55555555)")

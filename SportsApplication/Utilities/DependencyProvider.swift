@@ -28,6 +28,9 @@ class DependencyProvider {
             return FavouritesViewModel(dbManagerProtocol: databaseProtocol)
         }
 
+        static var teamDetailsViewModel: TeamsDetailsViewModel {
+            return TeamsDetailsViewModel(networkProtocol: networkProtocol)
+        }
         
         
         static func createLeaguesViewController(with viewModel: LeaguesViewModelProtocol) -> LeagueViewController {
