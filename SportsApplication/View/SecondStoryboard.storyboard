@@ -33,81 +33,90 @@
             </objects>
             <point key="canvasLocation" x="-46.376811594202906" y="124.55357142857142"/>
         </scene>
-        <!--View Controller-->
+        <!--Team Details View Controller-->
         <scene sceneID="5p2-ek-wYJ">
             <objects>
-                <viewController id="IfL-tQ-Umx" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TeamDetailsViewController" id="IfL-tQ-Umx" customClass="TeamDetailsViewController" customModule="SportsApplication" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qLa-XK-ryx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="j79-VZ-EY6">
-                                <rect key="frame" x="127" y="67" width="160" height="160"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j79-VZ-EY6">
+                                <rect key="frame" x="127" y="67" width="160" height="0.0"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team Name :" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qlf-71-95U">
-                                <rect key="frame" x="20" y="270" width="138" height="67"/>
+                                <rect key="frame" x="20" y="252" width="138" height="67"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coach Name :" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p6F-g2-8Cu">
-                                <rect key="frame" x="20" y="345" width="138" height="67"/>
+                                <rect key="frame" x="20" y="327" width="138" height="55"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team Name Value" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T7A-oL-dUD">
-                                <rect key="frame" x="178" y="270" width="203" height="67"/>
+                                <rect key="frame" x="178" y="252" width="203" height="67"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team Name Value" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M46-8X-pG3">
-                                <rect key="frame" x="178" y="345" width="203" height="67"/>
+                                <rect key="frame" x="178" y="327" width="203" height="55"/>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="GwY-KY-1Zv">
-                                <rect key="frame" x="0.0" y="434" width="414" height="428"/>
+                                <rect key="frame" x="0.0" y="391" width="414" height="471"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CVf-Qh-wcc">
+                                <rect key="frame" x="127" y="75" width="160" height="160"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="j0o-Jr-X4f"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="T7A-oL-dUD" firstAttribute="top" secondItem="j79-VZ-EY6" secondAttribute="bottom" constant="43" id="51q-i5-yK4"/>
-                            <constraint firstItem="j0o-Jr-X4f" firstAttribute="bottom" secondItem="Qlf-71-95U" secondAttribute="bottom" constant="525" id="91c-df-YDb"/>
-                            <constraint firstItem="Qlf-71-95U" firstAttribute="leading" secondItem="j0o-Jr-X4f" secondAttribute="leading" constant="20" id="A2X-55-hN4"/>
-                            <constraint firstItem="j0o-Jr-X4f" firstAttribute="bottom" secondItem="j79-VZ-EY6" secondAttribute="bottom" constant="635" id="DlL-10-xOv"/>
-                            <constraint firstItem="j79-VZ-EY6" firstAttribute="top" secondItem="j0o-Jr-X4f" secondAttribute="top" constant="23" id="EBP-Ne-Tlu"/>
-                            <constraint firstItem="j0o-Jr-X4f" firstAttribute="trailing" secondItem="j79-VZ-EY6" secondAttribute="trailing" constant="127" id="FDn-ck-tcd"/>
-                            <constraint firstItem="j0o-Jr-X4f" firstAttribute="trailing" secondItem="GwY-KY-1Zv" secondAttribute="trailing" id="GAg-cX-H6K"/>
-                            <constraint firstItem="p6F-g2-8Cu" firstAttribute="height" secondItem="qLa-XK-ryx" secondAttribute="height" multiplier="0.0747768" id="Gqm-T7-QWn"/>
-                            <constraint firstItem="p6F-g2-8Cu" firstAttribute="leading" secondItem="Qlf-71-95U" secondAttribute="leading" id="HJw-Hb-QWI"/>
-                            <constraint firstItem="Qlf-71-95U" firstAttribute="width" secondItem="qLa-XK-ryx" secondAttribute="width" multiplier="0.333333" id="HWv-sM-aYv"/>
-                            <constraint firstItem="Qlf-71-95U" firstAttribute="top" secondItem="j79-VZ-EY6" secondAttribute="bottom" constant="43" id="LSX-BV-cHz"/>
-                            <constraint firstItem="j0o-Jr-X4f" firstAttribute="trailing" secondItem="T7A-oL-dUD" secondAttribute="trailing" constant="33" id="NQg-uW-NQN"/>
-                            <constraint firstItem="p6F-g2-8Cu" firstAttribute="top" secondItem="Qlf-71-95U" secondAttribute="bottom" constant="8" symbolic="YES" id="O9s-7P-hR7"/>
-                            <constraint firstItem="T7A-oL-dUD" firstAttribute="height" secondItem="Qlf-71-95U" secondAttribute="height" id="OQA-cw-z33"/>
-                            <constraint firstItem="j79-VZ-EY6" firstAttribute="height" secondItem="qLa-XK-ryx" secondAttribute="height" multiplier="0.178571" id="OWS-hh-Cjx"/>
-                            <constraint firstItem="GwY-KY-1Zv" firstAttribute="top" secondItem="p6F-g2-8Cu" secondAttribute="bottom" constant="22" id="R4s-vN-dYJ"/>
-                            <constraint firstItem="M46-8X-pG3" firstAttribute="leading" secondItem="p6F-g2-8Cu" secondAttribute="trailing" constant="20" id="SpD-TF-uP0"/>
-                            <constraint firstItem="M46-8X-pG3" firstAttribute="width" secondItem="qLa-XK-ryx" secondAttribute="width" multiplier="0.490338" id="V7Q-LL-W2P"/>
-                            <constraint firstItem="T7A-oL-dUD" firstAttribute="width" secondItem="Qlf-71-95U" secondAttribute="width" multiplier="1.47101" id="W40-Bf-Y3s"/>
-                            <constraint firstItem="Qlf-71-95U" firstAttribute="height" secondItem="qLa-XK-ryx" secondAttribute="height" multiplier="0.0747768" id="YNv-Ql-uRE"/>
-                            <constraint firstItem="M46-8X-pG3" firstAttribute="height" secondItem="qLa-XK-ryx" secondAttribute="height" multiplier="0.0747768" id="YeX-KQ-1LG"/>
-                            <constraint firstItem="GwY-KY-1Zv" firstAttribute="leading" secondItem="j0o-Jr-X4f" secondAttribute="leading" id="dSX-fT-dsF"/>
-                            <constraint firstItem="j79-VZ-EY6" firstAttribute="leading" secondItem="j0o-Jr-X4f" secondAttribute="leading" constant="127" id="hCq-Hi-ZTy"/>
-                            <constraint firstItem="j0o-Jr-X4f" firstAttribute="trailing" secondItem="Qlf-71-95U" secondAttribute="trailing" constant="256" id="jA0-tX-b8R"/>
-                            <constraint firstItem="j79-VZ-EY6" firstAttribute="width" secondItem="qLa-XK-ryx" secondAttribute="width" multiplier="0.386473" id="jhI-ME-xHu"/>
-                            <constraint firstItem="j0o-Jr-X4f" firstAttribute="trailing" secondItem="M46-8X-pG3" secondAttribute="trailing" constant="33" id="oVk-25-7Qf"/>
-                            <constraint firstItem="j0o-Jr-X4f" firstAttribute="bottom" secondItem="GwY-KY-1Zv" secondAttribute="bottom" id="uAE-90-Qsc"/>
-                            <constraint firstItem="p6F-g2-8Cu" firstAttribute="width" secondItem="qLa-XK-ryx" secondAttribute="width" multiplier="0.333333" id="wRk-1n-Vy8"/>
-                            <constraint firstItem="T7A-oL-dUD" firstAttribute="leading" secondItem="Qlf-71-95U" secondAttribute="trailing" constant="20" id="x1u-QW-nfY"/>
-                            <constraint firstItem="M46-8X-pG3" firstAttribute="top" secondItem="T7A-oL-dUD" secondAttribute="bottom" constant="8" symbolic="YES" id="ycu-K3-bdo"/>
+                            <constraint firstItem="CVf-Qh-wcc" firstAttribute="height" secondItem="qLa-XK-ryx" secondAttribute="height" multiplier="0.178571" id="4Sn-sx-TBU"/>
+                            <constraint firstItem="CVf-Qh-wcc" firstAttribute="top" secondItem="j0o-Jr-X4f" secondAttribute="top" constant="31" id="8cP-Ex-hqb"/>
+                            <constraint firstItem="p6F-g2-8Cu" firstAttribute="top" secondItem="Qlf-71-95U" secondAttribute="bottom" constant="8" symbolic="YES" id="DeZ-70-WxQ"/>
+                            <constraint firstItem="T7A-oL-dUD" firstAttribute="leading" secondItem="Qlf-71-95U" secondAttribute="trailing" constant="20" id="F0L-Vx-rep"/>
+                            <constraint firstItem="Qlf-71-95U" firstAttribute="leading" secondItem="j0o-Jr-X4f" secondAttribute="leading" constant="20" id="ITw-lO-7Hn"/>
+                            <constraint firstItem="M46-8X-pG3" firstAttribute="height" secondItem="T7A-oL-dUD" secondAttribute="height" multiplier="0.820896" id="JmU-eg-qiW"/>
+                            <constraint firstItem="p6F-g2-8Cu" firstAttribute="height" secondItem="Qlf-71-95U" secondAttribute="height" multiplier="0.820896" id="JxR-He-DvS"/>
+                            <constraint firstItem="j0o-Jr-X4f" firstAttribute="trailing" secondItem="M46-8X-pG3" secondAttribute="trailing" constant="33" id="LjB-nG-nYe"/>
+                            <constraint firstItem="p6F-g2-8Cu" firstAttribute="width" secondItem="Qlf-71-95U" secondAttribute="width" id="Lrh-wa-slY"/>
+                            <constraint firstItem="Qlf-71-95U" firstAttribute="top" secondItem="CVf-Qh-wcc" secondAttribute="bottom" constant="17" id="N3I-3A-bNT"/>
+                            <constraint firstItem="j0o-Jr-X4f" firstAttribute="trailing" secondItem="T7A-oL-dUD" secondAttribute="trailing" constant="33" id="Pek-Y2-h0i"/>
+                            <constraint firstItem="j0o-Jr-X4f" firstAttribute="trailing" secondItem="GwY-KY-1Zv" secondAttribute="trailing" id="Qeg-CS-Mf6"/>
+                            <constraint firstItem="M46-8X-pG3" firstAttribute="leading" secondItem="T7A-oL-dUD" secondAttribute="leading" id="RZA-Qu-sIh"/>
+                            <constraint firstItem="p6F-g2-8Cu" firstAttribute="leading" secondItem="Qlf-71-95U" secondAttribute="leading" id="TlJ-3D-3Pw"/>
+                            <constraint firstItem="T7A-oL-dUD" firstAttribute="width" secondItem="CVf-Qh-wcc" secondAttribute="width" multiplier="1.26875" id="Ugq-UW-Awa"/>
+                            <constraint firstItem="j0o-Jr-X4f" firstAttribute="trailing" secondItem="Qlf-71-95U" secondAttribute="trailing" constant="256" id="WPE-xA-4Vg"/>
+                            <constraint firstItem="CVf-Qh-wcc" firstAttribute="leading" secondItem="j0o-Jr-X4f" secondAttribute="leading" constant="127" id="Xtv-dp-1hX"/>
+                            <constraint firstItem="T7A-oL-dUD" firstAttribute="height" secondItem="CVf-Qh-wcc" secondAttribute="height" multiplier="0.41875" id="ZtM-rN-GGH"/>
+                            <constraint firstItem="CVf-Qh-wcc" firstAttribute="width" secondItem="qLa-XK-ryx" secondAttribute="width" multiplier="0.386473" id="buh-xY-7gP"/>
+                            <constraint firstItem="T7A-oL-dUD" firstAttribute="top" secondItem="CVf-Qh-wcc" secondAttribute="bottom" constant="17" id="dKL-e9-HHD"/>
+                            <constraint firstItem="GwY-KY-1Zv" firstAttribute="leading" secondItem="j0o-Jr-X4f" secondAttribute="leading" id="fdW-5l-ZKc"/>
+                            <constraint firstItem="j0o-Jr-X4f" firstAttribute="bottom" secondItem="CVf-Qh-wcc" secondAttribute="bottom" constant="627" id="mEB-E2-UVU"/>
+                            <constraint firstItem="Qlf-71-95U" firstAttribute="height" secondItem="qLa-XK-ryx" secondAttribute="height" multiplier="0.0747768" id="oCW-Yn-ukO"/>
+                            <constraint firstItem="j0o-Jr-X4f" firstAttribute="trailing" secondItem="CVf-Qh-wcc" secondAttribute="trailing" constant="127" id="oZ8-dZ-3vL"/>
+                            <constraint firstItem="M46-8X-pG3" firstAttribute="top" secondItem="T7A-oL-dUD" secondAttribute="bottom" constant="8" symbolic="YES" id="pox-5R-RfI"/>
+                            <constraint firstItem="j0o-Jr-X4f" firstAttribute="bottom" secondItem="GwY-KY-1Zv" secondAttribute="bottom" id="ruL-BO-Gb0"/>
+                            <constraint firstItem="M46-8X-pG3" firstAttribute="width" secondItem="T7A-oL-dUD" secondAttribute="width" id="wtR-dT-ehm"/>
+                            <constraint firstItem="GwY-KY-1Zv" firstAttribute="top" secondItem="p6F-g2-8Cu" secondAttribute="bottom" constant="9" id="ybf-Fe-90X"/>
+                            <constraint firstItem="Qlf-71-95U" firstAttribute="width" secondItem="qLa-XK-ryx" secondAttribute="width" multiplier="0.333333" id="zEQ-03-GIm"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="teamCoachLabel" destination="M46-8X-pG3" id="9Bt-bb-XIV"/>
+                        <outlet property="teamImage" destination="CVf-Qh-wcc" id="Qud-Uj-LdX"/>
+                        <outlet property="teamNameLabel" destination="T7A-oL-dUD" id="hHq-0T-qhL"/>
+                        <outlet property="teamTableView" destination="GwY-KY-1Zv" id="E8c-En-0cv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hdn-I4-f8V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
