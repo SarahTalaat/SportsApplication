@@ -28,7 +28,7 @@ class TeamDetailsViewController: UIViewController , UITableViewDataSource , UITa
         
         // Do any additional setup after loading the view.
         
-        let cell = UINib(nibName: "LeagueCell", bundle: nil)
+        let cell = UINib(nibName: "TeamDetailsCell", bundle: nil)
         self.teamTableView.register(cell , forCellReuseIdentifier: "cell")
         viewModel = TeamsDetailsViewModel()
         
@@ -75,17 +75,17 @@ class TeamDetailsViewController: UIViewController , UITableViewDataSource , UITa
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = teamTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! LeagueCell
-        cell.myLabel.text = viewModel.teamDetailsArray?[indexPath.row].result?[indexPath.row].players?[indexPath.row].player_name
+        let cell = teamTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TeamDetailsCell
+        cell.teamDetailsPlayerNameLabel.text = viewModel.teamDetailsArray?[indexPath.row].result?[indexPath.row].players?[indexPath.row].player_name
         let strImage: String = viewModel.teamDetailsArray?[indexPath.row].result?[indexPath.row].team_logo ?? "No image"
         print(strImage)
 
         if let imageUrl = URL(string: strImage) {
 
-            cell.myImage?.kf.setImage(with: imageUrl, placeholder: UIImage(named: "cup.jpg") , completionHandler: {
+            cell.teamDetailsImage?.kf.setImage(with: imageUrl, placeholder: UIImage(named: "cup.jpg") , completionHandler: {
                 (image, error, cacheType, url) in
                     if let image = image {
-                        cell.myImage?.image = image
+                        cell.teamDetailsImage?.image = image
                         self.circularImage(cell: cell)
                     } else {
                         self.circularImage(cell: cell)
@@ -94,7 +94,7 @@ class TeamDetailsViewController: UIViewController , UITableViewDataSource , UITa
             })
         } else {
             print("Can't load image from the internet")
-            cell.myImage.image = UIImage(named: "cup.jpg")
+            cell.teamDetailsImage.image = UIImage(named: "cup.jpg")
             self.circularImage(cell: cell)
         }
 
@@ -103,11 +103,11 @@ class TeamDetailsViewController: UIViewController , UITableViewDataSource , UITa
         return cell
     }
     
-    func circularImage(cell: LeagueCell){
-        cell.myImage?.contentMode = .scaleAspectFill
-        cell.myImage.frame = CGRect(x: cell.myImage.frame.origin.x, y: cell.myImage.frame.origin.y, width: 80, height: 80)
-        cell.myImage?.layer.cornerRadius = cell.myImage!.frame.height / 2
-        cell.myImage?.clipsToBounds = true
+    func circularImage(cell: TeamDetailsCell){
+        cell.teamDetailsImage?.contentMode = .scaleAspectFill
+        cell.teamDetailsImage.frame = CGRect(x: cell.teamDetailsImage.frame.origin.x, y: cell.teamDetailsImage.frame.origin.y, width: 80, height: 80)
+        cell.teamDetailsImage?.layer.cornerRadius = cell.teamDetailsImage!.frame.height / 2
+        cell.teamDetailsImage?.clipsToBounds = true
     }
     
     
