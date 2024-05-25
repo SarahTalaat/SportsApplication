@@ -10,6 +10,7 @@ import CoreData
 import UIKit
 
 class DBManager: DBManagerProtocol{
+    
     static let favouriteLeagueDB = DBManager()
     
     var leagues: Array<LeagueLocal>? = []
@@ -32,6 +33,7 @@ class DBManager: DBManagerProtocol{
         
         do {
             try manager.save()
+            print("inserted")
         } catch let error as NSError{
             print(error.localizedDescription)
         }
@@ -80,7 +82,7 @@ class DBManager: DBManagerProtocol{
     func deleteLeagueFromCoreData(favLeague: LeagueLocal) -> [NSManagedObject] {
 
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FavouriteEntity")
-        let predicate = NSPredicate(format: "key == %@", favLeague.key)
+        let predicate = NSPredicate(format: "key == %d", favLeague.key)
         fetchRequest.predicate = predicate
         
         do {
@@ -95,6 +97,41 @@ class DBManager: DBManagerProtocol{
         } catch let error as NSError {
             print("Error deleting from Core Data: \(error.localizedDescription)")
             return []
+        }
+    }
+    
+    func deleteFavouriteLegue(key: Int) {
+        if key < nsManagedLeagues.count {
+            manager.delete(nsManagedLeagues[key])
+            nsManagedLeagues.remove(at: key)
+            do {
+                try manager.save()
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func deleteAll() {
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "FavouriteEntity")
+        
+        do{
+            nsManagedLeagues = try manager.fetch(fetchRequest)
+        }
+        catch let error as NSError{
+            print(error)
+        }
+        
+        for element in nsManagedLeagues{
+            manager.delete(element)
+        }
+        
+        do{
+            
+            try manager.save()
+            print("Deleted!")
+        }catch let error{
+            print(error.localizedDescription)
         }
     }
     

@@ -7,6 +7,25 @@
 
 import Foundation
 
-class TeamsDetailsViewModel{
+class TeamsDetailsViewModel: TeamsDetailsViewModelProtocol{
     
+    var resultToViewController: (() -> Void) = {}
+    var teamDetailsArray: [TeamDetails]? = []
+    {
+        didSet{
+          resultToViewController()
+        }
+    }
+    
+    func getTeamDetails(sport: String, teamId: Int) {
+        let url = "https://apiv2.allsportsapi.com/\(sport)/"
+        let parameters = ["met" : "Teams","teamId" : "\(teamId)", "APIkey" : Constants.API_KEY]
+        Network().fetchDataFromAPI(url: url, param: parameters){ [weak self] (response : MyResponse<TeamDetails>?) in
+            self?.teamDetailsArray = response?.result ?? []
+      }
+        
+        
+    }
+
 }
+

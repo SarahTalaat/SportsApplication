@@ -246,6 +246,7 @@ class LeagueDetailsController: UIViewController , UICollectionViewDataSource , U
         alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { action in
             self.viewModel.isFavourite = false
             self.showProgress(message: "Deleted")
+            self.viewModel.deleteFavLeague(key: self.leagueId)
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel , handler: { action in
             self.viewModel.isFavourite = true
@@ -264,6 +265,14 @@ class LeagueDetailsController: UIViewController , UICollectionViewDataSource , U
         hud.dismiss(afterDelay: 1, animated: true){
             self.navigationController?.popViewController(animated: true)
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if (viewModel.upcomingEvent?.count ?? 0 == 0 && indexPath.section == 1) || (viewModel.upcomingEvent?.count ?? 0 != 0 && indexPath.section == 2){
+        
+        let teamDetailsVC = self.storyboard?.instantiateViewController(identifier: "TeamDetailsController") as! TeamDetailsController
+        self.present(teamDetailsVC, animated: true)
+      }
     }
     
     

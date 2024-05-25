@@ -8,15 +8,27 @@
 import UIKit
 import CoreData
 import Kingfisher
+import Reachability
 
 class FavouriteViewController: UIViewController , UITableViewDelegate , UITableViewDataSource{
 
 
     @IBOutlet weak var favouriteTableView: UITableView!
     
-    var viewModel: FavouritesViewModelProtocol!
-
+    var viewModel: FavouritesViewModel!
+    var leagueDetailsArray: [LeagueLocal]? {
+        didSet {
+            favouriteTableView.reloadData()
+        }
+    }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        leagueDetailsArray = viewModel.retriveLeaguesFromCoreData()
+        favouriteTableView.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +39,10 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
         let cell = UINib(nibName: "LeagueCell", bundle: nil)
         self.favouriteTableView.register(cell , forCellReuseIdentifier: "cell")
         
+        viewModel = FavouritesViewModel()
+        createButton()
+        
+
         
         favouriteTableView.reloadData()
         
@@ -38,14 +54,14 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.favouriteLeaguesArray.count
+        return leagueDetailsArray?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = favouriteTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! LeagueCell
-        cell.myLabel.text = viewModel.favouriteLeaguesArray[indexPath.row].name
-        let strImage: String = viewModel.favouriteLeaguesArray[indexPath.row].logo
+        cell.myLabel.text = leagueDetailsArray?[indexPath.row].name
+        let strImage: String = leagueDetailsArray?[indexPath.row].logo ?? "No logo"
         print(strImage)
 
         if let imageUrl = URL(string: strImage) {
@@ -53,49 +69,89 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
             cell.myImage?.kf.setImage(with: imageUrl, placeholder: UIImage(named: "cup.jpg") , completionHandler: {
                 (image, error, cacheType, url) in
                     if let image = image {
-                        cell.myImage?.contentMode = .scaleAspectFill
                         cell.myImage?.image = image
-                        cell.myImage.frame = CGRect(x: cell.myImage.frame.origin.x, y: cell.myImage.frame.origin.y, width: 80, height: 80)
-                        cell.myImage?.layer.cornerRadius = cell.myImage!.frame.height / 2
-                        cell.myImage?.clipsToBounds = true
+                        self.circularImage(cell: cell)
                     } else {
-                        print("Can't make the image circular")
+                        self.circularImage(cell: cell)
+                        print("Can't get the image from the url")
+                   
                     }
             })
         } else {
             print("Can't load image from the internet")
             cell.myImage.image = UIImage(named: "cup.jpg")
-            cell.myImage?.contentMode = .scaleAspectFill
-            cell.myImage.frame = CGRect(x: cell.myImage.frame.origin.x, y: cell.myImage.frame.origin.y, width: 80, height: 80)
-            cell.myImage?.layer.cornerRadius = cell.myImage!.frame.height / 2
-            cell.myImage?.clipsToBounds = true
+            self.circularImage(cell: cell)
+            
+
         }
 
+        
         return cell
 
+    }
+    
+    func circularImage(cell: LeagueCell){
+        cell.myImage?.contentMode = .scaleAspectFill
+        cell.myImage.frame = CGRect(x: cell.myImage.frame.origin.x, y: cell.myImage.frame.origin.y, width: 80, height: 80)
+        cell.myImage?.layer.cornerRadius = cell.myImage!.frame.height / 2
+        cell.myImage?.clipsToBounds = true
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
            
-            let leagueArray = viewModel.favouriteLeaguesArray
-            let league = leagueArray[indexPath.row]
-            _ = viewModel.deleteLeagueFromCoreData(favLeague: league)
+            let leagueArray = leagueDetailsArray
+            let league = leagueArray?[indexPath.row]
+            leagueDetailsArray?.removeAll()
+            leagueDetailsArray = viewModel.deleteLeagueFromCoreData(favLeague: league ?? LeagueLocal(sport: "FootballNil", name: "NameNil", logo: "LogoNil", key: 00000))
             favouriteTableView.reloadData()
             
 
         }
     }
     
-    
-    /*
-    // MARK: - Navigation
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let reachability = try! Reachability()
+        if(reachability.connection == .unavailable){
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+            print("No internet connection")
+            showAlert(withTitle: "There is no internet connection")
+            
+        }else{
+            print("There is internet connection")
+            
+        }
     }
-    */
+
+    
+    func createButton(){
+
+        let button = UIButton(type: .system)
+        button.setTitle("Tap Me!", for: .normal)
+        button.frame = CGRect(x: 100, y: 100, width: 200, height: 50)
+        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        view.addSubview(button)
+    }
+    
+    @objc func buttonTapped() {
+        let leagueLocal1 = LeagueLocal(sport: "football", name: "UEFA Europa League", logo: "ss" , key: 4)
+        DBManager.favouriteLeagueDB.insert(favleague: leagueLocal1)
+        leagueDetailsArray?.removeAll()
+        leagueDetailsArray = viewModel.retriveLeaguesFromCoreData()
+        favouriteTableView.reloadData()
+        
+    }
+    
+    func showAlert(withTitle title: String) {
+        let alertController = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+
+    
 
 }
+

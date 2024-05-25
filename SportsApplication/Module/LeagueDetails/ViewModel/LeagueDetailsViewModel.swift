@@ -60,6 +60,15 @@ class LeagueDetailsViewModel{
         isFavourite = isExist
     }
 
+    
+    func deleteFavLeague(key: Int){
+      for (index, item) in leagues.enumerated(){
+        if item.key == key{
+          database.deleteFavouriteLegue(key: index)
+          break
+        }
+      }
+    }
 
    func getUpcomingEvent(sportName: String, leagueId: String, startDate: String, endDate: String){
        
