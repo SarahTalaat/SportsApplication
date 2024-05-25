@@ -28,6 +28,7 @@
 		8BBCEE0A2BFDE59E00164E8B /* TeamCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBCEE072BFDE59E00164E8B /* TeamCell.swift */; };
 		8BBCEE0C2BFE17D400164E8B /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBCEE0B2BFE17D400164E8B /* Team.swift */; };
 		8BBCEE0E2BFE1DB300164E8B /* LeagueDetailsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBCEE0D2BFE1DB300164E8B /* LeagueDetailsController.swift */; };
+		8BDE6E9C2C020C15000D571E /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDE6E9B2C020C15000D571E /* ApiResponse.swift */; };
 		8BEA69F82BFBDCAA0028BB33 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA69F72BFBDCAA0028BB33 /* test.swift */; };
 		8BEA69FA2BFBDCC30028BB33 /* test1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA69F92BFBDCC30028BB33 /* test1.swift */; };
 		8BEA69FC2BFBDCD90028BB33 /* test3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BEA69FB2BFBDCD90028BB33 /* test3.swift */; };
@@ -106,6 +107,7 @@
 		8BBCEE082BFDE59E00164E8B /* TeamCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TeamCell.xib; sourceTree = "<group>"; };
 		8BBCEE0B2BFE17D400164E8B /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		8BBCEE0D2BFE1DB300164E8B /* LeagueDetailsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueDetailsController.swift; sourceTree = "<group>"; };
+		8BDE6E9B2C020C15000D571E /* ApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
 		8BDF8CB62C00846500D15C48 /* Nunito-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		8BDF8CB72C00846500D15C48 /* Nunito-Italic-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Italic-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		8BDF8CB82C00846500D15C48 /* OFL.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
@@ -514,6 +516,7 @@
 			isa = PBXGroup;
 			children = (
 				B6DBD9142BE05734007116CC /* SportsApplicationTests.swift */,
+				8BDE6E9B2C020C15000D571E /* ApiResponse.swift */,
 			);
 			path = SportsApplicationTests;
 			sourceTree = "<group>";
@@ -805,6 +808,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6DBD9152BE05734007116CC /* SportsApplicationTests.swift in Sources */,
+				8BDE6E9C2C020C15000D571E /* ApiResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
