@@ -17,6 +17,17 @@ class LeagueViewController: UIViewController , UITableViewDataSource , UITableVi
     @IBOutlet var leagueTableView: UITableView!
     var viewModel: LeaguesViewModelProtocol!
     var sportName: String = " "
+    var indicator: UIActivityIndicatorView!
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+      super.viewWillAppear(animated)
+      indicator = UIActivityIndicatorView(style: .large)
+      indicator.center = self.view.center
+      self.view.addSubview(indicator)
+      indicator.startAnimating()
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +50,7 @@ class LeagueViewController: UIViewController , UITableViewDataSource , UITableVi
         viewModel.getLeagues(sport: sportName)
         viewModel.resultToViewController = {  [weak self] in
             DispatchQueue.main.async {
+                self?.indicator.stopAnimating()
                 self?.leagueTableView.reloadData()
             }
         }
