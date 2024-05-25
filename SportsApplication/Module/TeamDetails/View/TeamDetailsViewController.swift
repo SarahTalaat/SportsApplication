@@ -15,8 +15,8 @@ class TeamDetailsViewController: UIViewController , UITableViewDataSource , UITa
     @IBOutlet var teamCoachLabel: UILabel!
     @IBOutlet var teamNameLabel: UILabel!
     
-    var sportName: String = "football"
-    var teamId: Int = 6
+    var sportName: String?
+    var teamId: Int?
     var viewModel: TeamsDetailsViewModel!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,7 +53,7 @@ class TeamDetailsViewController: UIViewController , UITableViewDataSource , UITa
     
     
     private func fetchData(){
-        viewModel.getTeamDetails(sport: sportName, teamId: "\(teamId)")
+        viewModel.getTeamDetails(sport: sportName ?? "", teamId: "\(teamId ?? 0)")
         viewModel.resultToViewController = {  [weak self] in
             DispatchQueue.main.async { [weak self] in
                 self?.teamNameLabel.text = self?.viewModel.teamDetailsArray?[0].result?[0].team_name

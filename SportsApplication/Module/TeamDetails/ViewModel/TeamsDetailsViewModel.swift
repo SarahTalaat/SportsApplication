@@ -11,7 +11,7 @@ import Alamofire
 
 class TeamsDetailsViewModel: TeamsDetailsViewModelProtocol{
     
-    var resultToViewController: (() -> Void) = {}
+    var resultToViewController: (()->()) = {}
     var teamDetailsArray: [TeamDetails]? = []
     {
         didSet{
@@ -20,21 +20,26 @@ class TeamsDetailsViewModel: TeamsDetailsViewModelProtocol{
     }
 
     func getTeamDetails(sport: String, teamId: String) {
+        
+        
         let url = "https://apiv2.allsportsapi.com/\(sport)/"
-        let urlParameters: Parameters = ["met" : "Teams", "teamId" : teamId, "APIkey": Constants.API_KEY]
-
-        Network().fetchDataFromAPI(url: url, param: urlParameters){ [weak self] (response : MyResponse<TeamDetails>?) in
-
+        let urlParameters: Parameters = ["met" : "Teams", "teamId" : "\(teamId)", "APIkey": Constants.API_KEY]
+        
+        Network().fetchDataFromAPI(url: url, param: urlParameters) {[weak self] (response : MyResponse<TeamDetails>?) in
             self?.teamDetailsArray = response?.result ?? []
             print("XXX ViewModel TeamArrayCount: \(self?.teamDetailsArray?.count ?? 55555)")
             print("XXX Players count: \(self?.teamDetailsArray?[0].result?[0].players?.count ?? 4444444 )")
             print("XXX ViewModel Data: \(self?.teamDetailsArray?[0].result?[0].team_name ?? "NO TEAM NAME!!!!" )")
-      }
+        }
+        
+//        Network().fetchDataFromAPI(url: url, param: parameters){ [weak self] (response : MyResponse<TeamDetails>?) in
+//
+//            self?.teamDetailsArray = response?.result ?? []
+//            print("XXX ViewModel TeamArrayCount: \(self?.teamDetailsArray?.count ?? 55555)")
+//            print("XXX Players count: \(self?.teamDetailsArray?[0].result?[0].players?.count ?? 4444444 )")
+//            print("XXX ViewModel Data: \(self?.teamDetailsArray?[0].result?[0].team_name ?? "NO TEAM NAME!!!!" )")
+//      }
     }
-    
-
-
-
 
 }
 

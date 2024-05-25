@@ -36,7 +36,7 @@
         <!--Team Details View Controller-->
         <scene sceneID="5p2-ek-wYJ">
             <objects>
-                <viewController storyboardIdentifier="TeamDetailsViewController" id="IfL-tQ-Umx" customClass="TeamDetailsViewController" customModule="SportsApplication" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TeamDetailsViewController" id="IfL-tQ-Umx" customClass="TeamDetailsViewController" customModule="SportsApplication" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qLa-XK-ryx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
