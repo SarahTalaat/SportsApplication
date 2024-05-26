@@ -15,8 +15,19 @@ import Kingfisher
 class LeagueViewController: UIViewController , UITableViewDataSource , UITableViewDelegate {
 
     @IBOutlet var leagueTableView: UITableView!
-    var viewModel: LeaguesViewModel!
+    var viewModel: LeaguesViewModelProtocol!
     var sportName: String = " "
+    var indicator: UIActivityIndicatorView!
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+      super.viewWillAppear(animated)
+      indicator = UIActivityIndicatorView(style: .large)
+      indicator.center = self.view.center
+      self.view.addSubview(indicator)
+      indicator.startAnimating()
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +39,8 @@ class LeagueViewController: UIViewController , UITableViewDataSource , UITableVi
         
         let cell = UINib(nibName: "LeagueCell", bundle: nil)
         self.leagueTableView.register(cell , forCellReuseIdentifier: "cell")
-        viewModel = LeaguesViewModel()
+        
+        viewModel = DependencyProvider.leaguesViewModel
         
         fetchData()
    
@@ -38,6 +50,7 @@ class LeagueViewController: UIViewController , UITableViewDataSource , UITableVi
         viewModel.getLeagues(sport: sportName)
         viewModel.resultToViewController = {  [weak self] in
             DispatchQueue.main.async {
+                self?.indicator.stopAnimating()
                 self?.leagueTableView.reloadData()
             }
         }
@@ -97,7 +110,7 @@ class LeagueViewController: UIViewController , UITableViewDataSource , UITableVi
         leagueDetails.sportName = self.sportName
         leagueDetails.leagueId = (viewModel.leaguesArray?[indexPath.row].league_key)!
         leagueDetails.leagueName = (viewModel.leaguesArray?[indexPath.row].league_name)!
-        leagueDetails.leagueLogo = (viewModel.leaguesArray?[indexPath.row].league_logo)!
+        leagueDetails.leagueLogo = (viewModel.leaguesArray?[indexPath.row].league_logo) ?? ""
       self.present(leagueDetails, animated: true)
 
     }

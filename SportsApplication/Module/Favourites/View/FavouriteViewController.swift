@@ -39,7 +39,7 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
         let cell = UINib(nibName: "LeagueCell", bundle: nil)
         self.favouriteTableView.register(cell , forCellReuseIdentifier: "cell")
         
-        viewModel = FavouritesViewModel()
+        viewModel = DependencyProvider.favouritesViewModel
         createButton()
         
 
