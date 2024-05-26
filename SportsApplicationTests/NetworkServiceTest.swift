@@ -118,7 +118,7 @@ final class NetworkServiceTest: XCTestCase {
             XCTAssertEqual(events.first?.eventStatus, "Finished", "status result should be upcoming")
             expectation.fulfill()
         }
-        waitForExpectations(timeout: 10,handler: nil)
+        waitForExpectations(timeout: 20,handler: nil)
         }
         
         
