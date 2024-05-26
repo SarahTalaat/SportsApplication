@@ -40,8 +40,6 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
         self.favouriteTableView.register(cell , forCellReuseIdentifier: "cell")
         
         viewModel = DependencyProvider.favouritesViewModel
-        createButton()
-        
 
         
         favouriteTableView.reloadData()
@@ -130,24 +128,6 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
         }
     }
 
-    
-    func createButton(){
-
-        let button = UIButton(type: .system)
-        button.setTitle("Tap Me!", for: .normal)
-        button.frame = CGRect(x: 100, y: 100, width: 200, height: 50)
-        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        view.addSubview(button)
-    }
-    
-    @objc func buttonTapped() {
-        let leagueLocal1 = LeagueLocal(sport: "football", name: "UEFA Europa League", logo: "ss" , key: 4)
-        DBManager.favouriteLeagueDB.insert(favleague: leagueLocal1)
-        leagueDetailsArray?.removeAll()
-        leagueDetailsArray = viewModel.retriveLeaguesFromCoreData()
-        favouriteTableView.reloadData()
-        
-    }
     
     func showAlert(withTitle title: String) {
         let alertController = UIAlertController(title: title, message: nil, preferredStyle: .alert)
