@@ -118,7 +118,14 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
             showAlert(withTitle: "There is no internet connection")
             
         }else{
-            print("There is internet connection")
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let leagueDetails = storyboard.instantiateViewController(identifier: "LeagueDetailsController") as! LeagueDetailsController
+            leagueDetails.sportName = (viewModel.favouriteLeaguesArray[indexPath.row].sport)
+            leagueDetails.leagueId = (viewModel.favouriteLeaguesArray[indexPath.row].key)
+            leagueDetails.leagueName = (viewModel.favouriteLeaguesArray[indexPath.row].name)
+            leagueDetails.leagueLogo = (viewModel.favouriteLeaguesArray[indexPath.row].logo)
+          self.present(leagueDetails, animated: true)
+            
             
         }
     }
@@ -150,6 +157,8 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
         
         present(alertController, animated: true, completion: nil)
     }
+    
+    
 
     
 
