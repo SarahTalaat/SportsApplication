@@ -53,6 +53,8 @@ class TeamDetailsViewController: UIViewController , UITableViewDataSource , UITa
         fetchData()
     }
     
+
+    
     
     private func fetchData(){
         print("XXX VC SportName: \(sportName ?? "") , teamID: \(teamId ?? 0)")
@@ -60,18 +62,20 @@ class TeamDetailsViewController: UIViewController , UITableViewDataSource , UITa
         viewModel.resultToViewController = { [weak self] in
             DispatchQueue.main.async { [weak self] in
                 self?.indicator.stopAnimating()
-                // Check if viewModel.teamDetailsArray is not empty before accessing its elements
+                
                 if let teamDetailsArray = self?.viewModel.teamDetailsArray, !teamDetailsArray.isEmpty {
-                    // Check if team name and coach name are not empty before accessing them
+            
                     if let teamName = teamDetailsArray.first?.team_name {
                         self?.teamNameLabel.text = teamName
                     }
                     if let coachName = teamDetailsArray.first?.coaches?.first?.coach_name {
                         self?.teamCoachLabel.text = coachName
                     }
+                    
+                    print("Players Count: \(teamDetailsArray[0].players?.count)")
           
-                    if let playerImage = self?.viewModel.teamDetailsArray?[0].team_logo {
-                            if let imageUrl = URL(string: playerImage) {
+                    if let teamImage = self?.viewModel.teamDetailsArray?[0].team_logo {
+                            if let imageUrl = URL(string: teamImage) {
                                 self?.teamImage?.kf.setImage(with: imageUrl, placeholder: UIImage(named: "MohamedSalah.jpg") , completionHandler: { (image, error, cacheType, url) in
                                    if let image = image {
                                        self?.teamImage?.image = image
@@ -99,38 +103,73 @@ class TeamDetailsViewController: UIViewController , UITableViewDataSource , UITa
         return 1
     }
 
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return viewModel.teamDetailsArray?.count ?? 0
+        // Ensure that the teamDetailsArray is not nil and contains at least one element
+        guard let teamDetailsArray = viewModel.teamDetailsArray, !teamDetailsArray.isEmpty else {
+            return 0
+        }
+        
+        // Sum up the total number of players across all teams
+        let totalPlayersCount = teamDetailsArray.reduce(0) { (result, team) in
+            if let playersCount = team.players?.count {
+                return result + playersCount
+            } else {
+                return result
+            }
+        }
+        
+        return totalPlayersCount
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = teamTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TeamDetailsCell
         
-        if let player = viewModel.teamDetailsArray?.first?.players?[indexPath.row]{
+   
+        guard let teamDetailsArray = viewModel.teamDetailsArray, !teamDetailsArray.isEmpty else {
+            return cell
+        }
+        
+
+        var playerIndex = indexPath.row
+        var teamIndex = 0
+        
+     
+        while playerIndex >= teamDetailsArray[teamIndex].players?.count ?? 0 {
+            playerIndex -= teamDetailsArray[teamIndex].players?.count ?? 0
+            teamIndex += 1
+            
+
+            if teamIndex >= teamDetailsArray.count {
+                break
+            }
+        }
+        
+
+        if let player = teamDetailsArray[teamIndex].players?[playerIndex] {
+
             if let playerName = player.player_name {
                 cell.teamDetailsPlayerNameLabel.text = playerName
-
-                if let playerImage = player.player_image {
-                    if let imageUrl = URL(string: playerImage) {
-                       cell.teamDetailsImage?.kf.setImage(with: imageUrl, placeholder: UIImage(named: "MohamedSalah.jpg") , completionHandler: { (image, error, cacheType, url) in
-                           if let image = image {
-                               cell.teamDetailsImage?.image = image
-                               self.circularImage(cell: cell)
-                           } else {
-                               cell.teamDetailsImage.image = UIImage(named: "MohamedSalah.jpg")
-                               self.circularImage(cell: cell)
-                               print("Can't get image")
-                           }
-                       })
-                   } else {
-                       print("Can't load image from the internet or image URL is not available")
-                       cell.teamDetailsImage.image = UIImage(named: "MohamedSalah.jpg")
-                       self.circularImage(cell: cell)
-                   }
-               }
-                }
             }
+            
+  
+            if let playerImageStr = player.player_image, let imageUrl = URL(string: playerImageStr) {
+                cell.teamDetailsImage.kf.setImage(with: imageUrl, placeholder: UIImage(named: "MohamedSalah.jpg"), completionHandler: { (image, error, cacheType, url) in
+                    if let image = image {
+                        cell.teamDetailsImage.image = image
+                        self.circularImage(cell: cell)
+                    } else {
+                        cell.teamDetailsImage.image = UIImage(named: "MohamedSalah.jpg")
+                        self.circularImage(cell: cell)
+                        print("Can't get image")
+                    }
+                })
+            } else {
+                print("Can't load image from the internet or image URL is not available")
+                cell.teamDetailsImage.image = UIImage(named: "MohamedSalah.jpg")
+                self.circularImage(cell: cell)
+            }
+        }
         
         return cell
     }
