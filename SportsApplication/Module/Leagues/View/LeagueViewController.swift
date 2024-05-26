@@ -102,7 +102,7 @@ class LeagueViewController: UIViewController , UITableViewDataSource , UITableVi
         cell.myImage?.layer.cornerRadius = cell.myImage!.frame.height / 2
         cell.myImage?.clipsToBounds = true
     }
-    
+    let teamImagePlaceholder = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/EA_Sports_monochrome_logo.svg/2048px-EA_Sports_monochrome_logo.svg.png"
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -110,7 +110,8 @@ class LeagueViewController: UIViewController , UITableViewDataSource , UITableVi
         leagueDetails.sportName = self.sportName
         leagueDetails.leagueId = (viewModel.leaguesArray?[indexPath.row].league_key)!
         leagueDetails.leagueName = (viewModel.leaguesArray?[indexPath.row].league_name)!
-        leagueDetails.leagueLogo = (viewModel.leaguesArray?[indexPath.row].league_logo) ?? ""
+        leagueDetails.leagueLogo = (viewModel.leaguesArray?[indexPath.row].league_logo) ?? teamImagePlaceholder
+        leagueDetails.modalPresentationStyle = .fullScreen
       self.present(leagueDetails, animated: true)
 
     }
