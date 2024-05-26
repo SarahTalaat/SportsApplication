@@ -29,7 +29,7 @@ class TeamsDetailsViewModel: TeamsDetailsViewModelProtocol{
         
         print("XXX ViewModel sportParameter: \(sport), teamID: \(teamId)")
         let url = "https://apiv2.allsportsapi.com/\(sport)/"
-        let urlParameters: Parameters = ["met" : "Teams", "leagueId" : teamId, "APIkey": Constants.API_KEY]
+        let urlParameters: Parameters = ["met" : "Teams", "teamId" : teamId, "APIkey": Constants.API_KEY]
         
         networkProtocol.fetchDataFromAPI(url: url, param: urlParameters) { [weak self] (response : MyResponse<Result>?) in
 
