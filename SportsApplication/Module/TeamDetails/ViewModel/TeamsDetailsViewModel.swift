@@ -12,7 +12,7 @@ import Alamofire
 class TeamsDetailsViewModel: TeamsDetailsViewModelProtocol{
     
     var resultToViewController: (()->()) = {}
-    var teamDetailsArray: [Result]? = []
+    var teamDetailsArray: [ResultTeamDetails]? = []
     {
         didSet{
           resultToViewController()
@@ -31,7 +31,7 @@ class TeamsDetailsViewModel: TeamsDetailsViewModelProtocol{
         let url = "https://apiv2.allsportsapi.com/\(sport)/"
         let urlParameters: Parameters = ["met" : "Teams", "teamId" : teamId, "APIkey": Constants.API_KEY]
         
-        networkProtocol.fetchDataFromAPI(url: url, param: urlParameters) { [weak self] (response : MyResponse<Result>?) in
+        networkProtocol.fetchDataFromAPI(url: url, param: urlParameters) { [weak self] (response : MyResponse<ResultTeamDetails>?) in
 
             self?.teamDetailsArray = response?.result ?? []
 //            print("XXX response success: \(response?.success ?? 66666 )")

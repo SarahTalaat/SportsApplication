@@ -6,108 +6,65 @@
 //
 
 import Foundation
-import SportsApplication
+@testable import SportsApplication
+import Alamofire
 
 
 class MockFakeData {
     
-    static let fakeTeamDetails: [String:Any] =
-    [
-        "team_key" : 1 ,
-        "team_name" : "ahly" ,
-        "team_logo" : "ahlylogo" ,
-        "players" : MockFakeData.fakePlayers ,
-        "coaches" : MockFakeData.fakeCoach
-    ]
-    
-    
-    static let fakeTeam: [String: Any] = [
-        "team_key" : 1,
-        "team_name": "name" ,
-        "team_logo": "logo" ,
-        "players" : MockFakeData.fakePlayers,
-        "coaches" : MockFakeData.fakeCoach
-    ]
 
-    static let fakeSport: [String: Any] =
-    [
-     "name": "Sarah" ,
-     "image": "image"
-    ]
-    
-    static let fakeLeague: [String: Any] =
-    [
-        "league_key" : 1 ,
-        "league_name" : "Ahly" ,
-        "country_key" : 1 ,
-        "country_name" : "Egypt" ,
-        "league_logo": "logo" ,
-        "country_logo" : "logo"
-    ]
-    
+    static let player = Player(player_key: 1, player_name: "name", player_number: "number", player_image: "image")
+    static let coach = Coach(coach_name: "name")
+    static let coaches = Coaches(coach_name: "Coach Smith")
+    static let players = Players(player_image: "player_image_url", player_name: "John Doe")
+
+    static let fakeTeamDetails: ResultTeamDetails = {
+
+        return ResultTeamDetails(team_key: 1, team_name: "name", team_logo: "logo", players: [players], coaches: [coaches])
+        }()
         
-   static let fakeEvent : [String:Any] =
-    [
-        "eventKey":1 ,
-        "eventDate": "date",
-        "eventTime" : "time" ,
-        "eventHomeTeam" : "hometeam" ,
-        "homeTeamKey": 1 ,
-        "eventAwayTeam": "awayTeam" ,
-        "awayTeamKey": 1 ,
-        "homeTeamLogo" : "homeLogo",
-        "awayTeamLogo" : "awayLogo" ,
-        "leagueRound" : "leagueRound" ,
-        "eventStadium" : "eventStadium" ,
-        "finalResult" : "finalResult" ,
-        "eventStatus" : "eventStatus"
-    ]
-    
+        static let fakeTeam: Team = {
+            return Team(team_key: 1, team_name: "name", team_logo: "logo", players: [player], coaches: [coach])
+        }()
         
+        static let fakeSport: Sport = Sport(name: "Sarah", image: "image")
         
-//   static  let fakeLeagueResult : [String:Any] =
-//    [
-//        "success" : 1 ,
-//        "result" : MockFakeData.fakeLeague
-//    ]
+        static let fakeLeague: League = League(league_key: 1, league_name: "Ahly", country_key: 1, country_name: "Egypt", league_logo: "logo", country_logo: "logo")
+        
+        static let fakeEvent: Event = Event(eventKey: 1, eventDate: "date", eventTime: "time", eventHomeTeam: "hometeam", homeTeamKey: 1, eventAwayTeam: "awayTeam", awayTeamKey: 1, homeTeamLogo: "homeLogo", awayTeamLogo: "awayLogo", leagueRound: "leagueRound", eventStadium: "eventStadium", finalResult: "finalResult", eventStatus: "eventStatus")
     
     
     
-    static let fakePlayers : [String:Any] =
-    [
-        "player_image": "image",
-        "player_name" : "name"
-    ]
+    enum responseWithError: Error{
+        case responseError
+    }
     
-    static let fakeCoach: [String:Any] =
-    [
-        "coach_name" : "Sarah"
-    ]
+    var shouldReturnError: Bool
     
-//    
-//    static let fakeTeamDetails: TeamDetails = {
-//            let players = Player(player_image: "image", player_name: "name")
-//            let coaches = Coach(coach_name: "Sarah")
-//            return TeamDetails(team_key: 1, team_name: "ahly", team_logo: "ahlylogo", players: [players], coaches: [coaches])
-//        }()
-//        
-//        static let fakeTeam: Team = {
-//            let players = Player(player_image: "image", player_name: "name")
-//            let coaches = Coach(coach_name: "Sarah")
-//            return Team(team_key: 1, team_name: "name", team_logo: "logo", players: [players], coaches: [coaches])
-//        }()
-//        
-//        static let fakeSport: Sport = Sport(name: "Sarah", image: "image")
-//        
-//        static let fakeLeague: League = League(league_key: 1, league_name: "Ahly", country_key: 1, country_name: "Egypt", league_logo: "logo", country_logo: "logo")
-//        
-//        static let fakeEvent: Event = Event(eventKey: 1, eventDate: "date", eventTime: "time", eventHomeTeam: "hometeam", homeTeamKey: 1, eventAwayTeam: "awayTeam", awayTeamKey: 1, homeTeamLogo: "homeLogo", awayTeamLogo: "awayLogo", leagueRound: "leagueRound", eventStadium: "eventStadium", finalResult: "finalResult", eventStatus: "eventStatus")
+    init(shouldReturnError: Bool){
+        self.shouldReturnError = shouldReturnError
+    }
 
+}
 
-//    static var allLeaguesResponse = MockFakeData.fakeLeague
-//    static var upComingEventsResponse = MockFakeData.fakeEvent
-//    static var latestEventResponse = MockFakeData.fakeEvent
-//    static var teamsResponse = MockFakeData.fakeTeam
-//    static var teamDetailsResponse = MockFakeData.fakeTeamDetails
-
+extension MockFakeData {
+    func fetchDataFromAPI<T>(url: String, param: Parameters, completionHandler: @escaping (MyResponse<T>?) -> Void) where T: Decodable {
+        
+        Alamofire.request(url, method: .get, parameters: param).responseJSON { response in
+            switch response.result {
+            case .success(let value):
+                do {
+                    let jsonData = try JSONSerialization.data(withJSONObject: value)
+                    let responseObj = try JSONDecoder().decode(MyResponse<T>.self, from: jsonData)
+                    completionHandler(responseObj)
+                } catch let error {
+                    print("Decoding error: \(error)")
+                    completionHandler(nil)
+                }
+            case .failure(let error):
+                print("Request error: \(error.localizedDescription)")
+                completionHandler(nil)
+            }
+        }
+    }
 }

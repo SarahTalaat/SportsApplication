@@ -1,6 +1,6 @@
 
 import Foundation
-struct Result : Codable {
+struct ResultTeamDetails : Codable {
 	let team_key : Int?
 	let team_name : String?
 	let team_logo : String?

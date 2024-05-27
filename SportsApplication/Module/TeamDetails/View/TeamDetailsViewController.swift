@@ -15,7 +15,7 @@ class TeamDetailsViewController: UIViewController , UITableViewDataSource , UITa
     @IBOutlet var teamCoachLabel: UILabel!
     @IBOutlet var teamNameLabel: UILabel!
     
-    var teamDetailsArray: [Result]?
+    var teamDetailsArray: [ResultTeamDetails]?
     var sportName: String?
     var teamId: Int?
     var viewModel: TeamsDetailsViewModelProtocol!
