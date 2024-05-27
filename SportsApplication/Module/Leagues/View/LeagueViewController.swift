@@ -98,7 +98,7 @@ class LeagueViewController: UIViewController , UITableViewDataSource , UITableVi
     
     func circularImage(cell: LeagueCell){
         cell.myImage?.contentMode = .scaleAspectFill
-        cell.myImage.frame = CGRect(x: cell.myImage.frame.origin.x, y: cell.myImage.frame.origin.y, width: 80, height: 80)
+        cell.myImage.frame = CGRect(x: cell.myImage.frame.origin.x, y: cell.myImage.frame.origin.y, width: 70, height: 70)
         cell.myImage?.layer.cornerRadius = cell.myImage!.frame.height / 2
         cell.myImage?.clipsToBounds = true
     }
