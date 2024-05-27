@@ -30,7 +30,7 @@ class MockFakeData {
         "team_key" : 1,
         "team_name": "name" ,
         "team_logo": "logo" ,
-        "players" : MockFakeData.fakeCoach,
+        "players" : MockFakeData.fakePlayers,
         "coaches" : MockFakeData.fakeCoach
     ]
 
@@ -86,5 +86,12 @@ class MockFakeData {
     [
         "coach_name" : "Sarah"
     ]
+    
+
+    static var allLeaguesResponse = MockFakeData.fakeLeagueResult
+    static var upComingEventsResponse = MockFakeData.fakeEvent
+    static var latestEventResponse = MockFakeData.fakeEvent
+    static var teamsResponse = MockFakeData.fakeTeam
+    static var teamDetailsResponse = MockFakeData.fakeTeamDetails
 
 }
