@@ -5,6 +5,12 @@ struct Players : Codable {
 
 	let player_image : String?
 	let player_name : String?
+    
+    init(player_image: String?, player_name: String?) {
+        self.player_image = player_image
+        self.player_name = player_name
+    }
+    
 
 	enum CodingKeys: String, CodingKey {
 
@@ -12,6 +18,8 @@ struct Players : Codable {
 		case player_image = "player_image"
 		case player_name = "player_name"
 	}
+    
+
 
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)

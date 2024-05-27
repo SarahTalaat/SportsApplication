@@ -39,5 +39,33 @@ struct Event: Decodable{
         case eventStatus = "event_status"
     }
 
+    
+    init(eventKey: Int?,
+             eventDate: String?,
+             eventTime: String?,
+             eventHomeTeam: String?,
+             homeTeamKey: Int?,
+             eventAwayTeam: String?,
+             awayTeamKey: Int?,
+             homeTeamLogo: String?,
+             awayTeamLogo: String?,
+             leagueRound: String?,
+             eventStadium: String?,
+             finalResult: String?,
+             eventStatus: String?) {
+            self.eventKey = eventKey
+            self.eventDate = eventDate
+            self.eventTime = eventTime
+            self.eventHomeTeam = eventHomeTeam
+            self.homeTeamKey = homeTeamKey
+            self.eventAwayTeam = eventAwayTeam
+            self.awayTeamKey = awayTeamKey
+            self.homeTeamLogo = homeTeamLogo
+            self.awayTeamLogo = awayTeamLogo
+            self.leagueRound = leagueRound
+            self.eventStadium = eventStadium
+            self.finalResult = finalResult
+            self.eventStatus = eventStatus
+        }
 
 }
