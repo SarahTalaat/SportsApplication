@@ -100,6 +100,28 @@ class DBManager: DBManagerProtocol{
         }
     }
     
+    func deleteAllFromCoreData() -> [NSManagedObject] {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FavouriteEntity")
+        
+        do {
+            let results = try managedContext.fetch(fetchRequest)
+            for object in results {
+                if let league = object as? NSManagedObject {
+                    managedContext.delete(league)
+                }
+            }
+            try managedContext.save()
+            return retriveLeaguesFromCoreData()
+        } catch let error as NSError {
+            print("Error deleting from Core Data: \(error.localizedDescription)")
+            return []
+        }
+    }
+
+    
     func deleteFavouriteLegue(key: Int) {
         if key < nsManagedLeagues.count {
             manager.delete(nsManagedLeagues[key])
@@ -134,6 +156,8 @@ class DBManager: DBManagerProtocol{
             print(error.localizedDescription)
         }
     }
+    
+    
     
     
 }
