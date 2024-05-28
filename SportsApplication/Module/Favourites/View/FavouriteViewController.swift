@@ -118,6 +118,7 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
             leagueDetails.leagueId = (viewModel.favouriteLeaguesArray[indexPath.row].key)
             leagueDetails.leagueName = (viewModel.favouriteLeaguesArray[indexPath.row].name)
             leagueDetails.leagueLogo = (viewModel.favouriteLeaguesArray[indexPath.row].logo)
+            leagueDetails.modalPresentationStyle = .fullScreen
           self.present(leagueDetails, animated: true)
             
             
