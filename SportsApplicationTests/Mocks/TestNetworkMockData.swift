@@ -40,7 +40,7 @@ class TestNetworkMockData: XCTestCase {
         XCTAssertEqual(fetchedResponse?.result?[0].league_key, 1)
     }
 
-    func testFetchLeagueDataFromAPI_WithoutError() {
+    func testFetchLeagueDataFromAPI_Success() {
      
         let mockNetworkData = MockNetworkFakeData(shouldReturnError: false)
 
@@ -58,7 +58,7 @@ class TestNetworkMockData: XCTestCase {
     }
     
     
-    func testFetchTeamDetailsDataFromAPI() {
+    func testFetchTeamDetailsDataFromAPI_Success() {
 
         let mockNetworkFakeData = MockNetworkFakeData(shouldReturnError: false)
         
@@ -78,14 +78,97 @@ class TestNetworkMockData: XCTestCase {
             XCTAssertEqual(response?.result?.first?.coaches?.first?.coach_name, "Coach Smith")
         }
     }
+    
+    func testFetchTeamDataFromAPI_Success() {
 
+        let mockNetworkFakeData = MockNetworkFakeData(shouldReturnError: false)
+
+     
+        mockNetworkFakeData.fetchTeamDataFromAPI(url: "", param: [:]) { response in
+      
+            XCTAssertNotNil(response)
+            XCTAssertEqual(response?.success, 1)
+            XCTAssertEqual(response?.result?.count, 1)
+            XCTAssertEqual(response?.result?.first?.team_key, 1)
+            XCTAssertEqual(response?.result?.first?.team_name, "name")
+            XCTAssertEqual(response?.result?.first?.team_logo, "logo")
+            XCTAssertEqual(response?.result?.first?.players?.count, 1)
+            XCTAssertEqual(response?.result?.first?.players?.first?.player_image, "image")
+            XCTAssertEqual(response?.result?.first?.players?.first?.player_name, "name")
+            XCTAssertNotEqual(response?.result?.first?.players?.first?.player_number, "name")
+            XCTAssertEqual(response?.result?.first?.coaches?.count, 1)
+            XCTAssertEqual(response?.result?.first?.coaches?.first?.coach_name, "name")
+        }
+    }
+
+
+    
+    func testFetchUpComingEventsDataFromAPI_Success() {
+        
+        let mockNetworkFakeData = MockNetworkFakeData(shouldReturnError: false)
+
+        mockNetworkFakeData.fetchUpComingEventsDataFromAPI(url: "", param: [:]) { response in
+    
+            XCTAssertNotNil(response)
+            XCTAssertEqual(response?.success, 1)
+            XCTAssertEqual(response?.result?.count, 1)
+            XCTAssertEqual(response?.result?.first?.eventKey, 1)
+            XCTAssertEqual(response?.result?.first?.eventDate, "date")
+            XCTAssertEqual(response?.result?.first?.eventTime, "time")
+            XCTAssertEqual(response?.result?.first?.eventHomeTeam, "hometeam")
+            XCTAssertEqual(response?.result?.first?.homeTeamKey, 1)
+            XCTAssertEqual(response?.result?.first?.eventAwayTeam, "awayTeam")
+            XCTAssertEqual(response?.result?.first?.awayTeamKey, 1)
+            XCTAssertEqual(response?.result?.first?.homeTeamLogo, "homeLogo")
+            XCTAssertEqual(response?.result?.first?.awayTeamLogo, "awayLogo")
+            XCTAssertEqual(response?.result?.first?.leagueRound, "leagueRound")
+            XCTAssertEqual(response?.result?.first?.eventStadium, "eventStadium")
+            XCTAssertEqual(response?.result?.first?.finalResult, "finalResult")
+            XCTAssertEqual(response?.result?.first?.eventStatus, "eventStatus")
+        }
+    }
+    
+    
+    func testFetchLatestEventsDataFromAPI_Success() {
+        
+        let mockNetworkFakeData = MockNetworkFakeData(shouldReturnError: false)
+
+        mockNetworkFakeData.fetchLatestEventsDataFromAPI(url: "", param: [:]) { response in
+    
+            XCTAssertNotNil(response)
+            XCTAssertEqual(response?.success, 1)
+            XCTAssertEqual(response?.result?.count, 1)
+            XCTAssertNotEqual(response?.result?.first?.eventKey, 66)
+            XCTAssertEqual(response?.result?.first?.eventDate, "date")
+            XCTAssertEqual(response?.result?.first?.eventTime, "time")
+            XCTAssertEqual(response?.result?.first?.eventHomeTeam, "hometeam")
+            XCTAssertEqual(response?.result?.first?.homeTeamKey, 1)
+            XCTAssertEqual(response?.result?.first?.eventAwayTeam, "awayTeam")
+            XCTAssertEqual(response?.result?.first?.awayTeamKey, 1)
+            XCTAssertEqual(response?.result?.first?.homeTeamLogo, "homeLogo")
+            XCTAssertEqual(response?.result?.first?.awayTeamLogo, "awayLogo")
+            XCTAssertEqual(response?.result?.first?.leagueRound, "leagueRound")
+            XCTAssertEqual(response?.result?.first?.eventStadium, "eventStadium")
+            XCTAssertEqual(response?.result?.first?.finalResult, "finalResult")
+            XCTAssertNotEqual(response?.result?.first?.eventStatus, "eventStatussssss")
+            
+        }
+    }
+    
+    func testFetchUpComingEventsDataFromAPIWithError() {
+       
+        let mockNetworkFakeData = MockNetworkFakeData(shouldReturnError: true)
+        mockNetworkFakeData.fetchUpComingEventsDataFromAPI(url: "", param: [:]) { response in
+            XCTAssertNil(response)
+        }
+    }
+    
     func testFetchTeamDetailsDataFromAPIWithError() {
         let mockNetworkFakeData = MockNetworkFakeData(shouldReturnError: true)
         mockNetworkFakeData.fetchTeamDetailsDataFromAPI(url: "", param: [:]) { response in
             XCTAssertNil(response)
         }
     }
-    
     
     
 }
