@@ -10,9 +10,8 @@ import Foundation
 import Alamofire
 
 
-class MockFakeData {
+class MockNetworkFakeData {
     
-
     static let player = Player(player_key: 1, player_name: "name", player_number: "number", player_image: "image")
     static let coach = Coach(coach_name: "name")
     static let coaches = Coaches(coach_name: "Coach Smith")
@@ -23,15 +22,18 @@ class MockFakeData {
         return ResultTeamDetails(team_key: 1, team_name: "name", team_logo: "logo", players: [players], coaches: [coaches])
         }()
         
-        static let fakeTeam: Team = {
+    static let fakeTeam: Team = {
             return Team(team_key: 1, team_name: "name", team_logo: "logo", players: [player], coaches: [coach])
         }()
         
-        static let fakeSport: Sport = Sport(name: "Sarah", image: "image")
-        
-        static let fakeLeague: League = League(league_key: 1, league_name: "Ahly", country_key: 1, country_name: "Egypt", league_logo: "logo", country_logo: "logo")
-        
-        static let fakeEvent: Event = Event(eventKey: 1, eventDate: "date", eventTime: "time", eventHomeTeam: "hometeam", homeTeamKey: 1, eventAwayTeam: "awayTeam", awayTeamKey: 1, homeTeamLogo: "homeLogo", awayTeamLogo: "awayLogo", leagueRound: "leagueRound", eventStadium: "eventStadium", finalResult: "finalResult", eventStatus: "eventStatus")
+    static let fakeSport: Sport = Sport(name: "Sarah", image: "image")
+
+    
+    static let fakeEventUpcoming: Event = Event(eventKey: 1, eventDate: "date", eventTime: "time", eventHomeTeam: "hometeam", homeTeamKey: 1, eventAwayTeam: "awayTeam", awayTeamKey: 1, homeTeamLogo: "homeLogo", awayTeamLogo: "awayLogo", leagueRound: "leagueRound", eventStadium: "eventStadium", finalResult: "finalResult", eventStatus: "eventStatus")
+    
+    static let fakeLeague = League(league_key: 1, league_name: "Ahly", country_key: 1, country_name: "Egypt", league_logo: "logo", country_logo: "logo")
+    
+    static let fakeLeagueResponse = MyResponse(success: 1, result: [fakeLeague])
     
     
     
@@ -46,16 +48,34 @@ class MockFakeData {
     }
 
 }
+
+
+extension MockNetworkFakeData {
+
+    func fetchLeagueDataFromAPI(url: String, param: Parameters, completionHandler: @escaping (MyResponse<League>?) -> Void) {
+        if shouldReturnError {
+            
+            completionHandler(nil)
+            
+        } else {
+            let fakeLeague = League(league_key: 1, league_name: "Ahly", country_key: 1, country_name: "Egypt", league_logo: "logo", country_logo: "logo")
+            let fakeLeagueResponse = MyResponse(success: 1, result: [fakeLeague])
+
+            completionHandler(fakeLeagueResponse)
+        }
+    }
+
+}
+
+
+//    func fetchLeagueDataFromAPI(url: String, param: Parameters, completionHandler: @escaping (MyResponse<League>?) -> Void){
 //
-//extension MockFakeData {
-//    func fetchDataFromAPI<T>(url: String, param: Parameters, completionHandler: @escaping (MyResponse<T>?) -> Void) where T: Decodable {
-//        
 //        Alamofire.request(url, method: .get, parameters: param).responseJSON { response in
 //            switch response.result {
 //            case .success(let value):
 //                do {
 //                    let jsonData = try JSONSerialization.data(withJSONObject: value)
-//                    let responseObj = try JSONDecoder().decode(MyResponse<T>.self, from: jsonData)
+//                    let responseObj = try JSONDecoder().decode(MyResponse<League>.self, from: jsonData)
 //                    completionHandler(responseObj)
 //                } catch let error {
 //                    print("Decoding error: \(error)")
@@ -67,4 +87,3 @@ class MockFakeData {
 //            }
 //        }
 //    }
-//}

@@ -71,5 +71,8 @@ class CoreDataTest2: XCTestCase {
         XCTAssertEqual(leaguesFromCoreData2.count, 2)
         
     }
+    
+    
+    
 
 }
