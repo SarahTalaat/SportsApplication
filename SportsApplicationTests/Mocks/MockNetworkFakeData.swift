@@ -20,7 +20,7 @@ class MockNetworkFakeData {
     static let fakeTeamDetails: ResultTeamDetails = ResultTeamDetails(team_key: 1, team_name: "name", team_logo: "logo", players: [players], coaches: [coaches])
 
     static let fakeTeam: Team = Team(team_key: 1, team_name: "name", team_logo: "logo", players: [player], coaches: [coach])
-
+ 
     static let fakeEventUpcoming: Event = Event(eventKey: 1, eventDate: "date", eventTime: "time", eventHomeTeam: "hometeam", homeTeamKey: 1, eventAwayTeam: "awayTeam", awayTeamKey: 1, homeTeamLogo: "homeLogo", awayTeamLogo: "awayLogo", leagueRound: "leagueRound", eventStadium: "eventStadium", finalResult: "finalResult", eventStatus: "eventStatus")
     
     static let fakeEventLatest: Event = Event(eventKey: 1, eventDate: "date", eventTime: "time", eventHomeTeam: "hometeam", homeTeamKey: 1, eventAwayTeam: "awayTeam", awayTeamKey: 1, homeTeamLogo: "homeLogo", awayTeamLogo: "awayLogo", leagueRound: "leagueRound", eventStadium: "eventStadium", finalResult: "finalResult", eventStatus: "eventStatus")
