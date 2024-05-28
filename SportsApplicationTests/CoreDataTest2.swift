@@ -72,6 +72,29 @@ class CoreDataTest2: XCTestCase {
         
     }
     
+    func testDeleteAll(){
+        
+        let league1 = LeagueLocal(sport: "basketball", name: "ahly", logo: "ahly", key: 1)
+        let league2 = LeagueLocal(sport: "basketball2", name: "ahly2", logo: "ahly2", key: 2)
+        let league3 = LeagueLocal(sport: "basketball3", name: "ahly3", logo: "ahly3", key: 3)
+        
+        database.deleteAllFromCoreData()
+        database.insert(favleague: league1)
+        database.insert(favleague: league2)
+        database.insert(favleague: league3)
+        
+        let leaguesFromCoreData1 = database.retriveLeaguesFromCoreData()
+        
+        XCTAssertEqual(leaguesFromCoreData1.count, 3)
+        
+        database.deleteAllFromCoreData()
+        
+        let leaguesFromCoreData2 = database.retriveLeaguesFromCoreData()
+        
+        XCTAssertEqual(leaguesFromCoreData2.count, 0)
+        
+    }
+    
     
     
 

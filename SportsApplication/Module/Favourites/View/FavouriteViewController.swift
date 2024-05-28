@@ -79,11 +79,7 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
             print("Can't load image from the internet")
             cell.myImage.image = UIImage(named: "cup.jpg")
             self.circularImage(cell: cell)
-            
-
         }
-
-        
         return cell
 
     }

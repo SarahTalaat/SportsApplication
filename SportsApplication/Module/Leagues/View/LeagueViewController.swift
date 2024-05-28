@@ -90,9 +90,6 @@ class LeagueViewController: UIViewController , UITableViewDataSource , UITableVi
             cell.myImage.image = UIImage(named: "cup.jpg")
             self.circularImage(cell: cell)
         }
-
-
-
         return cell
     }
     
