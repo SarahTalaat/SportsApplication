@@ -6,22 +6,14 @@
 //
 
 import Foundation
-
 import XCTest
 @testable import SportsApplication
 import Alamofire
 
-
-
-class TestNetworkMockData: XCTestCase  {
+class TestNetworkMockData: XCTestCase {
 
     var mockObj: MockNetworkFakeData!
-    var shouldReturnError: Bool
-
-    init(shouldReturnError: Bool) {
-        self.shouldReturnError = shouldReturnError
-        super.init()
-    }
+    var shouldReturnError: Bool?
 
     override func setUpWithError() throws {
         mockObj = MockNetworkFakeData(shouldReturnError: false)
@@ -31,25 +23,9 @@ class TestNetworkMockData: XCTestCase  {
         mockObj = nil
     }
 
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
     func testFetchDataFromAPI() {
         let allLeaguesURL = "https://apiv2.allsportsapi.com/football/"
-        let parameters = ["met" : "Leagues", "APIkey" : Constants.API_KEY]
+        let parameters = ["met": "Leagues", "APIkey": Constants.API_KEY]
 
         var fetchedResponse: MyResponse<League>?
 
@@ -63,4 +39,20 @@ class TestNetworkMockData: XCTestCase  {
         XCTAssertEqual(fetchedResponse?.result?[0].league_key, 1)
     }
 
+    func testFetchLeagueDataFromAPI_WithoutError() {
+        // Arrange
+        let mockNetworkData = MockNetworkFakeData(shouldReturnError: false)
+
+        // Act
+        var fetchedLeagueResponse: MyResponse<League>?
+        mockNetworkData.fetchLeagueDataFromAPI(url: "", param: [:]) { response in
+            fetchedLeagueResponse = response
+        }
+
+        // Assert
+        XCTAssertNotNil(fetchedLeagueResponse)
+        XCTAssertEqual(fetchedLeagueResponse?.success, 1)
+        XCTAssertEqual(fetchedLeagueResponse?.result?.count, 1)
+        XCTAssertEqual(fetchedLeagueResponse?.result?.first?.league_name, "Ahly")
+    }
 }

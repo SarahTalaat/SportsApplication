@@ -4,11 +4,9 @@
 //
 //  Created by Sara Talat on 27/05/2024.
 //
-
 import Foundation
 @testable import SportsApplication
 import Alamofire
-
 
 class MockNetworkFakeData {
     
@@ -18,72 +16,38 @@ class MockNetworkFakeData {
     static let players = Players(player_image: "player_image_url", player_name: "John Doe")
 
     static let fakeTeamDetails: ResultTeamDetails = {
-
         return ResultTeamDetails(team_key: 1, team_name: "name", team_logo: "logo", players: [players], coaches: [coaches])
-        }()
+    }()
         
     static let fakeTeam: Team = {
-            return Team(team_key: 1, team_name: "name", team_logo: "logo", players: [player], coaches: [coach])
-        }()
+        return Team(team_key: 1, team_name: "name", team_logo: "logo", players: [player], coaches: [coach])
+    }()
         
     static let fakeSport: Sport = Sport(name: "Sarah", image: "image")
 
-    
     static let fakeEventUpcoming: Event = Event(eventKey: 1, eventDate: "date", eventTime: "time", eventHomeTeam: "hometeam", homeTeamKey: 1, eventAwayTeam: "awayTeam", awayTeamKey: 1, homeTeamLogo: "homeLogo", awayTeamLogo: "awayLogo", leagueRound: "leagueRound", eventStadium: "eventStadium", finalResult: "finalResult", eventStatus: "eventStatus")
     
     static let fakeLeague = League(league_key: 1, league_name: "Ahly", country_key: 1, country_name: "Egypt", league_logo: "logo", country_logo: "logo")
     
     static let fakeLeagueResponse = MyResponse(success: 1, result: [fakeLeague])
     
-    
-    
-    enum responseWithError: Error{
+    enum ResponseWithError: Error {
         case responseError
     }
     
     var shouldReturnError: Bool
     
-    init(shouldReturnError: Bool){
+    init(shouldReturnError: Bool) {
         self.shouldReturnError = shouldReturnError
     }
-
 }
 
-
-extension MockNetworkFakeData {
-
-    func fetchLeagueDataFromAPI(url: String, param: Parameters, completionHandler: @escaping (MyResponse<League>?) -> Void) {
-        if shouldReturnError {
-            
-            completionHandler(nil)
-            
-        } else {
-            let fakeLeague = League(league_key: 1, league_name: "Ahly", country_key: 1, country_name: "Egypt", league_logo: "logo", country_logo: "logo")
-            let fakeLeagueResponse = MyResponse(success: 1, result: [fakeLeague])
-
-            completionHandler(fakeLeagueResponse)
+    extension MockNetworkFakeData {
+        func fetchLeagueDataFromAPI(url: String, param: Parameters, completionHandler: @escaping (MyResponse<League>?) -> Void) {
+            if shouldReturnError {
+                completionHandler(nil)
+            } else {
+                completionHandler(MockNetworkFakeData.fakeLeagueResponse)
+            }
         }
     }
-
-}
-
-
-//    func fetchLeagueDataFromAPI(url: String, param: Parameters, completionHandler: @escaping (MyResponse<League>?) -> Void){
-//
-//        Alamofire.request(url, method: .get, parameters: param).responseJSON { response in
-//            switch response.result {
-//            case .success(let value):
-//                do {
-//                    let jsonData = try JSONSerialization.data(withJSONObject: value)
-//                    let responseObj = try JSONDecoder().decode(MyResponse<League>.self, from: jsonData)
-//                    completionHandler(responseObj)
-//                } catch let error {
-//                    print("Decoding error: \(error)")
-//                    completionHandler(nil)
-//                }
-//            case .failure(let error):
-//                print("Request error: \(error.localizedDescription)")
-//                completionHandler(nil)
-//            }
-//        }
-//    }
