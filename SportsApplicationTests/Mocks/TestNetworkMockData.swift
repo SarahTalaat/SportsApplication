@@ -23,6 +23,7 @@ class TestNetworkMockData: XCTestCase {
         mockObj = nil
     }
 
+    
     func testFetchDataFromAPI() {
         let allLeaguesURL = "https://apiv2.allsportsapi.com/football/"
         let parameters = ["met": "Leagues", "APIkey": Constants.API_KEY]
@@ -40,19 +41,51 @@ class TestNetworkMockData: XCTestCase {
     }
 
     func testFetchLeagueDataFromAPI_WithoutError() {
-        // Arrange
+     
         let mockNetworkData = MockNetworkFakeData(shouldReturnError: false)
 
-        // Act
+      
         var fetchedLeagueResponse: MyResponse<League>?
         mockNetworkData.fetchLeagueDataFromAPI(url: "", param: [:]) { response in
             fetchedLeagueResponse = response
         }
 
-        // Assert
+   
         XCTAssertNotNil(fetchedLeagueResponse)
         XCTAssertEqual(fetchedLeagueResponse?.success, 1)
         XCTAssertEqual(fetchedLeagueResponse?.result?.count, 1)
         XCTAssertEqual(fetchedLeagueResponse?.result?.first?.league_name, "Ahly")
     }
+    
+    
+    func testFetchTeamDetailsDataFromAPI() {
+
+        let mockNetworkFakeData = MockNetworkFakeData(shouldReturnError: false)
+        
+     
+        mockNetworkFakeData.fetchTeamDetailsDataFromAPI(url: "", param: [:]) { response in
+   
+            XCTAssertNotNil(response)
+            XCTAssertEqual(response?.success, 1)
+            XCTAssertEqual(response?.result?.count, 1)
+            XCTAssertEqual(response?.result?.first?.team_key, 1)
+            XCTAssertEqual(response?.result?.first?.team_name, "name")
+            XCTAssertEqual(response?.result?.first?.team_logo, "logo")
+            XCTAssertEqual(response?.result?.first?.players?.count, 1)
+            XCTAssertEqual(response?.result?.first?.players?.first?.player_image, "player_image_url")
+            XCTAssertEqual(response?.result?.first?.players?.first?.player_name, "John Doe")
+            XCTAssertEqual(response?.result?.first?.coaches?.count, 1)
+            XCTAssertEqual(response?.result?.first?.coaches?.first?.coach_name, "Coach Smith")
+        }
+    }
+
+    func testFetchTeamDetailsDataFromAPIWithError() {
+        let mockNetworkFakeData = MockNetworkFakeData(shouldReturnError: true)
+        mockNetworkFakeData.fetchTeamDetailsDataFromAPI(url: "", param: [:]) { response in
+            XCTAssertNil(response)
+        }
+    }
+    
+    
+    
 }
