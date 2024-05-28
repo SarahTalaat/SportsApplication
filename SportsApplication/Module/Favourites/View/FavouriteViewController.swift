@@ -40,8 +40,6 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
         self.favouriteTableView.register(cell , forCellReuseIdentifier: "cell")
         
         viewModel = DependencyProvider.favouritesViewModel
-        createButton()
-        
 
         
         favouriteTableView.reloadData()
@@ -81,18 +79,14 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
             print("Can't load image from the internet")
             cell.myImage.image = UIImage(named: "cup.jpg")
             self.circularImage(cell: cell)
-            
-
         }
-
-        
         return cell
 
     }
     
     func circularImage(cell: LeagueCell){
         cell.myImage?.contentMode = .scaleAspectFill
-        cell.myImage.frame = CGRect(x: cell.myImage.frame.origin.x, y: cell.myImage.frame.origin.y, width: 80, height: 80)
+        cell.myImage.frame = CGRect(x: cell.myImage.frame.origin.x, y: cell.myImage.frame.origin.y, width: 70, height: 70)
         cell.myImage?.layer.cornerRadius = cell.myImage!.frame.height / 2
         cell.myImage?.clipsToBounds = true
     }
@@ -131,24 +125,6 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
         }
     }
 
-    
-    func createButton(){
-
-        let button = UIButton(type: .system)
-        button.setTitle("Tap Me!", for: .normal)
-        button.frame = CGRect(x: 100, y: 100, width: 200, height: 50)
-        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        view.addSubview(button)
-    }
-    
-    @objc func buttonTapped() {
-        let leagueLocal1 = LeagueLocal(sport: "football", name: "UEFA Europa League", logo: "ss" , key: 4)
-        DBManager.favouriteLeagueDB.insert(favleague: leagueLocal1)
-        leagueDetailsArray?.removeAll()
-        leagueDetailsArray = viewModel.retriveLeaguesFromCoreData()
-        favouriteTableView.reloadData()
-        
-    }
     
     func showAlert(withTitle title: String) {
         let alertController = UIAlertController(title: title, message: nil, preferredStyle: .alert)

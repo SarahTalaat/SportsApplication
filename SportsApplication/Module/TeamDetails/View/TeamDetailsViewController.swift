@@ -15,7 +15,7 @@ class TeamDetailsViewController: UIViewController , UITableViewDataSource , UITa
     @IBOutlet var teamCoachLabel: UILabel!
     @IBOutlet var teamNameLabel: UILabel!
     
-    var teamDetailsArray: [Result]?
+    var teamDetailsArray: [ResultTeamDetails]?
     var sportName: String?
     var teamId: Int?
     var viewModel: TeamsDetailsViewModelProtocol!
@@ -53,52 +53,7 @@ class TeamDetailsViewController: UIViewController , UITableViewDataSource , UITa
         fetchData()
     }
     
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    
-    
-//    private func fetchData(){
-//        print("XXX VC SportName: \(sportName ?? "") , teamID: \(teamId ?? 0)")
-//        viewModel.getTeamDetails(sport: sportName ?? "", teamId: "\(teamId ?? 0)")
-//        viewModel.resultToViewController = {  [weak self] in
-//
-//        DispatchQueue.main.async { [weak self] in
-//            self?.indicator.stopAnimating()
-//            self?.teamNameLabel.text = self?.viewModel.teamDetailsArray?[0].team_name
-//            self?.teamCoachLabel.text = self?.viewModel.teamDetailsArray?[0].coaches?[0].coach_name
-//
-//            if let playerImage = self?.viewModel.teamDetailsArray?[0].team_logo {
-//                if let imageUrl = URL(string: playerImage) {
-//                    self?.teamImage?.kf.setImage(with: imageUrl, placeholder: UIImage(named: "MohamedSalah.jpg") , completionHandler: { (image, error, cacheType, url) in
-//                       if let image = image {
-//                           self?.teamImage?.image = image
-//
-//                       } else {
-//                           self?.teamImage?.image = UIImage(named: "MohamedSalah.jpg")
-//
-//                           print("Can't get image")
-//                       }
-//                   })
-//               } else {
-//                   print("Can't load image from the internet or image URL is not available")
-//                   self?.teamImage?.image = UIImage(named: "MohamedSalah.jpg")
-//
-//               }
-//           }
-//
-//            self?.teamTableView.reloadData()
-//            }
-//        }
-//
-//    }
     
     
     private func fetchData(){
@@ -107,18 +62,20 @@ class TeamDetailsViewController: UIViewController , UITableViewDataSource , UITa
         viewModel.resultToViewController = { [weak self] in
             DispatchQueue.main.async { [weak self] in
                 self?.indicator.stopAnimating()
-                // Check if viewModel.teamDetailsArray is not empty before accessing its elements
+                
                 if let teamDetailsArray = self?.viewModel.teamDetailsArray, !teamDetailsArray.isEmpty {
-                    // Check if team name and coach name are not empty before accessing them
+            
                     if let teamName = teamDetailsArray.first?.team_name {
                         self?.teamNameLabel.text = teamName
                     }
                     if let coachName = teamDetailsArray.first?.coaches?.first?.coach_name {
                         self?.teamCoachLabel.text = coachName
                     }
+                    
+                    print("Players Count: \(teamDetailsArray[0].players?.count)")
           
-                    if let playerImage = self?.viewModel.teamDetailsArray?[0].team_logo {
-                            if let imageUrl = URL(string: playerImage) {
+                    if let teamImage = self?.viewModel.teamDetailsArray?[0].team_logo {
+                            if let imageUrl = URL(string: teamImage) {
                                 self?.teamImage?.kf.setImage(with: imageUrl, placeholder: UIImage(named: "MohamedSalah.jpg") , completionHandler: { (image, error, cacheType, url) in
                                    if let image = image {
                                        self?.teamImage?.image = image
@@ -142,105 +99,78 @@ class TeamDetailsViewController: UIViewController , UITableViewDataSource , UITa
         }
     }
 
-
-//    private func fetchData(){
-//        print("XXX VC SportName: \(sportName ?? "") , teamID: \(teamId ?? 0)")
-//        viewModel.getTeamDetails(sport: sportName ?? "", teamId: "\(teamId ?? 0)")
-//        viewModel.resultToViewController = {  [weak self] in
-//            DispatchQueue.main.async { [weak self] in
-//                self?.indicator.stopAnimating()
-//
-//                if let teamDetailsArray = self?.viewModel.teamDetailsArray, !teamDetailsArray.isEmpty {
-//                    if let teamName = teamDetailsArray.first?.team_name{
-//                        self?.teamNameLabel.text = teamName
-//                        if let coachName = teamDetailsArray.first?.coaches?.first?.coach_name {
-//                         self?.teamCoachLabel.text = coachName
-//                     }
-//
-//                    }
-//
-//                }
-//                self?.teamTableView.reloadData()
-//            }
-//        }
-//    }
-
-
-
-
-
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return viewModel.teamDetailsArray?.count ?? 0
+        // Ensure that the teamDetailsArray is not nil and contains at least one element
+        guard let teamDetailsArray = viewModel.teamDetailsArray, !teamDetailsArray.isEmpty else {
+            return 0
+        }
+        
+        // Sum up the total number of players across all teams
+        let totalPlayersCount = teamDetailsArray.reduce(0) { (result, team) in
+            if let playersCount = team.players?.count {
+                return result + playersCount
+            } else {
+                return result
+            }
+        }
+        
+        return totalPlayersCount
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = teamTableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! TeamDetailsCell
         
-        if let player = viewModel.teamDetailsArray?.first?.players?[indexPath.row]{
+   
+        guard let teamDetailsArray = viewModel.teamDetailsArray, !teamDetailsArray.isEmpty else {
+            return cell
+        }
+        
+
+        var playerIndex = indexPath.row
+        var teamIndex = 0
+        
+     
+        while playerIndex >= teamDetailsArray[teamIndex].players?.count ?? 0 {
+            playerIndex -= teamDetailsArray[teamIndex].players?.count ?? 0
+            teamIndex += 1
+            
+
+            if teamIndex >= teamDetailsArray.count {
+                break
+            }
+        }
+        
+
+        if let player = teamDetailsArray[teamIndex].players?[playerIndex] {
+
             if let playerName = player.player_name {
                 cell.teamDetailsPlayerNameLabel.text = playerName
-
-                if let playerImage = player.player_image {
-                    if let imageUrl = URL(string: playerImage) {
-                       cell.teamDetailsImage?.kf.setImage(with: imageUrl, placeholder: UIImage(named: "MohamedSalah.jpg") , completionHandler: { (image, error, cacheType, url) in
-                           if let image = image {
-                               cell.teamDetailsImage?.image = image
-                               self.circularImage(cell: cell)
-                           } else {
-                               cell.teamDetailsImage.image = UIImage(named: "MohamedSalah.jpg")
-                               self.circularImage(cell: cell)
-                               print("Can't get image")
-                           }
-                       })
-                   } else {
-                       print("Can't load image from the internet or image URL is not available")
-                       cell.teamDetailsImage.image = UIImage(named: "MohamedSalah.jpg")
-                       self.circularImage(cell: cell)
-                   }
-               }
-                }
             }
-
-    
-
-//
-//        if let teamDetailsArray = viewModel.teamDetailsArray,
-//              indexPath.row < teamDetailsArray.count,
-//              let players = teamDetailsArray[indexPath.row].players,
-//              !players.isEmpty
-//         {
-//
-//
-//        if let player = players.first {
-//            if let playerName = player.player_name {
-//                cell.teamDetailsPlayerNameLabel.text = playerName
-//            }
-//
-//            if let playerImage = player.player_image,
-//               let imageUrl = URL(string: playerImage) {
-//                cell.teamDetailsImage?.kf.setImage(with: imageUrl, placeholder: UIImage(named: "cup.jpg") , completionHandler: { (image, error, cacheType, url) in
-//                    if let image = image {
-//                        cell.teamDetailsImage?.image = image
-//                        self.circularImage(cell: cell)
-//                    } else {
-//                        self.circularImage(cell: cell)
-//                        print("Can't get image")
-//                    }
-//                })
-//            }
-//            else {
-//                print("Can't load image from the internet or image URL is not available")
-//                cell.teamDetailsImage.image = UIImage(named: "cup.jpg")
-//                self.circularImage(cell: cell)
-//            }
-//        }
-//        }
-
+            
+  
+            if let playerImageStr = player.player_image, let imageUrl = URL(string: playerImageStr) {
+                cell.teamDetailsImage.kf.setImage(with: imageUrl, placeholder: UIImage(named: "MohamedSalah.jpg"), completionHandler: { (image, error, cacheType, url) in
+                    if let image = image {
+                        cell.teamDetailsImage.image = image
+                        self.circularImage(cell: cell)
+                    } else {
+                        cell.teamDetailsImage.image = UIImage(named: "MohamedSalah.jpg")
+                        self.circularImage(cell: cell)
+                        print("Can't get image")
+                    }
+                })
+            } else {
+                print("Can't load image from the internet or image URL is not available")
+                cell.teamDetailsImage.image = UIImage(named: "MohamedSalah.jpg")
+                self.circularImage(cell: cell)
+            }
+        }
+        
         return cell
     }
 

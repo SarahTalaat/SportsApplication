@@ -7,7 +7,25 @@
 		<key>SportsApplication.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>6</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>B6DBD8F92BE05732007116CC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B6DBD90F2BE05734007116CC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B6DBD9192BE05734007116CC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
