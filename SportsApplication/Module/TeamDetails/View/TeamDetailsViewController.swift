@@ -22,12 +22,24 @@ class TeamDetailsViewController: UIViewController , UITableViewDataSource , UITa
     var indicator: UIActivityIndicatorView!
 
     
+//    override func viewWillAppear(_ animated: Bool) {
+//      super.viewWillAppear(animated)
+//      indicator = UIActivityIndicatorView(style: .large)
+//      indicator.center = self.view.center
+//      self.view.addSubview(indicator)
+//      indicator.startAnimating()
+//    }
     override func viewWillAppear(_ animated: Bool) {
       super.viewWillAppear(animated)
-      indicator = UIActivityIndicatorView(style: .large)
-      indicator.center = self.view.center
-      self.view.addSubview(indicator)
-      indicator.startAnimating()
+        if viewModel.teamDetailsArray?.isEmpty ?? true {
+            indicator = UIActivityIndicatorView(style: .large)
+            indicator.center = self.view.center
+            self.view.addSubview(indicator)
+            indicator.startAnimating()
+            fetchData()
+        } else {
+            teamTableView.reloadData()
+        }
     }
     
     
