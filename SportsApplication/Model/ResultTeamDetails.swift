@@ -16,18 +16,6 @@ struct ResultTeamDetails : Codable {
 		case coaches = "coaches"
 	}
     
-    
-    init(team_key: Int?,
-         team_name: String?,
-         team_logo: String?,
-         players: [Players]?,
-         coaches: [Coaches]?) {
-        self.team_key = team_key
-        self.team_name = team_name
-        self.team_logo = team_logo
-        self.players = players
-        self.coaches = coaches
-    }
 
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)

@@ -10,7 +10,7 @@ import Foundation
 class LeagueDetailsViewModel{
 
       var resultToViewController: (()->()) = {}
-    var resultDBToViewController: (()->()) = {}
+      var resultDBToViewController: (()->()) = {}
       let database = DBManager.favouriteLeagueDB
       var leagues: [LeagueLocal] = []
 
@@ -49,7 +49,9 @@ class LeagueDetailsViewModel{
     }
     
     func isFavourite(leagueId: Int){
-      leagues =  database.getAllLeaguesQuery() ?? []
+        let leaguesManagedObjArr = database.retriveLeaguesFromCoreData()
+        leagues = database.convertManagedObjectsToLeagueLocals(nsManagedObjectArray: leaguesManagedObjArr)
+    //  leagues =  database.getAllLeaguesQuery() ?? []
       var isExist = false
       for item in leagues{
           if item.key == leagueId{
@@ -60,15 +62,22 @@ class LeagueDetailsViewModel{
         isFavourite = isExist
     }
 
+//
+//    func deleteFavLeague(key: Int){
+//      for (index, item) in leagues.enumerated(){
+//        if item.key == key{
+//         // database.deleteFavouriteLegue(key: index)
+//          database.deleteLeagueFromCoreData(favLeagueKey: index)
+//
+//          break
+//        }
+//      }
+//    }
     
     func deleteFavLeague(key: Int){
-      for (index, item) in leagues.enumerated(){
-        if item.key == key{
-          database.deleteFavouriteLegue(key: index)
-          break
-        }
-      }
+        database.deleteLeagueFromCoreData(favLeagueKey: key)
     }
+
 
    func getUpcomingEvent(sportName: String, leagueId: String, startDate: String, endDate: String){
        

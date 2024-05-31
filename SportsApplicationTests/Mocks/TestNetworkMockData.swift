@@ -30,17 +30,15 @@ class TestNetworkMockData: XCTestCase {
      
         let mockNetworkData = MockNetworkFakeData(shouldReturnError: false)
 
-      
         var fetchedLeagueResponse: MyResponse<League>?
         mockNetworkData.fetchLeagueDataFromAPI(url: "", param: [:]) { response in
-            fetchedLeagueResponse = response
+            XCTAssertNotNil(response)
+            XCTAssertEqual(response?.success, 1)
+            XCTAssertEqual(response?.result?.count, 1)
+            XCTAssertEqual(response?.result?.first?.league_name, "Ahly")
         }
 
-   
-        XCTAssertNotNil(fetchedLeagueResponse)
-        XCTAssertEqual(fetchedLeagueResponse?.success, 1)
-        XCTAssertEqual(fetchedLeagueResponse?.result?.count, 1)
-        XCTAssertEqual(fetchedLeagueResponse?.result?.first?.league_name, "Ahly")
+
     }
     
     
@@ -114,7 +112,7 @@ class TestNetworkMockData: XCTestCase {
         }
     }
     
-    
+
     func testFetchLatestEventsDataFromAPI_Success() {
         
         let mockNetworkFakeData = MockNetworkFakeData(shouldReturnError: false)
@@ -122,7 +120,7 @@ class TestNetworkMockData: XCTestCase {
         mockNetworkFakeData.fetchLatestEventsDataFromAPI(url: "", param: [:]) { response in
     
             XCTAssertNotNil(response)
-            XCTAssertEqual(response?.success, 1)
+            XCTAssertEqual(response?.success, 2)
             XCTAssertEqual(response?.result?.count, 1)
             XCTAssertNotEqual(response?.result?.first?.eventKey, 66)
             XCTAssertEqual(response?.result?.first?.eventDate, "date")
@@ -141,7 +139,45 @@ class TestNetworkMockData: XCTestCase {
         }
     }
     
+    func testFetchUpComingEventsDataFromAPIWithError() {
+       
+        let mockNetworkFakeData = MockNetworkFakeData(shouldReturnError: true)
+        mockNetworkFakeData.fetchUpComingEventsDataFromAPI(url: "", param: [:]) { response in
+            XCTAssertNil(response)
+        }
+    }
     
+    func testFetchTeamDetailsDataFromAPIWithError() {
+        let mockNetworkFakeData = MockNetworkFakeData(shouldReturnError: true)
+        mockNetworkFakeData.fetchTeamDetailsDataFromAPI(url: "", param: [:]) { response in
+            XCTAssertNil(response)
+        }
+    }
+    func testFetchLatestDataFromAPIWithError() {
+        let mockNetworkFakeData = MockNetworkFakeData(shouldReturnError: true)
+        mockNetworkFakeData.fetchLatestEventsDataFromAPI(url: "", param: [:]) { response in
+            XCTAssertNil(response)
+        }
+    }
+    
+    func testFetchLeagueDataFromAPIWithError() {
+        let mockNetworkFakeData = MockNetworkFakeData(shouldReturnError: true)
+        mockNetworkFakeData.fetchLeagueDataFromAPI(url: "", param: [:]) { response in
+            XCTAssertNil(response)
+        }
+    }
+    
+    func testFetchTeamDataFromAPIWithError() {
+        let mockNetworkFakeData = MockNetworkFakeData(shouldReturnError: true)
+        mockNetworkFakeData.fetchTeamDataFromAPI(url: "", param: [:]) { response in
+            XCTAssertNil(response)
+        }
+    }
+    
+    
+}
+
+
 //    func testFetchDataFromAPI() {
 //        let allLeaguesURL = "https://apiv2.allsportsapi.com/football/"
 //        let parameters = ["met": "Leagues", "APIkey": Constants.API_KEY]
@@ -157,42 +193,4 @@ class TestNetworkMockData: XCTestCase {
 //        XCTAssertNotNil(fetchedResponse?.result?[0].league_key)
 //        XCTAssertEqual(fetchedResponse?.result?[0].league_key, 1)
 //    }
-//    
-//    
-//    func testFetchUpComingEventsDataFromAPIWithError() {
-//       
-//        let mockNetworkFakeData = MockNetworkFakeData(shouldReturnError: true)
-//        mockNetworkFakeData.fetchUpComingEventsDataFromAPI(url: "", param: [:]) { response in
-//            XCTAssertNil(response)
-//        }
-//    }
-//    
-//    func testFetchTeamDetailsDataFromAPIWithError() {
-//        let mockNetworkFakeData = MockNetworkFakeData(shouldReturnError: true)
-//        mockNetworkFakeData.fetchTeamDetailsDataFromAPI(url: "", param: [:]) { response in
-//            XCTAssertNil(response)
-//        }
-//    }
-//    func testFetchLatestDataFromAPIWithError() {
-//        let mockNetworkFakeData = MockNetworkFakeData(shouldReturnError: true)
-//        mockNetworkFakeData.fetchLatestEventsDataFromAPI(url: "", param: [:]) { response in
-//            XCTAssertNil(response)
-//        }
-//    }
-//    
-//    func testFetchLeagueDataFromAPIWithError() {
-//        let mockNetworkFakeData = MockNetworkFakeData(shouldReturnError: true)
-//        mockNetworkFakeData.fetchLeagueDataFromAPI(url: "", param: [:]) { response in
-//            XCTAssertNil(response)
-//        }
-//    }
-//    
-//    func testFetchTeamDataFromAPIWithError() {
-//        let mockNetworkFakeData = MockNetworkFakeData(shouldReturnError: true)
-//        mockNetworkFakeData.fetchTeamDataFromAPI(url: "", param: [:]) { response in
-//            XCTAssertNil(response)
-//        }
-//    }
-//    
-    
-}
+//

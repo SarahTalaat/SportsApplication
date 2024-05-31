@@ -11,9 +11,6 @@ struct Coaches : Codable {
 
 	}
 
-    init(coach_name: String?) {
-        self.coach_name = coach_name
-    }
     
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
