@@ -22,10 +22,15 @@ class LeagueViewController: UIViewController , UITableViewDataSource , UITableVi
     
     override func viewWillAppear(_ animated: Bool) {
       super.viewWillAppear(animated)
-      indicator = UIActivityIndicatorView(style: .large)
-      indicator.center = self.view.center
-      self.view.addSubview(indicator)
-      indicator.startAnimating()
+        if viewModel.leaguesArray?.isEmpty ?? true {
+            indicator = UIActivityIndicatorView(style: .large)
+            indicator.center = self.view.center
+            self.view.addSubview(indicator)
+            indicator.startAnimating()
+            fetchData()
+        } else {
+            leagueTableView.reloadData()
+        }
     }
     
     
