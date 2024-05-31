@@ -30,7 +30,8 @@ class LeaguesViewModel: LeaguesViewModelProtocol {
         let parameters = ["met" : "Leagues", "APIkey" : Constants.API_KEY]
           networkProtocol.fetchDataFromAPI(url: url, param: parameters){ [weak self] (response : MyResponse<League>?) in
               self?.leaguesArray = response?.result ?? []
-              print("League name::  \(self?.leaguesArray?[0].league_name)")
+              print("leagues array count : \(self?.leaguesArray?.count)")
+              print("League name::  \(self?.leaguesArray?[0].league_name ?? "")")
         }
     }
     
