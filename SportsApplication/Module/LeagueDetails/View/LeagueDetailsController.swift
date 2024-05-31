@@ -1,10 +1,3 @@
-//
-//  LeagueDetailsController.swift
-//  SportsApplication
-//
-//  Created by Ahmed Refat on 22/05/2024.
-//
-
 import UIKit
 import JGProgressHUD
 
@@ -302,10 +295,10 @@ class LeagueDetailsController: UIViewController , UICollectionViewDataSource , U
 //                teamDetailsVC.sportName = self.sportName
 //                present(teamDetailsVC,animated: true, completion: nil)
 //            }
-//                
-//            
+//
+//
 //        }
-//        
+//
 
     //}
 
@@ -352,7 +345,7 @@ class LeagueDetailsController: UIViewController , UICollectionViewDataSource , U
 //     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
 //            if kind == UICollectionView.elementKindSectionHeader {
 //                let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderView", for: indexPath) as! CustomHeaderView
-//                
+//
 //                switch indexPath.section {
 //                case 0:
 //                    header.titleLabel.text = "Upcoming Events"
@@ -363,10 +356,9 @@ class LeagueDetailsController: UIViewController , UICollectionViewDataSource , U
 //                default:
 //                    header.titleLabel.text = "Section"
 //                }
-//                
+//
 //                return header
 //            }
 //            return UICollectionReusableView()
 //        }
 }
-

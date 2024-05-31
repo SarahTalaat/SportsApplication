@@ -9,6 +9,7 @@ import XCTest
 @testable import SportsApplication
 
 
+
 class CoreDataTest2: XCTestCase {
     
     var database: DBManager!
@@ -64,7 +65,8 @@ class CoreDataTest2: XCTestCase {
         
         XCTAssertEqual(leaguesFromCoreData1.count, 3)
         
-        database.deleteLeagueFromCoreData(favLeague: league1)
+  
+        database.deleteLeagueFromCoreData(favLeagueKey: league1.key)
         
         let leaguesFromCoreData2 = database.retriveLeaguesFromCoreData()
         
@@ -72,6 +74,7 @@ class CoreDataTest2: XCTestCase {
         
     }
     
+
     func testDeleteAll(){
         
         let league1 = LeagueLocal(sport: "basketball", name: "ahly", logo: "ahly", key: 1)

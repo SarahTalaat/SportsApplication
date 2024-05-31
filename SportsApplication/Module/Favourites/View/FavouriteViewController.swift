@@ -98,6 +98,7 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
             let league = leagueArray?[indexPath.row]
             leagueDetailsArray?.removeAll()
             leagueDetailsArray = viewModel.deleteLeagueFromCoreData(favLeague: league ?? LeagueLocal(sport: "FootballNil", name: "NameNil", logo: "LogoNil", key: 00000))
+           
             favouriteTableView.reloadData()
             
 
@@ -140,4 +141,3 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
     
 
 }
-

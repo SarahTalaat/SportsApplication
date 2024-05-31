@@ -13,20 +13,7 @@ struct League : Codable {
     let country_name : String?
     let league_logo : String?
     let country_logo : String?
-    
-    init(league_key: Int?,
-         league_name: String?,
-         country_key: Int?,
-         country_name: String?,
-         league_logo: String?,
-         country_logo: String?) {
-        self.league_key = league_key
-        self.league_name = league_name
-        self.country_key = country_key
-        self.country_name = country_name
-        self.league_logo = league_logo
-        self.country_logo = country_logo
-    }
+
 
     enum CodingKeys: String, CodingKey {
 
