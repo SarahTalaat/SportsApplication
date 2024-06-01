@@ -169,17 +169,17 @@ class TeamDetailsViewController: UIViewController , UITableViewDataSource , UITa
                 cell.teamDetailsImage.kf.setImage(with: imageUrl, placeholder: UIImage(named: "MohamedSalah.jpg"), completionHandler: { (image, error, cacheType, url) in
                     if let image = image {
                         cell.teamDetailsImage.image = image
-                        self.circularImage(cell: cell)
+                     
                     } else {
                         cell.teamDetailsImage.image = UIImage(named: "MohamedSalah.jpg")
-                        self.circularImage(cell: cell)
+                        
                         print("Can't get image")
                     }
                 })
             } else {
                 print("Can't load image from the internet or image URL is not available")
                 cell.teamDetailsImage.image = UIImage(named: "MohamedSalah.jpg")
-                self.circularImage(cell: cell)
+               
             }
         }
         
