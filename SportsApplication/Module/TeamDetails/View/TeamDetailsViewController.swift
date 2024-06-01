@@ -79,9 +79,13 @@ class TeamDetailsViewController: UIViewController , UITableViewDataSource , UITa
             
                     if let teamName = teamDetailsArray.first?.team_name {
                         self?.teamNameLabel.text = teamName
+                    }else{
+                        self?.teamNameLabel.text = "El Ahly"
                     }
                     if let coachName = teamDetailsArray.first?.coaches?.first?.coach_name {
                         self?.teamCoachLabel.text = coachName
+                    }else{
+                        self?.teamCoachLabel.text = "Smith"
                     }
                     
                     print("Players Count: \(teamDetailsArray[0].players?.count)")
