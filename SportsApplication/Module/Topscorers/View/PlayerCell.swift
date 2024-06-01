@@ -15,7 +15,7 @@ class PlayerCell: UITableViewCell {
     @IBOutlet weak var clubNameLabel: UILabel!
     @IBOutlet weak var playerNumberLabel: UILabel!
     @IBOutlet weak var playerName: UILabel!
-   // @IBOutlet weak var playerImage: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -28,5 +28,15 @@ class PlayerCell: UITableViewCell {
     }
     
     func loadData(player: Player?){
+        print("loaddding")
+        self.playerName.text = player?.player_name
+        self.clubNameLabel.text = player?.team_name
+        self.assistsLabel.text = player?.assists
+        self.goalsLabel.text = player?.goals
+        self.penaltyLabel.text = player?.penalty_goals
+    }
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4))
     }
 }

@@ -126,10 +126,10 @@
             </objects>
             <point key="canvasLocation" x="1834.7826086956522" y="-475.44642857142856"/>
         </scene>
-        <!--Team Details Controller-->
+        <!--Top Scorers Controller-->
         <scene sceneID="EbL-4Z-x3h">
             <objects>
-                <viewController storyboardIdentifier="TeamDetailsController" id="9dL-dM-INa" customClass="TeamDetailsController" customModule="SportsApplication" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TopScorersController" id="9dL-dM-INa" customClass="TopScorersController" customModule="SportsApplication" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kHl-IG-BVg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
