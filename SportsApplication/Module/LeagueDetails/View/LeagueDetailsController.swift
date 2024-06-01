@@ -36,11 +36,18 @@ class LeagueDetailsController: UIViewController , UICollectionViewDataSource , U
     }
     
     override func viewWillAppear(_ animated: Bool) {
+
+        
       super.viewWillAppear(animated)
-      indicator = UIActivityIndicatorView(style: .large)
-      indicator.center = self.view.center
-      self.view.addSubview(indicator)
-      indicator.startAnimating()
+        if (viewModel.upcomingEvent?.isEmpty ?? true || viewModel.latestEvent?.isEmpty ?? true || viewModel.teams?.isEmpty ?? true){
+            indicator = UIActivityIndicatorView(style: .large)
+            indicator.center = self.view.center
+            self.view.addSubview(indicator)
+            indicator.startAnimating()
+            fetchLeagueData()
+        } else {
+            detailsCollectionView.reloadData()
+        }
     }
     
     func drawUpComingEventSection() -> NSCollectionLayoutSection{
@@ -283,27 +290,19 @@ class LeagueDetailsController: UIViewController , UICollectionViewDataSource , U
         }
     }
     
+    @IBAction func topScorerBtn(_ sender: UIButton) {
+        let topScorersVC = self.storyboard?.instantiateViewController(identifier: "TopScorersController") as! TopScorersController
+        topScorersVC.sportName = self.sportName
+        topScorersVC.leagueId = self.leagueId
+        topScorersVC.modalPresentationStyle = .fullScreen
+
+        self.present(topScorersVC, animated: true)
+    }
     @IBAction func backBtn(_ sender: UIButton) {
         self.dismiss(animated: true)
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
-//        let teamDetails = viewModel.teams?[indexPath.row]
-//        if let cell = collectionView.cellForItem(at: indexPath) as? TeamCell {
-//            if let teamDetailsVC = UIStoryboard(name: "SecondStoryboard", bundle:nil ).instantiateViewController(withIdentifier: "TeamDetailsViewController") as? TeamDetailsViewController{
-//                teamDetailsVC.teamId = teamDetails?.team_key ?? 0000
-//                teamDetailsVC.sportName = self.sportName
-//                present(teamDetailsVC,animated: true, completion: nil)
-//            }
-//
-//
-//        }
-//
-
-    //}
-
     
-
         if (viewModel.upcomingEvent?.count ?? 0 == 0 && indexPath.section == 1) || (viewModel.upcomingEvent?.count ?? 0 != 0 && indexPath.section == 2){
         let storyboard = UIStoryboard(name: "SecondStoryboard", bundle: nil)
         let teamDetailsVC = storyboard.instantiateViewController(identifier: "TeamDetailsViewController") as! TeamDetailsViewController
@@ -342,23 +341,4 @@ class LeagueDetailsController: UIViewController , UICollectionViewDataSource , U
         return UICollectionReusableView()
     }
     
-//     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-//            if kind == UICollectionView.elementKindSectionHeader {
-//                let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "HeaderView", for: indexPath) as! CustomHeaderView
-//
-//                switch indexPath.section {
-//                case 0:
-//                    header.titleLabel.text = "Upcoming Events"
-//                case 1:
-//                    header.titleLabel.text = "Latest Results"
-//                case 2:
-//                    header.titleLabel.text = "Teams"
-//                default:
-//                    header.titleLabel.text = "Section"
-//                }
-//
-//                return header
-//            }
-//            return UICollectionReusableView()
-//        }
 }

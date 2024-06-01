@@ -20,18 +20,19 @@ struct Team: Decodable  {
 }
 
 
-struct Player: Decodable {
+class Player: Decodable {
     let player_key: Int?
     let player_name: String?
     let player_number: String?
     let player_image: String?
     let team_name: String?
-    let goals: String?
-    let assists: String?
-    let penalty_goals : String?
-    let player_place: String?
+    let goals: Int?
+    let assists: Int?
+    let penalty_goals : Int?
+    let player_place: Int?
 
 }
+
 
 struct Coach: Decodable {
     let coach_name: String?

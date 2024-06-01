@@ -31,9 +31,9 @@ class PlayerCell: UITableViewCell {
         print("loaddding")
         self.playerName.text = player?.player_name
         self.clubNameLabel.text = player?.team_name
-        self.assistsLabel.text = player?.assists
-        self.goalsLabel.text = player?.goals
-        self.penaltyLabel.text = player?.penalty_goals
+        self.assistsLabel.text = "\(player?.assists ?? 0)"
+        self.goalsLabel.text = "\(player?.goals ?? 0)"
+        self.penaltyLabel.text = "\(player?.penalty_goals ?? 0)"
     }
     override func layoutSubviews() {
         super.layoutSubviews()
