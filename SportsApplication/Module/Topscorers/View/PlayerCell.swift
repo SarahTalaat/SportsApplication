@@ -9,9 +9,13 @@ import UIKit
 
 class PlayerCell: UITableViewCell {
 
+    @IBOutlet weak var penaltyLabel: UILabel!
+    @IBOutlet weak var assistsLabel: UILabel!
+    @IBOutlet weak var goalsLabel: UILabel!
+    @IBOutlet weak var clubNameLabel: UILabel!
     @IBOutlet weak var playerNumberLabel: UILabel!
     @IBOutlet weak var playerName: UILabel!
-    @IBOutlet weak var playerImage: UIImageView!
+   // @IBOutlet weak var playerImage: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
