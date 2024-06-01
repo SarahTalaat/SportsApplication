@@ -8,7 +8,7 @@
 import Foundation
 
 class Constants {
-    static let API_KEY = "15217216adc4a8d0eb9fc199593c980ada1693e793d69f681e94a7685b0359b4"
+    static let API_KEY = "9338996355241426c40a099d2ed1649c0982df743d1a4a5097ba8b2be41c5b6c"
     static let API_KEY2 = "dcfe2db90576c23689ab51880e9ab6a7e3f3f8c57b3a5f83c5dee71fb20c618f"
     
     static var currentDate: String {
