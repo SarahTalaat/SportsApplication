@@ -14,6 +14,7 @@ struct League : Codable {
     let league_logo : String?
     let country_logo : String?
 
+
     enum CodingKeys: String, CodingKey {
 
         case league_key = "league_key"
@@ -23,6 +24,8 @@ struct League : Codable {
         case league_logo = "league_logo"
         case country_logo = "country_logo"
     }
+    
+
 
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)

@@ -39,9 +39,7 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
         let cell = UINib(nibName: "LeagueCell", bundle: nil)
         self.favouriteTableView.register(cell , forCellReuseIdentifier: "cell")
         
-        viewModel = FavouritesViewModel()
-        createButton()
-        
+        viewModel = DependencyProvider.favouritesViewModel
 
         
         favouriteTableView.reloadData()
@@ -81,18 +79,14 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
             print("Can't load image from the internet")
             cell.myImage.image = UIImage(named: "cup.jpg")
             self.circularImage(cell: cell)
-            
-
         }
-
-        
         return cell
 
     }
     
     func circularImage(cell: LeagueCell){
         cell.myImage?.contentMode = .scaleAspectFill
-        cell.myImage.frame = CGRect(x: cell.myImage.frame.origin.x, y: cell.myImage.frame.origin.y, width: 80, height: 80)
+        cell.myImage.frame = CGRect(x: cell.myImage.frame.origin.x, y: cell.myImage.frame.origin.y, width: 70, height: 70)
         cell.myImage?.layer.cornerRadius = cell.myImage!.frame.height / 2
         cell.myImage?.clipsToBounds = true
     }
@@ -104,6 +98,7 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
             let league = leagueArray?[indexPath.row]
             leagueDetailsArray?.removeAll()
             leagueDetailsArray = viewModel.deleteLeagueFromCoreData(favLeague: league ?? LeagueLocal(sport: "FootballNil", name: "NameNil", logo: "LogoNil", key: 00000))
+           
             favouriteTableView.reloadData()
             
 
@@ -124,30 +119,13 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
             leagueDetails.leagueId = (viewModel.favouriteLeaguesArray[indexPath.row].key)
             leagueDetails.leagueName = (viewModel.favouriteLeaguesArray[indexPath.row].name)
             leagueDetails.leagueLogo = (viewModel.favouriteLeaguesArray[indexPath.row].logo)
+            leagueDetails.modalPresentationStyle = .fullScreen
           self.present(leagueDetails, animated: true)
             
             
         }
     }
 
-    
-    func createButton(){
-
-        let button = UIButton(type: .system)
-        button.setTitle("Tap Me!", for: .normal)
-        button.frame = CGRect(x: 100, y: 100, width: 200, height: 50)
-        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        view.addSubview(button)
-    }
-    
-    @objc func buttonTapped() {
-        let leagueLocal1 = LeagueLocal(sport: "football", name: "UEFA Europa League", logo: "ss" , key: 4)
-        DBManager.favouriteLeagueDB.insert(favleague: leagueLocal1)
-        leagueDetailsArray?.removeAll()
-        leagueDetailsArray = viewModel.retriveLeaguesFromCoreData()
-        favouriteTableView.reloadData()
-        
-    }
     
     func showAlert(withTitle title: String) {
         let alertController = UIAlertController(title: title, message: nil, preferredStyle: .alert)
@@ -163,4 +141,3 @@ class FavouriteViewController: UIViewController , UITableViewDelegate , UITableV
     
 
 }
-

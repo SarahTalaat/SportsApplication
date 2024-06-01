@@ -19,12 +19,19 @@ class LeaguesViewModel: LeaguesViewModelProtocol {
         }
     }
     
+    var networkProtocol: NetworkProtocol
+    
+    init(networkProtocol: NetworkProtocol){
+        self.networkProtocol = networkProtocol
+    }
     
     func getLeagues(sport: String) {
         let url = "https://apiv2.allsportsapi.com/\(sport)/"
         let parameters = ["met" : "Leagues", "APIkey" : Constants.API_KEY]
-          Network().fetchDataFromAPI(url: url, param: parameters){ [weak self] (response : MyResponse<League>?) in
+          networkProtocol.fetchDataFromAPI(url: url, param: parameters){ [weak self] (response : MyResponse<League>?) in
               self?.leaguesArray = response?.result ?? []
+//              print("leagues array count : \(self?.leaguesArray?.count)")
+//              print("League name::  \(self?.leaguesArray?[0].league_name ?? "")")
         }
     }
     

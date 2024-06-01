@@ -3,7 +3,7 @@
 import Foundation
 struct TeamDetails : Codable {
 	let success : Int?
-	let result : [Result]?
+	let result : [ResultTeamDetails]?
 
 	enum CodingKeys: String, CodingKey {
 
@@ -14,7 +14,7 @@ struct TeamDetails : Codable {
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		success = try values.decodeIfPresent(Int.self, forKey: .success)
-		result = try values.decodeIfPresent([Result].self, forKey: .result)
+		result = try values.decodeIfPresent([ResultTeamDetails].self, forKey: .result)
 	}
 
 }

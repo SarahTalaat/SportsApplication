@@ -10,4 +10,6 @@ import Foundation
 struct Sport{
     let name: String
     let image: String
+    
+    
 }

@@ -1,6 +1,6 @@
 
 import Foundation
-struct Result : Codable {
+struct ResultTeamDetails : Codable {
 	let team_key : Int?
 	let team_name : String?
 	let team_logo : String?
@@ -15,6 +15,7 @@ struct Result : Codable {
 		case players = "players"
 		case coaches = "coaches"
 	}
+    
 
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
@@ -24,5 +25,7 @@ struct Result : Codable {
 		players = try values.decodeIfPresent([Players].self, forKey: .players)
 		coaches = try values.decodeIfPresent([Coaches].self, forKey: .coaches)
 	}
+    
+
 
 }

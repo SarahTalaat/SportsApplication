@@ -1,17 +1,16 @@
 //
-//  PlayerCell.swift
+//  TeamDetailsCell.swift
 //  SportsApplication
 //
-//  Created by Ahmed Refat on 25/05/2024.
+//  Created by Sara Talat on 25/05/2024.
 //
 
 import UIKit
 
-class PlayerCell: UITableViewCell {
+class TeamDetailsCell: UITableViewCell {
 
-    @IBOutlet weak var playerNumberLabel: UILabel!
-    @IBOutlet weak var playerName: UILabel!
-    @IBOutlet weak var playerImage: UIImageView!
+    @IBOutlet var teamDetailsImage: UIImageView!
+    @IBOutlet var teamDetailsPlayerNameLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,6 +22,4 @@ class PlayerCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func loadData(player: Player?){
-    }
 }

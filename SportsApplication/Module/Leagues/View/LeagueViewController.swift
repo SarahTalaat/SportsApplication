@@ -15,8 +15,24 @@ import Kingfisher
 class LeagueViewController: UIViewController , UITableViewDataSource , UITableViewDelegate {
 
     @IBOutlet var leagueTableView: UITableView!
-    var viewModel: LeaguesViewModel!
+    var viewModel: LeaguesViewModelProtocol!
     var sportName: String = " "
+    var indicator: UIActivityIndicatorView!
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+      super.viewWillAppear(animated)
+        if viewModel.leaguesArray?.isEmpty ?? true {
+            indicator = UIActivityIndicatorView(style: .large)
+            indicator.center = self.view.center
+            self.view.addSubview(indicator)
+            indicator.startAnimating()
+            fetchData()
+        } else {
+            leagueTableView.reloadData()
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +44,8 @@ class LeagueViewController: UIViewController , UITableViewDataSource , UITableVi
         
         let cell = UINib(nibName: "LeagueCell", bundle: nil)
         self.leagueTableView.register(cell , forCellReuseIdentifier: "cell")
-        viewModel = LeaguesViewModel()
+        
+        viewModel = DependencyProvider.leaguesViewModel
         
         fetchData()
    
@@ -38,6 +55,7 @@ class LeagueViewController: UIViewController , UITableViewDataSource , UITableVi
         viewModel.getLeagues(sport: sportName)
         viewModel.resultToViewController = {  [weak self] in
             DispatchQueue.main.async {
+                self?.indicator.stopAnimating()
                 self?.leagueTableView.reloadData()
             }
         }
@@ -77,19 +95,16 @@ class LeagueViewController: UIViewController , UITableViewDataSource , UITableVi
             cell.myImage.image = UIImage(named: "cup.jpg")
             self.circularImage(cell: cell)
         }
-
-
-
         return cell
     }
     
     func circularImage(cell: LeagueCell){
         cell.myImage?.contentMode = .scaleAspectFill
-        cell.myImage.frame = CGRect(x: cell.myImage.frame.origin.x, y: cell.myImage.frame.origin.y, width: 80, height: 80)
+        cell.myImage.frame = CGRect(x: cell.myImage.frame.origin.x, y: cell.myImage.frame.origin.y, width: 70, height: 70)
         cell.myImage?.layer.cornerRadius = cell.myImage!.frame.height / 2
         cell.myImage?.clipsToBounds = true
     }
-    
+    let teamImagePlaceholder = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/EA_Sports_monochrome_logo.svg/2048px-EA_Sports_monochrome_logo.svg.png"
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -97,7 +112,8 @@ class LeagueViewController: UIViewController , UITableViewDataSource , UITableVi
         leagueDetails.sportName = self.sportName
         leagueDetails.leagueId = (viewModel.leaguesArray?[indexPath.row].league_key)!
         leagueDetails.leagueName = (viewModel.leaguesArray?[indexPath.row].league_name)!
-        leagueDetails.leagueLogo = (viewModel.leaguesArray?[indexPath.row].league_logo)!
+        leagueDetails.leagueLogo = (viewModel.leaguesArray?[indexPath.row].league_logo) ?? teamImagePlaceholder
+        leagueDetails.modalPresentationStyle = .fullScreen
       self.present(leagueDetails, animated: true)
 
     }

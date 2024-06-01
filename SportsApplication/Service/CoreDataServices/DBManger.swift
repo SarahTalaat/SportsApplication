@@ -1,15 +1,10 @@
-//
-//  DBManger.swift
-//  SportsApplication
-//
-//  Created by Ahmed Refat on 20/05/2024.
-//
-
 import Foundation
 import CoreData
 import UIKit
 
 class DBManager: DBManagerProtocol{
+
+    
     
     static let favouriteLeagueDB = DBManager()
     
@@ -17,6 +12,9 @@ class DBManager: DBManagerProtocol{
     var nsManagedLeagues : [NSManagedObject] = []
     let manager : NSManagedObjectContext!
     let favEntity: NSEntityDescription!
+    
+    var favouriteLeaguesArray: [LeagueLocal] = []
+    var favouriteLeagueNSManagedObjectArray: [NSManagedObject] = []
     
     private init(){
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -53,36 +51,12 @@ class DBManager: DBManagerProtocol{
     }
     
     
-    func getAllLeaguesQuery() -> Array<LeagueLocal>? {
-      leagues = []
-      let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "FavouriteEntity")
 
-      do{
-        nsManagedLeagues = try manager.fetch(fetchRequest)
-
-        for league in nsManagedLeagues{
-          var obj = LeagueLocal(sport: "", name: "", logo: "", key: 0)
-          obj.key = league.value(forKey: "key") as! Int
-          obj.name = league.value(forKey: "name") as! String
-          obj.logo = league.value(forKey: "logo") as! String
-          obj.sport = league.value(forKey: "sport") as! String
-
-            leagues! += [obj]
-            
-          
-        }
-        return  leagues
-      } catch let error as NSError{
-          print("Error retrieving data: \(error.localizedDescription)")
-        return []
-      }
-    }
     
-    
-    func deleteLeagueFromCoreData(favLeague: LeagueLocal) -> [NSManagedObject] {
+    func deleteLeagueFromCoreData(favLeagueKey: Int) -> [NSManagedObject] {
 
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FavouriteEntity")
-        let predicate = NSPredicate(format: "key == %d", favLeague.key)
+        let predicate = NSPredicate(format: "key == %d", favLeagueKey)
         fetchRequest.predicate = predicate
         
         do {
@@ -91,7 +65,7 @@ class DBManager: DBManagerProtocol{
                 try manager.save()
                 return retriveLeaguesFromCoreData()
             } else {
-                print("Leagues with key \(favLeague.key) not found")
+                print("Leagues with key \(favLeagueKey) not found")
                 return []
             }
         } catch let error as NSError {
@@ -100,39 +74,41 @@ class DBManager: DBManagerProtocol{
         }
     }
     
-    func deleteFavouriteLegue(key: Int) {
-        if key < nsManagedLeagues.count {
-            manager.delete(nsManagedLeagues[key])
-            nsManagedLeagues.remove(at: key)
-            do {
-                try manager.save()
-            } catch let error {
-                print(error.localizedDescription)
+    func deleteAllFromCoreData() -> [NSManagedObject] {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "FavouriteEntity")
+        
+        do {
+            let results = try managedContext.fetch(fetchRequest)
+            for object in results {
+                if let league = object as? NSManagedObject {
+                    managedContext.delete(league)
+                }
             }
+            try managedContext.save()
+            return retriveLeaguesFromCoreData()
+        } catch let error as NSError {
+            print("Error deleting from Core Data: \(error.localizedDescription)")
+            return []
         }
     }
+
     
-    func deleteAll() {
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "FavouriteEntity")
-        
-        do{
-            nsManagedLeagues = try manager.fetch(fetchRequest)
+    
+    
+    func convertManagedObjectsToLeagueLocals(nsManagedObjectArray: [NSManagedObject]) -> [LeagueLocal] {
+        favouriteLeaguesArray = nsManagedObjectArray.compactMap { (managedObject) -> LeagueLocal? in
+            guard let sport = managedObject.value(forKey: "sport") as? String,
+                  let name = managedObject.value(forKey: "name") as? String,
+                  let logo = managedObject.value(forKey: "logo") as? String,
+                  let key = managedObject.value(forKey: "key") as? Int else {
+                return nil
+            }
+            return LeagueLocal(sport: sport, name: name, logo: logo, key: key)
         }
-        catch let error as NSError{
-            print(error)
-        }
-        
-        for element in nsManagedLeagues{
-            manager.delete(element)
-        }
-        
-        do{
-            
-            try manager.save()
-            print("Deleted!")
-        }catch let error{
-            print(error.localizedDescription)
-        }
+        return favouriteLeaguesArray
     }
     
     

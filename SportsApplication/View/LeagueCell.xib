@@ -8,54 +8,41 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="104" id="wKH-lJ-JDN" customClass="LeagueCell" customModule="SportsApplication" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="104" id="wKH-lJ-JDN" customClass="LeagueCell" customModule="SportsApplication" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="104"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wKH-lJ-JDN" id="R1r-L0-GIK">
                 <rect key="frame" x="0.0" y="0.0" width="414" height="104"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fEu-uO-Wyd">
-                        <rect key="frame" x="20" y="13" width="80" height="80"/>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVl-Ne-r2U">
-                        <rect key="frame" x="133" y="43" width="202" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eVl-Ne-r2U">
+                        <rect key="frame" x="121" y="30" width="227" height="43"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0lY-VD-4qY">
-                        <rect key="frame" x="351" y="40" width="50" height="26"/>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" image="video" catalog="system"/>
-                    </button>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fEu-uO-Wyd">
+                        <rect key="frame" x="25" y="17" width="70" height="70"/>
+                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="eVl-Ne-r2U" firstAttribute="width" secondItem="R1r-L0-GIK" secondAttribute="width" multiplier="0.487923" id="6t7-gI-zRs"/>
-                    <constraint firstItem="fEu-uO-Wyd" firstAttribute="top" secondItem="R1r-L0-GIK" secondAttribute="top" constant="13" id="Fjm-PQ-gXN"/>
-                    <constraint firstItem="0lY-VD-4qY" firstAttribute="top" secondItem="R1r-L0-GIK" secondAttribute="top" constant="40" id="Iiz-XD-jjK"/>
-                    <constraint firstAttribute="bottom" secondItem="0lY-VD-4qY" secondAttribute="bottom" constant="38" id="MSb-XS-ZyB"/>
-                    <constraint firstItem="fEu-uO-Wyd" firstAttribute="leading" secondItem="R1r-L0-GIK" secondAttribute="leading" constant="20" symbolic="YES" id="WbW-wW-3kC"/>
-                    <constraint firstItem="0lY-VD-4qY" firstAttribute="leading" secondItem="eVl-Ne-r2U" secondAttribute="trailing" constant="16" id="XzB-Ui-com"/>
-                    <constraint firstAttribute="bottom" secondItem="eVl-Ne-r2U" secondAttribute="bottom" constant="40" id="YzE-Nd-UYm"/>
-                    <constraint firstAttribute="trailing" secondItem="fEu-uO-Wyd" secondAttribute="trailing" constant="314" id="cJj-Zx-Oja"/>
-                    <constraint firstAttribute="trailing" secondItem="eVl-Ne-r2U" secondAttribute="trailing" constant="79" id="fX2-FX-0Xr"/>
-                    <constraint firstItem="eVl-Ne-r2U" firstAttribute="top" secondItem="R1r-L0-GIK" secondAttribute="top" constant="43" id="gBy-0s-0LD"/>
-                    <constraint firstItem="eVl-Ne-r2U" firstAttribute="leading" secondItem="fEu-uO-Wyd" secondAttribute="trailing" constant="33" id="mRE-ir-HN2"/>
-                    <constraint firstAttribute="trailing" secondItem="0lY-VD-4qY" secondAttribute="trailing" constant="13" id="pIF-Jo-h8L"/>
-                    <constraint firstItem="eVl-Ne-r2U" firstAttribute="height" secondItem="R1r-L0-GIK" secondAttribute="height" multiplier="0.201923" id="x16-Hv-OL1"/>
-                    <constraint firstAttribute="bottom" secondItem="fEu-uO-Wyd" secondAttribute="bottom" constant="11" id="yXv-Dr-clq"/>
+                    <constraint firstItem="eVl-Ne-r2U" firstAttribute="top" secondItem="R1r-L0-GIK" secondAttribute="top" constant="30" id="6oI-jA-wFh"/>
+                    <constraint firstAttribute="bottom" secondItem="eVl-Ne-r2U" secondAttribute="bottom" constant="31" id="AKk-WI-sCE"/>
+                    <constraint firstAttribute="trailing" secondItem="fEu-uO-Wyd" secondAttribute="trailing" constant="319" id="BJO-sx-Bke"/>
+                    <constraint firstAttribute="trailing" secondItem="eVl-Ne-r2U" secondAttribute="trailing" constant="66" id="Evr-pR-e9X"/>
+                    <constraint firstItem="fEu-uO-Wyd" firstAttribute="leading" secondItem="R1r-L0-GIK" secondAttribute="leading" constant="25" id="Ui3-MR-mHn"/>
+                    <constraint firstItem="fEu-uO-Wyd" firstAttribute="top" secondItem="R1r-L0-GIK" secondAttribute="top" constant="17" id="cAr-wD-WfA"/>
+                    <constraint firstItem="eVl-Ne-r2U" firstAttribute="height" secondItem="R1r-L0-GIK" secondAttribute="height" multiplier="0.413462" id="ejL-K8-ePE"/>
+                    <constraint firstItem="eVl-Ne-r2U" firstAttribute="width" secondItem="R1r-L0-GIK" secondAttribute="width" multiplier="0.548309" id="r7U-Nx-Qhc"/>
+                    <constraint firstAttribute="bottom" secondItem="fEu-uO-Wyd" secondAttribute="bottom" constant="17" id="ray-pE-9oD"/>
+                    <constraint firstItem="eVl-Ne-r2U" firstAttribute="leading" secondItem="fEu-uO-Wyd" secondAttribute="trailing" constant="26" id="zIk-Jo-0qc"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="myButton" destination="0lY-VD-4qY" id="3ll-Tr-alX"/>
                 <outlet property="myImage" destination="fEu-uO-Wyd" id="2pI-rB-aPd"/>
                 <outlet property="myLabel" destination="eVl-Ne-r2U" id="7zK-pd-5AB"/>
             </connections>
             <point key="canvasLocation" x="163.768115942029" y="123.88392857142857"/>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="video" catalog="system" width="128" height="83"/>
-    </resources>
 </document>
