@@ -99,7 +99,6 @@ class DBManager: DBManagerProtocol{
     
     
     func convertManagedObjectsToLeagueLocals(nsManagedObjectArray: [NSManagedObject]) -> [LeagueLocal] {
-        //compactMap -> works as map but it removes the nil values
         favouriteLeaguesArray = nsManagedObjectArray.compactMap { (managedObject) -> LeagueLocal? in
             guard let sport = managedObject.value(forKey: "sport") as? String,
                   let name = managedObject.value(forKey: "name") as? String,
